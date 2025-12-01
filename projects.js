@@ -7,7 +7,7 @@ const PROJECTS = [
   title: "Season of the Witch",
   year: 2011,
   role: "coordination",
-  roleLabel: "Production Coordinator",
+  roleLabel: "Production Coordinator (Cro Crew)",
   type: "Feature Film",
   client: "Atlas Entertainment, Relativity Media & BlueSky Films Croatia",
   stars: "Nicolas Cage, Ron Perlman",
@@ -43,6 +43,7 @@ const PROJECTS = [
   link: "https://www.imdb.com/title/tt1544601/",
   image: "images/un-altro-mondo.png",
   featuredSize: "small",
+     teaserVideo: "videos/mondo.mp4",
 },
 {
   id: "eyjafjallajokull",
@@ -52,9 +53,10 @@ const PROJECTS = [
   roleLabel: "Third Assistant Director",
   type: "Feature Film",
   client: "",
-  link: "#",
+  link: "https://www.imdb.com/title/tt2207072/",
   image: "images/eyjafjallajokull.png",
   featuredSize: "small",
+  teaserVideo: "videos/vulcan.mp4",
 },
 {
   id: "max-schmeling",
@@ -67,21 +69,8 @@ const PROJECTS = [
   link: "#",
   image: "images/max-schmeling.png",
   featuredSize: "small",
+  teaserVideo: "videos/schmelling.mp4",
 },
-
-  // === LOCATION MANAGEMENT ===
-//   {
-//     id: "max-schmeling",
-//     title: 'Henry Maske in "Max Schmeling"',
-//     year: 2010,
-//     role: "location",
-//     roleLabel: "Assistant Location Manager",
-//     type: "Feature Film",
-//     client: "Max Schmeling",
-//     link: "#",
-//     image: "http://static.photos/https://m.media-amazon.com/images/M/MV5BMTgyNzA1MTcwNF5BMl5BanBnXkFtZTcwMzA2OTMwNA@@._V1_.jpg/640x360/5",
-//     featured: false,
-//   },
 
   // === AD ===
   {
@@ -89,11 +78,11 @@ const PROJECTS = [
   title: "Liebe ist nur ein Wort",
   year: 2010,
   role: "director",
-  roleLabel: "Assistant Director & Units AD",
+  roleLabel: "Unit AD",
   type: "Feature Film",
   client: "MOOVIE the art of entertainment GmbH, Zweites Deutsches Fernsehen (ZDF)",
   link: "https://www.imdb.com/title/tt1471333/companycredits/",
-  image: "images/eyjafjallajokull.png",
+  image: "images/liebe.png",
   featuredSize: "small",
 },
 //   {
@@ -108,6 +97,18 @@ const PROJECTS = [
 //   image: "images/eyjafjallajokull.png",
 //   featuredSize: "small",
 // },
+{
+  id: "halima",
+  title: "Halima's Path",
+  year: 2012,
+  role: "director",
+  roleLabel: "2nd Assistant Director",
+  type: "Feature Film",
+  client: "Arkadena / FIST Production / HRT",
+  link: "https://www.imdb.com/title/tt2244877/",
+  image: "images/halima.png",
+  featuredSize: "small",
+},
 
   // === PRODUCTION COORDINATION / STAFF ===
   {
@@ -279,22 +280,22 @@ const PROJECTS = [
   // === EVENT MANAGER PLACEHOLDER ===
     {
    id: "event-polyfest-2025",
-    title: "Festivals & Events",
+    title: "PolyFest 2025",
     year: null,
     role: "event",
-    roleLabel: "PolyFest 2025",
+    roleLabel: "Event",
     type: "Events",
-    client: "",
+    client: "Poly Speed Dating",
     link: "https://poly-speed-dating.onrender.com/polyfest.html",
     image: "http://static.photos/music/640x360/1",
     featured: false,
   },
    {
     id: "event-flashback-90s",
-    title: "Weekly party series",
+    title: "Flashback 90's Party",
     year: null,
     role: "event",
-    roleLabel: "Flashback 90's Trash Party",
+    roleLabel: "Weekly party series",
     type: "Events",
     client: "Discotheque Saloon | Zagreb",
     link: "https://poly-speed-dating.onrender.com/polyfest.html",
@@ -303,14 +304,27 @@ const PROJECTS = [
   },
    {
  id: "event-burnhalla-2026",
-    title: "Festivals & Events",
+    title: "BurnHalla 2026",
     year: null,
     role: "event",
-    roleLabel: "BurnHalla 2026",
+    roleLabel: "Burn Event",
     type: "Events",
     client: "Berlin Burner e. V.",
     link: "https://poly-speed-dating.onrender.com/polyfest.html",
     image: "http://static.photos/music/640x360/1",
     featured: false,
+      },
+     {
+ id: "psd",
+    title: "Poly Speed Dating",
+    year: null,
+    role: "event",
+    roleLabel: "Reoccurring Event",
+    type: "Events",
+    client: "PSD Berlin",
+    link: "https://poly-speed-dating.onrender.com/polyfest.html",
+    image: "http://static.photos/music/640x360/1",
+    featured: false,
+    
   }
 ];
