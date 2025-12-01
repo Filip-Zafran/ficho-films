@@ -44,7 +44,7 @@ class CustomHeader extends HTMLElement {
                 <div class="container mx-auto px-4 flex justify-between items-center">
                     <!-- Logo / Home -->
                     <a href="#" class="text-2xl font-bold text-imdb-yellow nav-link" data-tab="projects">
-                        ficho-films
+                        Films, Locations & Creative Coordination
                     </a>
 
                     <!-- Desktop nav -->

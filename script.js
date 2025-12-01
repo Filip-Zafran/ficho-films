@@ -57,26 +57,60 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // === CONTACT FORM ===
-    const contactForm = document.getElementById('contact-form');
-    const formSuccess = document.getElementById('form-success');
+// Contact Form
+const contactForm = document.getElementById('contact-form');
+const formSuccess = document.getElementById('form-success');
+const formError = document.getElementById('form-error');
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
 
-            // Placeholder behavior – hook to backend later
-            if (formSuccess) {
-                formSuccess.classList.remove('hidden');
-            }
-            contactForm.reset();
+        const formData = new FormData(contactForm);
 
-            setTimeout(() => {
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                if (formSuccess) {
+                    formSuccess.classList.remove('hidden');
+                }
+                if (formError) {
+                    formError.classList.add('hidden');
+                }
+                contactForm.reset();
+
+                setTimeout(() => {
+                    if (formSuccess) {
+                        formSuccess.classList.add('hidden');
+                    }
+                }, 5000);
+            } else {
+                if (formError) {
+                    formError.classList.remove('hidden');
+                }
                 if (formSuccess) {
                     formSuccess.classList.add('hidden');
                 }
-            }, 5000);
-        });
-    }
+            }
+        } catch (err) {
+            if (formError) {
+                formError.classList.remove('hidden');
+            }
+            if (formSuccess) {
+                formSuccess.classList.add('hidden');
+            }
+            console.error('Form submit error:', err);
+        }
+    });
+}
+
 
     // === INITIAL STATE ===
     // Activate first tab (usually "Projects")

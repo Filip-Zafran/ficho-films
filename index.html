@@ -192,45 +192,61 @@
                 </div>
                 
                 <!-- Contact Form -->
-                <form id="contact-form" class="bg-imdb-gray p-6 rounded-lg">
-                    <!-- NOTE: real email (e.g. filip.zafran@gmail.com) should be configured in backend, not shown here -->
-                    <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium mb-2">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            required
-                            class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
-                        >
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
-                        >
-                    </div>
-                    <div class="mb-4">
-                        <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="5"
-                            required
-                            class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        class="w-full bg-imdb-yellow text-imdb-dark font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition"
+                    <form
+                        id="contact-form"
+                        class="bg-imdb-gray p-6 rounded-lg"
+                        action="https://formspree.io/f/xjknwzgn"  
+                        method="POST"
                     >
-                        Send Message
-                    </button>
-                </form>
+
+            <input type="hidden" name="form-name" value="ficho-films-contact">
+
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
+                >
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
+                >
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
+                ></textarea>
+            </div>
+            <button
+                type="submit"
+                class="w-full bg-imdb-yellow text-imdb-dark font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition"
+            >
+                Send Message
+            </button>
+        </form>
+
+<div id="form-success" class="hidden mt-4 p-4 bg-green-700 rounded-lg text-sm">
+    Thank you! Your message has been sent.
+</div>
+
+<div id="form-error" class="hidden mt-4 p-4 bg-red-700 rounded-lg text-sm">
+    Oops, something went wrong. Please try again later.
+</div>
+
 
                 <div id="form-success" class="hidden mt-4 p-4 bg-green-700 rounded-lg text-sm">
                     Thank you! Your message has been sent. (Placeholder message – hook this up to a real backend later.)
