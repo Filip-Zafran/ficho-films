@@ -13,92 +13,86 @@ function renderProjectsFromData() {
     featuredSmall.innerHTML = "";
     allContainer.innerHTML = "";
 
-// Featured Projects card (NO YEAR + teaser video with poster)
-const buildFeaturedCard = (project, imageHeightClasses = "h-48") => {
-    const linkHtml =
-        project.link && project.link !== "#"
-            ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
-            : "";
+    // === Featured Projects card (NO YEAR + teaser video with poster) ===
+    const buildFeaturedCard = (project, imageHeightClasses = "h-48") => {
+        const linkHtml =
+            project.link && project.link !== "#"
+                ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
+                : "";
 
-    const media = project.teaserVideo
-        ? `
-            <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses}">
-                <!-- Poster image (default visible) -->
+        const media = project.teaserVideo
+            ? `
+                <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses}">
+                    <!-- Poster image (default visible) -->
+                    <img
+                        src="${project.image}"
+                        alt="${project.title}"
+                        class="featured-poster absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100"
+                    >
+
+                    <!-- Video (invisible until hover) -->
+                    <video
+                        class="featured-video absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 pointer-events-none"
+                        poster="${project.image}"
+                        data-teaser-src="${project.teaserVideo}"
+                        muted
+                        preload="metadata"
+                        playsinline
+                    ></video>
+                </div>
+            `
+            : `
                 <img
                     src="${project.image}"
                     alt="${project.title}"
-                    class="featured-poster absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100"
+                    class="w-full ${imageHeightClasses} object-cover rounded-t-lg"
                 >
+            `;
 
-                <!-- Video (invisible until hover) -->
-                <video
-                    class="featured-video absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 pointer-events-none"
-                    poster="${project.image}"
-                    data-teaser-src="${project.teaserVideo}"
-                    muted
-                    preload="metadata"
-                    playsinline
-                ></video>
+        return `
+            <div class="project-card" data-role="${project.role}">
+                ${media}
+                <div class="bg-imdb-gray p-4 rounded-b-lg">
+                    <h3 class="text-xl font-bold">${project.title}</h3>
+                    <p class="text-imdb-yellow">${project.roleLabel}</p>
+                    ${project.stars ? `<p class="text-sm font-semibold text-gray-200 mb-1">${project.stars}</p>` : ""}
+                    ${project.client ? `<p class="text-xs text-gray-400">${project.client}</p>` : ""}
+                    ${linkHtml}
+                </div>
             </div>
-        `
-        : `
-            <img
-                src="${project.image}"
-                alt="${project.title}"
-                class="w-full ${imageHeightClasses} object-cover rounded-t-lg"
-            >
         `;
+    };
 
-    return `
-        <div class="project-card" data-role="${project.role}">
-            ${media}
-            <div class="bg-imdb-gray p-4 rounded-b-lg">
-                <h3 class="text-xl font-bold">${project.title}</h3>
-                <p class="text-imdb-yellow">${project.roleLabel}</p>
-                ${project.client ? `<p class="text-sm text-gray-400">${project.client}</p>` : ""}
-                ${project.stars ? `<p class="text-xs text-gray-500 mt-1">${project.stars}</p>` : ""}
-                ${linkHtml}
+    // === All Projects card (KEEP YEAR, same stars/client order) ===
+    const buildAllProjectsCard = (project, imageHeightClasses = "h-48") => {
+        const yearText = project.year ? ` (${project.year})` : "";
+        const linkHtml =
+            project.link && project.link !== "#"
+                ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
+                : "";
+
+        return `
+            <div class="project-card" data-role="${project.role}">
+                <img src="${project.image}" alt="${project.title}" class="w-full ${imageHeightClasses} object-cover rounded-t-lg">
+                <div class="bg-imdb-gray p-4 rounded-b-lg">
+                    <h3 class="text-xl font-bold">${project.title}${yearText}</h3>
+                    <p class="text-imdb-yellow">${project.roleLabel}</p>
+                    ${project.stars ? `<p class="text-sm font-semibold text-gray-200 mb-1">${project.stars}</p>` : ""}
+                    ${project.client ? `<p class="text-xs text-gray-400">${project.client}</p>` : ""}
+                    ${linkHtml}
+                </div>
             </div>
-        </div>
-    `;
-};
-
-
-
-
-
-// All Projects card (KEEP YEAR)
-const buildAllProjectsCard = (project, imageHeightClasses = "h-48") => {
-    const yearText = project.year ? ` (${project.year})` : "";
-    const linkHtml =
-        project.link && project.link !== "#"
-            ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
-            : "";
-
-    return `
-        <div class="project-card" data-role="${project.role}">
-            <img src="${project.image}" alt="${project.title}" class="w-full ${imageHeightClasses} object-cover rounded-t-lg">
-            <div class="bg-imdb-gray p-4 rounded-b-lg">
-                <h3 class="text-xl font-bold">${project.title}${yearText}</h3>
-                <p class="text-imdb-yellow">${project.roleLabel}</p>
-                ${project.client ? `<p class="text-sm text-gray-400">${project.client}</p>` : ""}
-                ${project.stars ? `<p class="text-xs text-gray-500 mt-1">${project.stars}</p>` : ""}
-                ${linkHtml}
-            </div>
-        </div>
-    `;
-};
-
+        `;
+    };
 
     // === FEATURED (BIG + SMALL) ===
     const featuredProjects = PROJECTS.filter(p => p.featuredSize);
     featuredProjects.forEach((project) => {
-       if (project.featuredSize === "big") {
-    featuredBig.insertAdjacentHTML("beforeend", buildFeaturedCard(project, "h-64"));
-} else if (project.featuredSize === "small") {
-    featuredSmall.insertAdjacentHTML("beforeend", buildFeaturedCard(project, "h-48"));
-}
-
+        if (project.featuredSize === "big") {
+            featuredBig.insertAdjacentHTML("beforeend", buildFeaturedCard(project, "h-64"));
+        } else if (project.featuredSize === "small") {
+            featuredSmall.insertAdjacentHTML("beforeend", buildFeaturedCard(project, "h-48"));
+        }
     });
 
     // === ALL PROJECTS: non-featured first, then featured ===
@@ -107,8 +101,7 @@ const buildAllProjectsCard = (project, imageHeightClasses = "h-48") => {
     const orderedProjects = [...normalProjects, ...featuredProjects];
 
     orderedProjects.forEach((project) => {
-      allContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-48"));
-
+        allContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-48"));
     });
 }
 
