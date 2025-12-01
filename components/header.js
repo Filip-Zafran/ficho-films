@@ -2,14 +2,17 @@ class CustomHeader extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <style>
-                header.site-header {
-                    background-color: rgba(18, 18, 18, 0.9);
-                    backdrop-filter: blur(10px);
-                    position: sticky;
-                    top: 0;
-                    z-index: 100;
-                    border-bottom: 1px solid rgba(245, 197, 24, 0.1);
-                }
+             header.site-header {
+    background-color: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    border-bottom: 1px solid rgba(245, 197, 24, 0.1);
+}
+
 
                 .nav-link {
                     position: relative;
