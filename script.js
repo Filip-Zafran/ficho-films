@@ -13,36 +13,59 @@ function renderProjectsFromData() {
     featuredSmall.innerHTML = "";
     allContainer.innerHTML = "";
 
-    // Helper: build a project card
-    const buildCard = (project, imageHeightClasses = "h-48") => {
-        const yearText = project.year ? ` (${project.year})` : "";
-        const linkHtml =
-            project.link && project.link !== "#"
-                ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
-                : "";
+// Featured Projects card (NO YEAR)
+const buildFeaturedCard = (project, imageHeightClasses = "h-48") => {
+    const linkHtml =
+        project.link && project.link !== "#"
+            ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
+            : "";
 
-        return `
-            <div class="project-card" data-role="${project.role}">
-                <img src="${project.image}" alt="${project.title}" class="w-full ${imageHeightClasses} object-cover rounded-t-lg">
-                <div class="bg-imdb-gray p-4 rounded-b-lg">
-                    <h3 class="text-xl font-bold">${project.title}${yearText}</h3>
-                    <p class="text-imdb-yellow">${project.roleLabel}</p>
-                    ${project.client ? `<p class="text-sm text-gray-400">${project.client}</p>` : ""}
-                    ${project.stars ? `<p class="text-xs text-gray-500 mt-1">${project.stars}</p>` : ""}
-                    ${linkHtml}
-                </div>
+    return `
+        <div class="project-card" data-role="${project.role}">
+            <img src="${project.image}" alt="${project.title}" class="w-full ${imageHeightClasses} object-cover rounded-t-lg">
+            <div class="bg-imdb-gray p-4 rounded-b-lg">
+                <h3 class="text-xl font-bold">${project.title}</h3>
+                <p class="text-imdb-yellow">${project.roleLabel}</p>
+                ${project.client ? `<p class="text-sm text-gray-400">${project.client}</p>` : ""}
+                ${project.stars ? `<p class="text-xs text-gray-500 mt-1">${project.stars}</p>` : ""}
+                ${linkHtml}
             </div>
-        `;
-    };
+        </div>
+    `;
+};
+
+// All Projects card (KEEP YEAR)
+const buildAllProjectsCard = (project, imageHeightClasses = "h-48") => {
+    const yearText = project.year ? ` (${project.year})` : "";
+    const linkHtml =
+        project.link && project.link !== "#"
+            ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
+            : "";
+
+    return `
+        <div class="project-card" data-role="${project.role}">
+            <img src="${project.image}" alt="${project.title}" class="w-full ${imageHeightClasses} object-cover rounded-t-lg">
+            <div class="bg-imdb-gray p-4 rounded-b-lg">
+                <h3 class="text-xl font-bold">${project.title}${yearText}</h3>
+                <p class="text-imdb-yellow">${project.roleLabel}</p>
+                ${project.client ? `<p class="text-sm text-gray-400">${project.client}</p>` : ""}
+                ${project.stars ? `<p class="text-xs text-gray-500 mt-1">${project.stars}</p>` : ""}
+                ${linkHtml}
+            </div>
+        </div>
+    `;
+};
+
 
     // === FEATURED (BIG + SMALL) ===
     const featuredProjects = PROJECTS.filter(p => p.featuredSize);
     featuredProjects.forEach((project) => {
-        if (project.featuredSize === "big") {
-            featuredBig.insertAdjacentHTML("beforeend", buildCard(project, "h-64"));
-        } else if (project.featuredSize === "small") {
-            featuredSmall.insertAdjacentHTML("beforeend", buildCard(project, "h-48"));
-        }
+       if (project.featuredSize === "big") {
+    featuredBig.insertAdjacentHTML("beforeend", buildFeaturedCard(project, "h-64"));
+} else if (project.featuredSize === "small") {
+    featuredSmall.insertAdjacentHTML("beforeend", buildFeaturedCard(project, "h-48"));
+}
+
     });
 
     // === ALL PROJECTS: non-featured first, then featured ===
@@ -51,7 +74,8 @@ function renderProjectsFromData() {
     const orderedProjects = [...normalProjects, ...featuredProjects];
 
     orderedProjects.forEach((project) => {
-        allContainer.insertAdjacentHTML("beforeend", buildCard(project, "h-48"));
+      allContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-48"));
+
     });
 }
 
