@@ -39,16 +39,107 @@
                     <div class="bg-imdb-gray p-6 rounded-lg sticky top-24">
                         <h3 class="text-xl font-bold text-imdb-yellow mb-4">Roles & Credits</h3>
                         <ul class="space-y-2">
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="all">All Projects</button></li>
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="director">Assistant Director</button></li>
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="location">Location Management</button></li>
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="coordination">Production Coordination</button></li>
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="transport">Transport Manager</button></li>
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="manager">Production Manager</button></li>
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="producer">Producer</button></li>
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="casting">Casting Producer</button></li>
-                            <li><button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition" data-role="event">Event Manager</button></li>
-                        </ul>
+    <!-- MAIN FOLDER: ALL PROJECTS -->
+    <li>
+        <button
+            class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition italic font-semibold"
+            data-role="all"
+        >
+            All Projects
+        </button>
+    </li>
+
+    <!-- DIRECT FILTER: ASSISTANT DIRECTOR -->
+    <li>
+        <button
+            class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+            data-role="director"
+        >
+            Assistant Director
+        </button>
+    </li>
+
+    <!-- DIRECT FILTER: LOCATION SCOUT / MANAGER -->
+    <li>
+        <button
+            class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+            data-role="location"
+        >
+            Location Scout / Manager
+        </button>
+    </li>
+
+    <!-- PRODUCTION FOLDER (DROPDOWN) -->
+    <li>
+        <!-- This button ONLY toggles the dropdown, it is NOT a filter -->
+        <button
+            id="production-toggle"
+            type="button"
+            class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+        >
+            <span>Production</span>
+            <span class="text-xs text-gray-400 flex items-center gap-1">
+                <i data-feather="chevron-down"></i>
+            </span>
+        </button>
+
+        <!-- Nested production subcategories -->
+        <ul
+            id="production-submenu"
+            class="mt-1 ml-3 border-l border-gray-700 pl-3 space-y-1 hidden"
+        >
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    data-role="coordination"
+                >
+                    Production Coordinator
+                </button>
+            </li>
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    data-role="manager"
+                >
+                    Production Manager
+                </button>
+            </li>
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    data-role="producer"
+                >
+                    Producer
+                </button>
+            </li>
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    data-role="transport"
+                >
+                    Transportation Manager
+                </button>
+            </li>
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    data-role="casting"
+                >
+                    Castings Manager
+                </button>
+            </li>
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    data-role="event"
+                >
+                    Event Manager
+                </button>
+            </li>
+        </ul>
+    </li>
+</ul>
+
                     </div>
                 </div>
 
@@ -101,32 +192,27 @@
 
     <!-- END HERO TAGLINE -->
 
-    <h2 class="text-3xl font-bold text-imdb-yellow mb-6">Featured Projects</h2>
+  <h2 class="text-3xl font-bold text-imdb-yellow mb-6">Featured Projects</h2>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                        <!-- Hero Projects -->
-                        <div class="project-card" data-role="coordination">
-                            <img src="http://static.photos/technology/640x360/1" alt="Season of the Witch" class="w-full h-64 object-cover rounded-t-lg">
-                            <div class="bg-imdb-gray p-4 rounded-b-lg">
-                                <h3 class="text-xl font-bold">Season of the Witch (2011)</h3>
-                                <p class="text-imdb-yellow">Production Coordinator</p>
-                                <p class="text-sm text-gray-400">Stars Nicolas Cage, Ron Perlman</p>
-                                <a href="https://www.imdb.com/title/tt0479997/" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">IMDb</a>
-                            </div>
-                        </div>
-                        <div class="project-card" data-role="location">
-                            <img src="http://static.photos/nature/640x360/2" alt="The Hunting Party" class="w-full h-64 object-cover rounded-t-lg">
-                            <div class="bg-imdb-gray p-4 rounded-b-lg">
-                                <h3 class="text-xl font-bold">The Hunting Party (2007)</h3>
-                                <p class="text-imdb-yellow">Location Scout</p>
-                                <p class="text-sm text-gray-400">Stars Richard Gere, Terrence Howard</p>
-                                <a href="https://www.imdb.com/title/tt0455782/" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">IMDb</a>
-                            </div>
-                        </div>
-                    </div>
+<!-- Featured Projects Wrapper -->
+<div id="featured-projects" class="space-y-6 mb-12">
 
-                    <h2 class="text-3xl font-bold text-imdb-yellow mb-6">All Projects</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
+    <!-- BIG FEATURED (2x) -->
+    <div id="featured-big" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Filled dynamically by script.js -->
+    </div>
+
+    <!-- SMALL FEATURED (3x) -->
+    <div id="featured-small" class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Filled dynamically -->
+    </div>
+
+</div>
+
+
+<h2 class="text-3xl font-bold text-imdb-yellow mb-6">All Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
+ 
                         <!-- Assistant Director Projects -->
                         <div class="project-card" data-role="director">
                             <img src="http://static.photos/outdoor/640x360/3" alt="Eyjafjallajökull" class="w-full h-48 object-cover rounded-t-lg">
@@ -136,14 +222,18 @@
                                 <a href="#" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">IMDb</a>
                             </div>
                         </div>
-                        <div class="project-card" data-role="director">
-                            <img src="http://static.photos/travel/640x360/4" alt="Halima's Path" class="w-full h-48 object-cover rounded-t-lg">
+                                            <!-- Un altro mondo (Production Staff) -->
+                        <div class="project-card" data-role="coordination">
+                            <img src="http://static.photos/travel/640x360/4" alt="Un altro mondo" 
+                                class="w-full h-48 object-cover rounded-t-lg">
                             <div class="bg-imdb-gray p-4 rounded-b-lg">
-                                <h3 class="text-xl font-bold">Halima's Path (2012)</h3>
-                                <p class="text-imdb-yellow">Second Assistant Director</p>
-                                <a href="https://www.imdb.com/title/tt2244877/" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">IMDb</a>
+                                <h3 class="text-xl font-bold">Un altro mondo (2010)</h3>
+                                <p class="text-imdb-yellow">Kenya Production Staff</p>
+                                <a href="https://www.imdb.com/title/tt1544601/" target="_blank" 
+                                class="inline-block mt-2 text-imdb-yellow hover:underline">IMDb</a>
                             </div>
                         </div>
+
 
                         <!-- Location Management Projects -->
                         <div class="project-card" data-role="location">
@@ -313,6 +403,7 @@
 
     <script src="components/header.js"></script>
     <script src="components/footer.js"></script>
+    <script src="projects.js"></script>
     <script src="script.js"></script>
     <script>
         feather.replace();

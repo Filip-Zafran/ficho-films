@@ -1,126 +1,163 @@
-document.addEventListener('DOMContentLoaded', function() {
+// Render project cards from PROJECTS (defined in projects.js)
+function renderProjectsFromData() {
+    if (typeof PROJECTS === "undefined") return;
+
+    const featuredBig = document.getElementById("featured-big");
+    const featuredSmall = document.getElementById("featured-small");
+    const allContainer = document.getElementById("projects-container");
+
+    if (!featuredBig || !featuredSmall || !allContainer) return;
+
+    featuredBig.innerHTML = "";
+    featuredSmall.innerHTML = "";
+    allContainer.innerHTML = "";
+
+    // Helper: build a project card
+    const buildCard = (project, imageHeightClasses = "h-48") => {
+        const yearText = project.year ? ` (${project.year})` : "";
+        const linkHtml =
+            project.link && project.link !== "#"
+                ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
+                : "";
+
+        return `
+            <div class="project-card" data-role="${project.role}">
+                <img src="${project.image}" alt="${project.title}" class="w-full ${imageHeightClasses} object-cover rounded-t-lg">
+                <div class="bg-imdb-gray p-4 rounded-b-lg">
+                    <h3 class="text-xl font-bold">${project.title}${yearText}</h3>
+                    <p class="text-imdb-yellow">${project.roleLabel}</p>
+                    ${project.client ? `<p class="text-sm text-gray-400">${project.client}</p>` : ""}
+                    ${project.stars ? `<p class="text-xs text-gray-500 mt-1">${project.stars}</p>` : ""}
+                    ${linkHtml}
+                </div>
+            </div>
+        `;
+    };
+
+    // === FEATURED (BIG + SMALL) ===
+    const featuredProjects = PROJECTS.filter(p => p.featuredSize);
+    featuredProjects.forEach((project) => {
+        if (project.featuredSize === "big") {
+            featuredBig.insertAdjacentHTML("beforeend", buildCard(project, "h-64"));
+        } else if (project.featuredSize === "small") {
+            featuredSmall.insertAdjacentHTML("beforeend", buildCard(project, "h-48"));
+        }
+    });
+
+    // === ALL PROJECTS ===
+    // non-featured first, then featured, using id to avoid duplicates
+    const featuredIds = new Set(featuredProjects.map(p => p.id));
+    const normalProjects = PROJECTS.filter(p => !featuredIds.has(p.id));
+    const orderedProjects = [...normalProjects, ...featuredProjects];
+
+    orderedProjects.forEach((project) => {
+        allContainer.insertAdjacentHTML("beforeend", buildCard(project, "h-48"));
+    });
+}
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // First: render projects into the DOM
+    renderProjectsFromData();
+
     // === TAB NAVIGATION ===
-    const tabs = document.querySelectorAll('[data-tab]');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function (e) {
-            // If it's an <a>, prevent jumping to "#"
-            if (this.tagName.toLowerCase() === 'a') {
+    const tabs = document.querySelectorAll("[data-tab]");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", function (e) {
+            if (this.tagName.toLowerCase() === "a") {
                 e.preventDefault();
             }
 
-            const target = this.getAttribute('data-tab');
+            const target = this.getAttribute("data-tab");
             if (!target) return;
 
-            // Update active tab styling
-            tabs.forEach(t => t.classList.remove('active', 'text-imdb-yellow', 'border-b-2', 'border-imdb-yellow'));
-            this.classList.add('active', 'text-imdb-yellow', 'border-b-2', 'border-imdb-yellow');
+            tabs.forEach((t) =>
+                t.classList.remove("active", "text-imdb-yellow", "border-b-2", "border-imdb-yellow")
+            );
+            this.classList.add("active", "text-imdb-yellow", "border-b-2", "border-imdb-yellow");
 
-            // Show target content and hide others
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-                content.classList.add('hidden');
+            tabContents.forEach((content) => {
+                content.classList.remove("active");
+                content.classList.add("hidden");
             });
 
             const targetEl = document.getElementById(target);
             if (targetEl) {
-                targetEl.classList.remove('hidden');
-                targetEl.classList.add('active');
+                targetEl.classList.remove("hidden");
+                targetEl.classList.add("active");
             }
         });
     });
 
     // === PROJECT FILTERING ===
-    const roleFilters = document.querySelectorAll('.role-filter');
-    const projectCards = document.querySelectorAll('.project-card');
+    const roleFilters = document.querySelectorAll(".role-filter");
 
-    roleFilters.forEach(filter => {
-        filter.addEventListener('click', function () {
-            const role = this.getAttribute('data-role');
+    function updateProjectVisibility(role) {
+        const projectCards = document.querySelectorAll(".project-card");
+        projectCards.forEach((card) => {
+            const cardRoles = (card.getAttribute("data-role") || "").split(" ");
+            if (role === "all" || cardRoles.includes(role)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
 
-            // Update active filter button styling
-            roleFilters.forEach(f => f.classList.remove('bg-imdb-yellow', 'text-imdb-dark'));
-            this.classList.add('bg-imdb-yellow', 'text-imdb-dark');
+    roleFilters.forEach((filter) => {
+        filter.addEventListener("click", function () {
+            const role = this.getAttribute("data-role");
 
-            // Filter projects
-            projectCards.forEach(card => {
-                const cardRoles = (card.getAttribute('data-role') || '').split(' ');
-                
-                if (role === 'all' || cardRoles.includes(role)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            roleFilters.forEach((f) =>
+                f.classList.remove("bg-imdb-yellow", "text-imdb-dark")
+            );
+            this.classList.add("bg-imdb-yellow", "text-imdb-dark");
+
+            updateProjectVisibility(role);
         });
     });
 
     // === CONTACT FORM ===
-// Contact Form
-const contactForm = document.getElementById('contact-form');
-const formSuccess = document.getElementById('form-success');
-const formError = document.getElementById('form-error');
+    const contactForm = document.getElementById("contact-form");
+    const formSuccess = document.getElementById("form-success");
 
-if (contactForm) {
-    contactForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(contactForm);
-
-        try {
-            const response = await fetch(contactForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                if (formSuccess) {
-                    formSuccess.classList.remove('hidden');
-                }
-                if (formError) {
-                    formError.classList.add('hidden');
-                }
-                contactForm.reset();
-
-                setTimeout(() => {
-                    if (formSuccess) {
-                        formSuccess.classList.add('hidden');
-                    }
-                }, 5000);
-            } else {
-                if (formError) {
-                    formError.classList.remove('hidden');
-                }
-                if (formSuccess) {
-                    formSuccess.classList.add('hidden');
-                }
-            }
-        } catch (err) {
-            if (formError) {
-                formError.classList.remove('hidden');
-            }
+    if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
             if (formSuccess) {
-                formSuccess.classList.add('hidden');
+                formSuccess.classList.remove("hidden");
             }
-            console.error('Form submit error:', err);
-        }
-    });
-}
+            contactForm.reset();
 
+            setTimeout(() => {
+                if (formSuccess) {
+                    formSuccess.classList.add("hidden");
+                }
+            }, 5000);
+        });
+    }
 
     // === INITIAL STATE ===
-    // Activate first tab (usually "Projects")
     if (tabs.length > 0) {
         tabs[0].click();
     }
 
-    // Activate "All Projects" filter by default
     const defaultFilter = document.querySelector('.role-filter[data-role="all"]');
     if (defaultFilter) {
         defaultFilter.click();
+    }
+
+    // === PRODUCTION DROPDOWN TOGGLE ===
+    const productionToggle = document.getElementById("production-toggle");
+    const productionSubmenu = document.getElementById("production-submenu");
+
+    if (productionToggle && productionSubmenu) {
+        productionToggle.addEventListener("click", () => {
+            productionSubmenu.classList.toggle("hidden");
+        });
     }
 });
