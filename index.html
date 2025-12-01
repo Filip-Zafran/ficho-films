@@ -25,11 +25,15 @@
 </head>
 <body class="bg-imdb-dark text-imdb-light font-sans antialiased">
     <custom-header></custom-header>
+
     
     <main class="container mx-auto px-4 py-8">
         <!-- PROJECTS TAB -->
         <div id="projects" class="tab-content active">
             <div class="flex flex-col lg:flex-row gap-8">
+
+
+                
                 <!-- Roles Sidebar -->
                 <div class="w-full lg:w-1/4">
                     <div class="bg-imdb-gray p-6 rounded-lg sticky top-24">
@@ -48,9 +52,57 @@
                     </div>
                 </div>
 
+
+                
                 <!-- Projects Gallery -->
-                <div class="w-full lg:w-3/4">
-                    <h2 class="text-3xl font-bold text-imdb-yellow mb-6">Featured Projects</h2>
+              <div class="w-full lg:w-3/4">
+
+<!-- HERO TAGLINE -->
+<section class="mb-8">
+    <div class="relative overflow-visible py-3">
+        <div class="inline-block select-none leading-none">
+            
+            <!-- LOCATIONS -->
+            <span
+                class="hero-word block font-black uppercase 
+                       text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem]
+                       text-imdb-yellow tracking-tight 
+                       transform transition-transform duration-300 hover:scale-110"
+            >
+                Locations.
+            </span>
+
+            <!-- LOCKED (medium, slightly overlapping up) -->
+            <span
+                class="hero-word block font-bold uppercase 
+                       text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem]
+                       text-imdb-light tracking-[0.15em]
+                       -mt-3 md:-mt-4 relative z-10
+                       transform transition-transform duration-300 hover:scale-110"
+            >
+                Locked.
+            </span>
+
+            <!-- ACTION! -->
+            <span
+                class="hero-word block font-black uppercase 
+                       text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem]
+                       text-imdb-yellow tracking-widest 
+                       -mt-1 md:-mt-3
+                       transform transition-transform duration-300 hover:scale-110"
+            >
+                Action!
+            </span>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- END HERO TAGLINE -->
+
+    <h2 class="text-3xl font-bold text-imdb-yellow mb-6">Featured Projects</h2>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                         <!-- Hero Projects -->
                         <div class="project-card" data-role="coordination">
@@ -255,6 +307,8 @@
         </div>
     </main>
 
+
+    
     <custom-footer></custom-footer>
 
     <script src="components/header.js"></script>
