@@ -70,18 +70,18 @@ const PROJECTS = [
 },
 
   // === LOCATION MANAGEMENT ===
-  {
-    id: "max-schmeling",
-    title: 'Henry Maske in "Max Schmeling"',
-    year: 2010,
-    role: "location",
-    roleLabel: "Assistant Location Manager",
-    type: "Feature Film",
-    client: "Max Schmeling",
-    link: "#",
-    image: "http://static.photos/https://m.media-amazon.com/images/M/MV5BMTgyNzA1MTcwNF5BMl5BanBnXkFtZTcwMzA2OTMwNA@@._V1_.jpg/640x360/5",
-    featured: false,
-  },
+//   {
+//     id: "max-schmeling",
+//     title: 'Henry Maske in "Max Schmeling"',
+//     year: 2010,
+//     role: "location",
+//     roleLabel: "Assistant Location Manager",
+//     type: "Feature Film",
+//     client: "Max Schmeling",
+//     link: "#",
+//     image: "http://static.photos/https://m.media-amazon.com/images/M/MV5BMTgyNzA1MTcwNF5BMl5BanBnXkFtZTcwMzA2OTMwNA@@._V1_.jpg/640x360/5",
+//     featured: false,
+//   },
 
   // === AD ===
   {
@@ -96,6 +96,18 @@ const PROJECTS = [
   image: "images/eyjafjallajokull.png",
   featuredSize: "small",
 },
+//   {
+//   id: "rabbit",
+//   title: "Liebe ist nur ein Wort",
+//   year: 2010,
+//   role: "director",
+//   roleLabel: "Assistant Director / Set Manager",
+//   type: "Don't Follow the White Rabbit - Reserved Life (Music video)"
+//   client: "C47 Films d.o.o.",
+//   link: "https://vimeo.com/79227335",
+//   image: "images/eyjafjallajokull.png",
+//   featuredSize: "small",
+// },
 
   // === PRODUCTION COORDINATION / STAFF ===
   {
@@ -116,7 +128,7 @@ const PROJECTS = [
     id: "spectre-heineken",
     title: "Spectre James Bond 007 | The Chase (Heineken Spot)",
     year: null,
-    role: "transport",
+    role: "coordination",
     roleLabel: "Transportation Manager",
     type: "Commercial",
     client: "Mainframe Productions",
@@ -251,13 +263,12 @@ const PROJECTS = [
     featured: false,
   },
 
-  // === CASTINGS MANAGER ===
   {
     id: "casting-croatia",
     title: "Casting Croatia",
     year: null,
-    role: "casting",
-    roleLabel: "Castings Manager",
+    role: "director",
+    roleLabel: "Assistant Director / Casting",
     type: "Casting",
     client: "Casting Croatia",
     link: "https://www.castingcroatia.com",
@@ -267,7 +278,7 @@ const PROJECTS = [
 
   // === EVENT MANAGER PLACEHOLDER ===
     {
-    id: "event-placeholder",
+   id: "event-polyfest-2025",
     title: "Festivals & Events",
     year: null,
     role: "event",
@@ -279,7 +290,7 @@ const PROJECTS = [
     featured: false,
   },
    {
-    id: "event-placeholder",
+    id: "event-flashback-90s",
     title: "Weekly party series",
     year: null,
     role: "event",
@@ -291,10 +302,10 @@ const PROJECTS = [
     featured: false,
   },
    {
-    id: "event-placeholder",
+ id: "event-burnhalla-2026",
     title: "Festivals & Events",
     year: null,
-    role: "Site Lead",
+    role: "event",
     roleLabel: "BurnHalla 2026",
     type: "Events",
     client: "Berlin Burner e. V.",

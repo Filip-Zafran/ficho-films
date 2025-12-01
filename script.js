@@ -109,10 +109,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Render projects (on index.html only)
     renderProjectsFromData();
 
-    // === PROJECT FILTERING (Projects page only) ===
     const roleFilters = document.querySelectorAll(".role-filter");
 
     if (roleFilters.length > 0) {
+        const featuredSection = document.getElementById("featured-projects");
+        const allProjectsSection = document.getElementById("all-projects-section");
+        const allProjectsHeading = document.getElementById("all-projects-heading");
+
         const updateProjectVisibility = (role) => {
             const projectCards = document.querySelectorAll(".project-card");
             projectCards.forEach((card) => {
@@ -128,12 +131,26 @@ document.addEventListener("DOMContentLoaded", function () {
         roleFilters.forEach((filter) => {
             filter.addEventListener("click", function () {
                 const role = this.getAttribute("data-role");
+                const label = this.textContent.trim();
 
+                // UI highlight
                 roleFilters.forEach((f) =>
                     f.classList.remove("bg-imdb-yellow", "text-imdb-dark")
                 );
                 this.classList.add("bg-imdb-yellow", "text-imdb-dark");
 
+                // Show/hide Featured section + update heading
+                if (role === "all") {
+                    if (featuredSection) featuredSection.classList.remove("hidden");
+                    if (allProjectsSection) allProjectsSection.classList.remove("hidden");
+                    if (allProjectsHeading) allProjectsHeading.textContent = "All Projects";
+                } else {
+                    if (featuredSection) featuredSection.classList.add("hidden");
+                    if (allProjectsSection) allProjectsSection.classList.remove("hidden");
+                    if (allProjectsHeading) allProjectsHeading.textContent = label;
+                }
+
+                // Filter all cards
                 updateProjectVisibility(role);
             });
         });
@@ -143,7 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (defaultFilter) {
             defaultFilter.click();
         }
-               }
+    }
+
 
 initFeaturedVideos();
 

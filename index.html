@@ -112,22 +112,7 @@
                     Producer
                 </button>
             </li>
-            <li>
-                <button
-                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                    data-role="transport"
-                >
-                    Transportation Manager
-                </button>
-            </li>
-            <li>
-                <button
-                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                    data-role="casting"
-                >
-                    Castings Manager
-                </button>
-            </li>
+               
             <li>
                 <button
                     class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
@@ -209,46 +194,17 @@
 
 </div>
 
-
-<h2 class="text-3xl font-bold text-imdb-yellow mb-6">All Projects</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
- 
-                        <!-- Assistant Director Projects -->
-                        <div class="project-card" data-role="director">
-                            <img src="http://static.photos/outdoor/640x360/3" alt="Eyjafjallajökull" class="w-full h-48 object-cover rounded-t-lg">
-                            <div class="bg-imdb-gray p-4 rounded-b-lg">
-                                <h3 class="text-xl font-bold">Eyjafjallajökull (2013)</h3>
-                                <p class="text-imdb-yellow">Third Assistant Director</p>
-                                <a href="#" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">IMDb</a>
-                            </div>
-                        </div>
-                                            <!-- Un altro mondo (Production Staff) -->
-                        <div class="project-card" data-role="coordination">
-                            <img src="http://static.photos/travel/640x360/4" alt="Un altro mondo" 
-                                class="w-full h-48 object-cover rounded-t-lg">
-                            <div class="bg-imdb-gray p-4 rounded-b-lg">
-                                <h3 class="text-xl font-bold">Un altro mondo (2010)</h3>
-                                <p class="text-imdb-yellow">Kenya Production Staff</p>
-                                <a href="https://www.imdb.com/title/tt1544601/" target="_blank" 
-                                class="inline-block mt-2 text-imdb-yellow hover:underline">IMDb</a>
-                            </div>
-                        </div>
-
-
-                        <!-- Location Management Projects -->
-                        <div class="project-card" data-role="location">
-                            <img src="http://static.photos/cityscape/640x360/5" alt="Henry Maske" class="w-full h-48 object-cover rounded-t-lg">
-                            <div class="bg-imdb-gray p-4 rounded-b-lg">
-                                <h3 class="text-xl font-bold">Henry Maske in "Max Schmeling" (2010)</h3>
-                                <p class="text-imdb-yellow">Assistant Location Manager</p>
-                            </div>
-                        </div>
-
-                        <!-- Add remaining projects here following same structure -->
-                    </div>
-                </div>
-            </div>
-        </div>
+<div id="all-projects-section">
+    <h2 id="all-projects-heading" class="text-3xl font-bold text-imdb-yellow mb-6">
+        All Projects
+    </h2>
+    <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        id="projects-container">
+        <!-- IMPORTANT: this div should be EMPTY in the HTML.
+             JS will fill it. -->
+    </div>
+</div>
 
     
 
