@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | ficho-films – Filip "Ficho" Zafran</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'imdb-yellow': '#f5c518',
+                        'imdb-dark': '#121212',
+                        'imdb-light': '#f8f8f8',
+                        'imdb-gray': '#2a2a2a',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-imdb-dark text-imdb-light font-sans antialiased">
+    <custom-header></custom-header>
+
+    <main class="container mx-auto px-4 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <!-- LEFT COLUMN: IMAGES -->
+            <div class="w-full lg:w-1/3">
+                <div class="bg-imdb-gray p-4 rounded-lg space-y-4">
+
+                    <!-- MAIN PORTRAIT -->
+                    <div class="relative overflow-hidden rounded-lg group">
+                        <img
+                            src="images/about-portrait.png"
+                            alt="Filip 'Ficho' Zafran portrait"
+                            class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <p class="text-xs uppercase tracking-wide text-gray-300">Filip "Ficho" Zafran</p>
+                            <p class="text-sm font-semibold text-imdb-yellow">Filmmaker • AD • Locations </p>
+                        </div>
+                    </div>
+
+                    <!-- SMALL PHOTOS -->
+                    <div class="grid grid-cols-2 gap-3">
+
+                        <div class="relative overflow-hidden rounded-lg group">
+                            <img
+                                src="images/about-location-1.jpg"
+                                alt="Location scouting image"
+                                class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                            >
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded">
+                                Location Scouting
+                            </span>
+                        </div>
+
+                        <div class="relative overflow-hidden rounded-lg group">
+                            <img
+                                src="images/about-bts-1.jpg"
+                                alt="Behind the scenes"
+                                class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500"
+                            >
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded">
+                                Behind the Scenes
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- WIDE LOCATION STRIP -->
+                    <div class="relative overflow-hidden rounded-lg group">
+                        <img
+                            src="images/about-location-banner.jpg"
+                            alt="Locations banner"
+                            class="w-full h-24 object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
+                        <p class="absolute left-3 bottom-2 text-[0.7rem] uppercase tracking-wide">
+                            Locations across Europe & beyond
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: TEXT -->
+            <div class="w-full lg:w-2/3">
+                <h1 class="text-3xl font-bold text-imdb-yellow mb-4">About Ficho</h1>
+
+                <h2 class="text-xl font-semibold mb-6">
+                    Filmmaker, fixer, and production problem-solver.
+                </h2>
+
+                <div class="space-y-5 text-gray-300 leading-relaxed">
+
+                    <p>
+                        I'm Filip "Ficho" Zafran — filmmaker, location specialist and production all-rounder
+                        with roots in Croatia and a base in Berlin. My background spans across
+                        <span class="text-imdb-yellow">Assistant Directing</span>,
+                        <span class="text-imdb-yellow">Location Scouting / Management</span>,
+                        <span class="text-imdb-yellow">Production Coordination</span> and
+                        <span class="text-imdb-yellow">Commercial Production</span>.
+                    </p>
+
+                    <p>
+                        I’ve worked on international feature films, European productions, commercials, and
+                        branded content — supporting stories with logistics, coordination, and creative problem-solving on and off the set.
+                    </p>
+
+                    <p>
+                        I enjoy the blend of structure and chaos that filmmaking thrives on: managing call sheets,
+                        running set operations, scouting the right locations, and keeping departments aligned under pressure.
+                        I’m happiest when things are moving fast.
+                    </p>
+
+                      <p>
+                        In addition, I am also a have a background in web developing and my IT knowledge often comes in handy
+                        when dealing with digital workflows, on-set tech setups, and post-production coordination.
+                    </p>
+
+                        <p>
+                        I use my IT skills to improve efficiency and reduce costs on productions whenever possible. 
+                    </p>
+
+                    <p class="text-sm text-gray-400">
+                        (Photos on the left: a mix of behind-the-scenes and location references from past productions.)
+                    </p>
+
+                    <!-- KEY ROLES -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3">Key Roles</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Assistant Director</span>
+                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Location Manager</span>
+                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Production Coordinator</span>
+                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Production Manager</span>
+                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Producer</span>
+                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Casting Manager</span>
+                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Event Manager</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex items-center gap-2 mt-8">
+                    <i data-feather="map-pin" class="text-imdb-yellow"></i>
+                    <span>Based in Berlin<br><i> shoot across Europe (Germany, Croatia, Slovenia, Slovakia, Bosnia...) & Kenya.</i></span>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/header.js"></script>
+    <script src="components/footer.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

@@ -43,15 +43,15 @@ class CustomHeader extends HTMLElement {
             <header class="site-header py-4">
                 <div class="container mx-auto px-4 flex justify-between items-center">
                     <!-- Logo / Home -->
-                    <a href="#" class="text-2xl font-bold text-imdb-yellow nav-link" data-tab="projects">
+                    <a href="index.html" class="text-2xl font-bold text-imdb-yellow">
                         Films, Locations & Creative Coordination
                     </a>
 
                     <!-- Desktop nav -->
                     <nav class="hidden md:flex items-center gap-8">
-                        <a href="#" class="nav-link text-white hover:text-imdb-yellow transition" data-tab="projects">Projects</a>
-                        <a href="#" class="nav-link text-white hover:text-imdb-yellow transition" data-tab="about">About Me</a>
-                        <a href="#" class="nav-link text-white hover:text-imdb-yellow transition" data-tab="contact">Contact</a>
+                        <a href="index.html" class="nav-link text-white hover:text-imdb-yellow transition" data-page="index">Projects</a>
+                        <a href="about.html" class="nav-link text-white hover:text-imdb-yellow transition" data-page="about">About Me</a>
+                        <a href="contact.html" class="nav-link text-white hover:text-imdb-yellow transition" data-page="contact">Contact</a>
                     </nav>
 
                     <!-- Mobile nav button -->
@@ -62,9 +62,9 @@ class CustomHeader extends HTMLElement {
 
                 <!-- Mobile nav menu -->
                 <div id="mobile-nav-menu" class="md:hidden hidden flex-col gap-2 px-4 pb-4 bg-imdb-dark border-t border-gray-800">
-                    <a href="#" class="nav-link block py-2 text-white hover:text-imdb-yellow transition" data-tab="projects">Projects</a>
-                    <a href="#" class="nav-link block py-2 text-white hover:text-imdb-yellow transition" data-tab="about">About Me</a>
-                    <a href="#" class="nav-link block py-2 text-white hover:text-imdb-yellow transition" data-tab="contact">Contact</a>
+                    <a href="index.html" class="nav-link block py-2 text-white hover:text-imdb-yellow transition" data-page="index">Projects</a>
+                    <a href="about.html" class="nav-link block py-2 text-white hover:text-imdb-yellow transition" data-page="about">About Me</a>
+                    <a href="contact.html" class="nav-link block py-2 text-white hover:text-imdb-yellow transition" data-page="contact">Contact</a>
                 </div>
             </header>
         `;
@@ -78,6 +78,16 @@ class CustomHeader extends HTMLElement {
                 mobileMenu.classList.toggle('hidden');
             });
         }
+
+        // Highlight active link based on current page
+        const path = window.location.pathname.split('/').pop() || 'index.html';
+        let current = 'index';
+
+        if (path.includes('about')) current = 'about';
+        else if (path.includes('contact')) current = 'contact';
+
+        const navLinks = this.querySelectorAll(`.nav-link[data-page="${current}"]`);
+        navLinks.forEach(link => link.classList.add('active', 'text-imdb-yellow'));
     }
 }
 

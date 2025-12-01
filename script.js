@@ -6,7 +6,8 @@ function renderProjectsFromData() {
     const featuredSmall = document.getElementById("featured-small");
     const allContainer = document.getElementById("projects-container");
 
-    if (!featuredBig || !featuredSmall || !allContainer) return;
+    // If we're not on the Projects page, just skip rendering
+    if (!allContainer || !featuredBig || !featuredSmall) return;
 
     featuredBig.innerHTML = "";
     featuredSmall.innerHTML = "";
@@ -44,8 +45,7 @@ function renderProjectsFromData() {
         }
     });
 
-    // === ALL PROJECTS ===
-    // non-featured first, then featured, using id to avoid duplicates
+    // === ALL PROJECTS: non-featured first, then featured ===
     const featuredIds = new Set(featuredProjects.map(p => p.id));
     const normalProjects = PROJECTS.filter(p => !featuredIds.has(p.id));
     const orderedProjects = [...normalProjects, ...featuredProjects];
@@ -55,79 +55,65 @@ function renderProjectsFromData() {
     });
 }
 
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
-    // First: render projects into the DOM
+    // Render projects (on index.html only)
     renderProjectsFromData();
 
-    // === TAB NAVIGATION ===
-    const tabs = document.querySelectorAll("[data-tab]");
-    const tabContents = document.querySelectorAll(".tab-content");
-
-    tabs.forEach((tab) => {
-        tab.addEventListener("click", function (e) {
-            if (this.tagName.toLowerCase() === "a") {
-                e.preventDefault();
-            }
-
-            const target = this.getAttribute("data-tab");
-            if (!target) return;
-
-            tabs.forEach((t) =>
-                t.classList.remove("active", "text-imdb-yellow", "border-b-2", "border-imdb-yellow")
-            );
-            this.classList.add("active", "text-imdb-yellow", "border-b-2", "border-imdb-yellow");
-
-            tabContents.forEach((content) => {
-                content.classList.remove("active");
-                content.classList.add("hidden");
-            });
-
-            const targetEl = document.getElementById(target);
-            if (targetEl) {
-                targetEl.classList.remove("hidden");
-                targetEl.classList.add("active");
-            }
-        });
-    });
-
-    // === PROJECT FILTERING ===
+    // === PROJECT FILTERING (Projects page only) ===
     const roleFilters = document.querySelectorAll(".role-filter");
 
-    function updateProjectVisibility(role) {
-        const projectCards = document.querySelectorAll(".project-card");
-        projectCards.forEach((card) => {
-            const cardRoles = (card.getAttribute("data-role") || "").split(" ");
-            if (role === "all" || cardRoles.includes(role)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
+    if (roleFilters.length > 0) {
+        const updateProjectVisibility = (role) => {
+            const projectCards = document.querySelectorAll(".project-card");
+            projectCards.forEach((card) => {
+                const cardRoles = (card.getAttribute("data-role") || "").split(" ");
+                if (role === "all" || cardRoles.includes(role)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        };
+
+        roleFilters.forEach((filter) => {
+            filter.addEventListener("click", function () {
+                const role = this.getAttribute("data-role");
+
+                roleFilters.forEach((f) =>
+                    f.classList.remove("bg-imdb-yellow", "text-imdb-dark")
+                );
+                this.classList.add("bg-imdb-yellow", "text-imdb-dark");
+
+                updateProjectVisibility(role);
+            });
+        });
+
+        // Default to "All Projects" filter if present
+        const defaultFilter = document.querySelector('.role-filter[data-role="all"]');
+        if (defaultFilter) {
+            defaultFilter.click();
+        }
+    }
+
+    // === PRODUCTION DROPDOWN TOGGLE (Projects page only) ===
+    const productionToggle = document.getElementById("production-toggle");
+    const productionSubmenu = document.getElementById("production-submenu");
+
+    if (productionToggle && productionSubmenu) {
+        productionToggle.addEventListener("click", () => {
+            productionSubmenu.classList.toggle("hidden");
         });
     }
 
-    roleFilters.forEach((filter) => {
-        filter.addEventListener("click", function () {
-            const role = this.getAttribute("data-role");
-
-            roleFilters.forEach((f) =>
-                f.classList.remove("bg-imdb-yellow", "text-imdb-dark")
-            );
-            this.classList.add("bg-imdb-yellow", "text-imdb-dark");
-
-            updateProjectVisibility(role);
-        });
-    });
-
-    // === CONTACT FORM ===
+    // === CONTACT FORM HANDLER (Contact page only) ===
     const contactForm = document.getElementById("contact-form");
     const formSuccess = document.getElementById("form-success");
 
     if (contactForm) {
         contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
+
+            // TODO: connect to backend / Formspree. For now just fake success.
             if (formSuccess) {
                 formSuccess.classList.remove("hidden");
             }
@@ -138,26 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     formSuccess.classList.add("hidden");
                 }
             }, 5000);
-        });
-    }
-
-    // === INITIAL STATE ===
-    if (tabs.length > 0) {
-        tabs[0].click();
-    }
-
-    const defaultFilter = document.querySelector('.role-filter[data-role="all"]');
-    if (defaultFilter) {
-        defaultFilter.click();
-    }
-
-    // === PRODUCTION DROPDOWN TOGGLE ===
-    const productionToggle = document.getElementById("production-toggle");
-    const productionSubmenu = document.getElementById("production-submenu");
-
-    if (productionToggle && productionSubmenu) {
-        productionToggle.addEventListener("click", () => {
-            productionSubmenu.classList.toggle("hidden");
         });
     }
 });
