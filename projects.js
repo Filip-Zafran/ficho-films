@@ -14,6 +14,7 @@ const PROJECTS = [
   link: "https://www.imdb.com/title/tt0479997/",
   image: "images/season-of-the-witch.png",
   featuredSize: "big",
+   teaserVideo: "videos/season-of-the-witch-teaser.mp4",
 },
 {
   id: "the-hunting-party",
@@ -27,6 +28,7 @@ const PROJECTS = [
   link: "https://www.imdb.com/title/tt0455782/",
   image: "images/the-hunting-party.png",
   featuredSize: "big",
+     teaserVideo: "videos/hunting-party-teaser.mp4",
 },
 
 // === SMALL FEATURED PROJECTS ===

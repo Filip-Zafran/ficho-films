@@ -13,16 +13,45 @@ function renderProjectsFromData() {
     featuredSmall.innerHTML = "";
     allContainer.innerHTML = "";
 
-// Featured Projects card (NO YEAR)
+// Featured Projects card (NO YEAR + teaser video with poster)
 const buildFeaturedCard = (project, imageHeightClasses = "h-48") => {
     const linkHtml =
         project.link && project.link !== "#"
             ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
             : "";
 
+    const media = project.teaserVideo
+        ? `
+            <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses}">
+                <!-- Poster image (default visible) -->
+                <img
+                    src="${project.image}"
+                    alt="${project.title}"
+                    class="featured-poster absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100"
+                >
+
+                <!-- Video (invisible until hover) -->
+                <video
+                    class="featured-video absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 pointer-events-none"
+                    poster="${project.image}"
+                    data-teaser-src="${project.teaserVideo}"
+                    muted
+                    preload="metadata"
+                    playsinline
+                ></video>
+            </div>
+        `
+        : `
+            <img
+                src="${project.image}"
+                alt="${project.title}"
+                class="w-full ${imageHeightClasses} object-cover rounded-t-lg"
+            >
+        `;
+
     return `
         <div class="project-card" data-role="${project.role}">
-            <img src="${project.image}" alt="${project.title}" class="w-full ${imageHeightClasses} object-cover rounded-t-lg">
+            ${media}
             <div class="bg-imdb-gray p-4 rounded-b-lg">
                 <h3 class="text-xl font-bold">${project.title}</h3>
                 <p class="text-imdb-yellow">${project.roleLabel}</p>
@@ -33,6 +62,10 @@ const buildFeaturedCard = (project, imageHeightClasses = "h-48") => {
         </div>
     `;
 };
+
+
+
+
 
 // All Projects card (KEEP YEAR)
 const buildAllProjectsCard = (project, imageHeightClasses = "h-48") => {
@@ -117,7 +150,53 @@ document.addEventListener("DOMContentLoaded", function () {
         if (defaultFilter) {
             defaultFilter.click();
         }
-    }
+               }
+
+initFeaturedVideos();
+
+function initFeaturedVideos() {
+    const videos = document.querySelectorAll(".featured-video");
+
+    videos.forEach((video) => {
+        const src = video.getAttribute("data-teaser-src");
+        if (!src) return;
+
+        // Attach actual source & start loading
+        video.src = src;
+        video.load();
+        video.loop = true;
+
+        const container = video.parentElement; // the <div class="relative ...">
+        const poster = container.querySelector(".featured-poster");
+        if (!poster) return;
+
+        // Hover IN: fade poster out, fade video in, play (from current position)
+        container.addEventListener("mouseenter", () => {
+            poster.classList.remove("opacity-100");
+            poster.classList.add("opacity-0");
+
+            video.classList.remove("opacity-0");
+            video.classList.add("opacity-100");
+
+            video.play();
+        });
+
+        // Hover OUT: pause video, fade it out, fade poster in
+        // (do NOT reset currentTime so it resumes next hover)
+        container.addEventListener("mouseleave", () => {
+            video.pause();
+
+            video.classList.remove("opacity-100");
+            video.classList.add("opacity-0");
+
+            poster.classList.remove("opacity-0");
+            poster.classList.add("opacity-100");
+        });
+    });
+}
+
+
+
 
     // === PRODUCTION DROPDOWN TOGGLE (Projects page only) ===
     const productionToggle = document.getElementById("production-toggle");
