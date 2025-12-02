@@ -73,7 +73,11 @@ function renderProjectsFromData() {
 
         return `
             <div class="project-card" data-role="${project.role}">
-                <img src="${project.image}" alt="${project.title}" class="w-full ${imageHeightClasses} object-cover rounded-t-lg">
+                <img
+                    src="${project.image}"
+                    alt="${project.title}"
+                    class="w-full ${imageHeightClasses} object-cover rounded-t-lg"
+                >
                 <div class="bg-imdb-gray p-4 rounded-b-lg">
                     <h3 class="text-xl font-bold">${project.title}${yearText}</h3>
                     <p class="text-imdb-yellow">${project.roleLabel}</p>
@@ -86,7 +90,7 @@ function renderProjectsFromData() {
     };
 
     // === FEATURED (BIG + SMALL) ===
-    const featuredProjects = PROJECTS.filter(p => p.featuredSize);
+    const featuredProjects = PROJECTS.filter((p) => p.featuredSize);
     featuredProjects.forEach((project) => {
         if (project.featuredSize === "big") {
             featuredBig.insertAdjacentHTML("beforeend", buildFeaturedCard(project, "h-64"));
@@ -96,8 +100,8 @@ function renderProjectsFromData() {
     });
 
     // === ALL PROJECTS: non-featured first, then featured ===
-    const featuredIds = new Set(featuredProjects.map(p => p.id));
-    const normalProjects = PROJECTS.filter(p => !featuredIds.has(p.id));
+    const featuredIds = new Set(featuredProjects.map((p) => p.id));
+    const normalProjects = PROJECTS.filter((p) => !featuredIds.has(p.id));
     const orderedProjects = [...normalProjects, ...featuredProjects];
 
     orderedProjects.forEach((project) => {
@@ -106,9 +110,10 @@ function renderProjectsFromData() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Render projects (on index.html only)
+    // === PROJECTS PAGE: render projects (index.html only) ===
     renderProjectsFromData();
 
+    // === ROLE FILTERS (Projects page only) ===
     const roleFilters = document.querySelectorAll(".role-filter");
 
     if (roleFilters.length > 0) {
@@ -162,52 +167,49 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // === FEATURED VIDEOS (hover poster -> teaser) ===
+    function initFeaturedVideos() {
+        const videos = document.querySelectorAll(".featured-video");
 
-initFeaturedVideos();
+        videos.forEach((video) => {
+            const src = video.getAttribute("data-teaser-src");
+            if (!src) return;
 
-function initFeaturedVideos() {
-    const videos = document.querySelectorAll(".featured-video");
+            // Attach actual source & start loading
+            video.src = src;
+            video.load();
+            video.loop = true;
 
-    videos.forEach((video) => {
-        const src = video.getAttribute("data-teaser-src");
-        if (!src) return;
+            const container = video.parentElement; // the <div class="relative ...">
+            const poster = container.querySelector(".featured-poster");
+            if (!poster) return;
 
-        // Attach actual source & start loading
-        video.src = src;
-        video.load();
-        video.loop = true;
+            // Hover IN: fade poster out, fade video in, play (from current position)
+            container.addEventListener("mouseenter", () => {
+                poster.classList.remove("opacity-100");
+                poster.classList.add("opacity-0");
 
-        const container = video.parentElement; // the <div class="relative ...">
-        const poster = container.querySelector(".featured-poster");
-        if (!poster) return;
+                video.classList.remove("opacity-0");
+                video.classList.add("opacity-100");
 
-        // Hover IN: fade poster out, fade video in, play (from current position)
-        container.addEventListener("mouseenter", () => {
-            poster.classList.remove("opacity-100");
-            poster.classList.add("opacity-0");
+                video.play();
+            });
 
-            video.classList.remove("opacity-0");
-            video.classList.add("opacity-100");
+            // Hover OUT: pause video, fade it out, fade poster in
+            // (do NOT reset currentTime so it resumes next hover)
+            container.addEventListener("mouseleave", () => {
+                video.pause();
 
-            video.play();
+                video.classList.remove("opacity-100");
+                video.classList.add("opacity-0");
+
+                poster.classList.remove("opacity-0");
+                poster.classList.add("opacity-100");
+            });
         });
+    }
 
-        // Hover OUT: pause video, fade it out, fade poster in
-        // (do NOT reset currentTime so it resumes next hover)
-        container.addEventListener("mouseleave", () => {
-            video.pause();
-
-            video.classList.remove("opacity-100");
-            video.classList.add("opacity-0");
-
-            poster.classList.remove("opacity-0");
-            poster.classList.add("opacity-100");
-        });
-    });
-}
-
-
-
+    initFeaturedVideos();
 
     // === PRODUCTION DROPDOWN TOGGLE (Projects page only) ===
     const productionToggle = document.getElementById("production-toggle");
@@ -238,6 +240,54 @@ function initFeaturedVideos() {
                     formSuccess.classList.add("hidden");
                 }
             }, 5000);
+        });
+    }
+
+    // === SIMPLE BEHIND THE SCENES GALLERY (About page only) ===
+    const behindTrigger = document.getElementById("open-behind-gallery");
+    const behindGallerySection = document.getElementById("behind-gallery");
+    const behindGrid = document.getElementById("behind-grid");
+
+    if (behindTrigger && behindGallerySection && behindGrid) {
+        const totalImages = 20;
+
+        // Build thumbnails once
+        if (behindGrid.children.length === 0) {
+            for (let i = 1; i <= totalImages; i++) {
+                const num = String(i).padStart(2, "0"); // 01, 02, ...
+                const src = `images/behind_scenes/behind${num}.JPG`;
+
+                const wrapper = document.createElement("div");
+                wrapper.className =
+                    "border-2 border-imdb-yellow rounded-lg overflow-hidden bg-black/40";
+
+                wrapper.innerHTML = `
+                    <div class="w-full h-40 md:h-52">
+                        <img
+                            src="${src}"
+                            alt="Behind the scenes ${i}"
+                            class="w-full h-full object-cover"
+                        >
+                    </div>
+                `;
+
+                behindGrid.appendChild(wrapper);
+            }
+        }
+
+        // Toggle show/hide on click
+        behindTrigger.addEventListener("click", () => {
+            const isHidden = behindGallerySection.classList.contains("hidden");
+
+            if (isHidden) {
+                behindGallerySection.classList.remove("hidden");
+                behindGallerySection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            } else {
+                behindGallerySection.classList.add("hidden");
+            }
         });
     }
 });

@@ -44,28 +44,33 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
                         <div class="absolute bottom-4 left-4">
                             <p class="text-xs uppercase tracking-wide text-gray-300">Filip "Ficho" Zafran</p>
-                            <p class="text-sm font-semibold text-imdb-yellow">Filmmaker • AD • Locations </p>
+                            <p class="text-sm font-semibold text-imdb-yellow">Filmmaker • AD • Locations</p>
                         </div>
                     </div>
 
                     <!-- SMALL PHOTOS -->
                     <div class="grid grid-cols-2 gap-3">
 
+                        <!-- LOCATIONS BERLIN CARD (static for now) -->
                         <div class="relative overflow-hidden rounded-lg group">
                             <img
-                                src="images/locs/Cro-loc03.jpg"
+                                src="images/berlin_locs/berlin_26.jpg"
                                 alt="Location scouting image"
                                 class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500"
                             >
                             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded">
-                                Locations Croatia
+                                Locations Berlin
                             </span>
                         </div>
 
-                        <div class="relative overflow-hidden rounded-lg group">
+                        <!-- BEHIND THE SCENES TRIGGER CARD -->
+                        <div
+                            id="open-behind-gallery"
+                            class="relative overflow-hidden rounded-lg group cursor-pointer"
+                        >
                             <img
-                                src="images/behind/behind01.JPG"
+                                src="images/behind_scenes/behind01.JPG"
                                 alt="Behind the scenes"
                                 class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500"
                             >
@@ -77,16 +82,16 @@
 
                     </div>
 
-                    <!-- WIDE LOCATION STRIP -->
+                    <!-- WIDE LOCATION STRIP (CROATIA) -->
                     <div class="relative overflow-hidden rounded-lg group">
                         <img
-                            src="images/locs/Cro-loc01.jpg"
-                            alt="Locations banner"
+                            src="images/cro_locs/Cro-loc01.jpg"
+                            alt="Locations Croatia"
                             class="w-full h-24 object-cover transform group-hover:scale-105 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
                         <p class="absolute left-3 bottom-2 text-[0.7rem] uppercase tracking-wide">
-                            Locations across Europe & beyond
+                            Locations Croatia
                         </p>
                     </div>
 
@@ -114,8 +119,8 @@
                     </p>
 
                     <p>
-                        I’ve worked on international feature films, European productions, TVS's, and
-                        branded content. 
+                        I’ve worked on international feature films, European productions, TVCs, and
+                        branded content.
                     </p>
 
                     <p>
@@ -123,32 +128,28 @@
                         I’m happiest when things are moving fast.
                     </p>
 
-       <p>
-                        I woork well in multicultural teams and thrive in dynamic environments, adapting quickly to changing circumstances. I work both in <span class="text-imdb-yellow">English</span> and <span class="text-imdb-yellow">German</span>, as well as my native Croatian. I have worked across Europe and Africa, including Germany, Croatia, Slovenia, Slovakia, Bosnia, and Kenya and have very high cultural awareness.
+                    <p>
+                        I work well in multicultural teams and thrive in dynamic environments, adapting quickly to changing circumstances. I work in <span class="text-imdb-yellow">English</span> and <span class="text-imdb-yellow">German</span>, as well as my native Croatian. I have worked across Europe and Africa, including Germany, Croatia, Slovenia, Slovakia, Bosnia, and Kenya, and have high cultural awareness.
                     </p>
 
-                      <p>
-                        In addition, I am also a have a background in web developing and my IT knowledge often comes in handy
-                        when dealing with digital workflows planning and bidding. I use my IT skills to improve efficiency and reduce costs on productions whenever possible. 
+                    <p>
+                        In addition, I have a background in web development and my <span class="text-imdb-yellow"><b>IT knowledge</b></span> often comes in handy
+                        when dealing with digital workflows, planning, and bidding. I use my IT skills to improve efficiency and reduce costs on productions whenever possible.
                     </p>
 
-                   
                     <p class="text-sm text-gray-400">
-                          Why did they send me to scout Tatras with a Helicopter when I was 22yo? Because Im <span class="text-imdb-yellow"><b>realiable.</b></span> 
+                        Why did they send me to scout the Tatras by helicopter when I was 22? Because I'm <span class="text-imdb-yellow"><b>reliable.</b></span>
                     </p>
-                
-               
 
-<!-- SOFTWARE IMAGE BEHIND TEXT -->
-<img 
-    src="images/software.png" 
-    alt="Software tools"
-    class="hidden lg:block opacity-50 absolute right-0 bottom-0 w-80 pointer-events-none select-none -z-10 mt-30"
->
-  <br><br> 
+                    <!-- SOFTWARE IMAGE BEHIND TEXT -->
+                    <img 
+                        src="images/software.png" 
+                        alt="Software tools"
+                        class="hidden lg:block opacity-50 absolute right-0 bottom-0 w-80 pointer-events-none select-none -z-10"
+                    >
 
                     <!-- KEY ROLES -->
-                    <div>
+                    <div class="mt-16">
                         <h3 class="text-lg font-semibold mb-3">Key Roles</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">2nd AD</span>
@@ -157,12 +158,13 @@
                             <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Prod. Coordinator</span>
                             <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Prod. Manager</span>
                             <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Location Manager</span>
-                                             </div>
+                        </div>
                     </div>
 
-                    <div>
-                        <h3 class="text-lg font-semibold mb-3">Key SKills</h3>
-                         <div class="flex flex-wrap gap-2 ">
+                    <!-- KEY SKILLS -->
+                    <div class="mt-6">
+                        <h3 class="text-lg font-semibold mb-3">Key Skills</h3>
+                        <div class="flex flex-wrap gap-2">
                             <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Scouting</span>
                             <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Presentations</span>
                             <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Bidding</span>
@@ -172,7 +174,6 @@
                             <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Team Lead & Coordination</span>
                             <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Communication</span>
                             <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Negotiation & Conflict Resolution</span>
-                            
                         </div>
                     </div>
 
@@ -180,22 +181,40 @@
 
                 <div class="flex items-center gap-2 mt-8">
                     <i data-feather="map-pin" class="text-imdb-yellow"></i>
-                    <span>Based in Berlin<br><i> shoot across Europe (Germany, Croatia, Slovenia, Slovakia, Bosnia...) & Kenya.</i></span>
+                    <span>Based in Berlin<br><i>shooting across Europe (Germany, Croatia, Slovenia, Slovakia, Bosnia...) & Kenya.</i></span>
                 </div>
 
-                  <div class="flex items-center gap-2 mt-8">
-                    <i data-feather="map-pin" class="text-imdb-yellow"></i>
-                    <span><a href="https://havc.hr/file/publication/file/little-black-book-2015-web.pdf">Croatian Audiovisual Center <br> - Little Black of Industry contacts</a></span>
+                <div class="flex items-center gap-2 mt-4">
+                    <i data-feather="book-open" class="text-imdb-yellow"></i>
+                    <span>
+                        <a href="https://havc.hr/file/publication/file/little-black-book-2015-web.pdf" target="_blank" class="underline">
+                            Croatian Audiovisual Center – Little Black Book of Industry Contacts
+                        </a>
+                    </span>
                 </div>
 
             </div>
         </div>
+
+        <!-- SIMPLE BEHIND THE SCENES GALLERY (initially hidden) -->
+        <section id="behind-gallery" class="mt-10 hidden">
+            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow">
+                Behind the Scenes
+            </h3>
+            <div
+                id="behind-grid"
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
+            >
+                <!-- Thumbnails will be added by JS -->
+            </div>
+        </section>
     </main>
 
     <custom-footer></custom-footer>
 
     <script src="components/header.js"></script>
     <script src="components/footer.js"></script>
+    <script src="script.js"></script>
     <script>
         feather.replace();
     </script>

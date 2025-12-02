@@ -186,7 +186,7 @@ const PROJECTS = [
     roleLabel: "Production Coordinator",
     type: "Commercial",
     client: "Blue Sky Films",
-    link: "https://www.blueskyadriatic.com/film/martini-moments/",
+    link: "images/project_pics/sole-ore.mov",
     image: "images/project_pics/sole-ore.jpg",
     featured: false,
   },
