@@ -196,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             // Hover OUT: pause video, fade it out, fade poster in
-            // (do NOT reset currentTime so it resumes next hover)
             container.addEventListener("mouseleave", () => {
                 video.pause();
 
@@ -243,19 +242,28 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === SIMPLE BEHIND THE SCENES GALLERY (About page only) ===
-    const behindTrigger = document.getElementById("open-behind-gallery");
-    const behindGallerySection = document.getElementById("behind-gallery");
-    const behindGrid = document.getElementById("behind-grid");
+    // === SIMPLE GALLERY HELPER (ABOUT PAGE) ===
+    function setupSimpleGallery(options) {
+        const {
+            triggerId,
+            sectionId,
+            gridId,
+            folder,
+            baseName,
+            totalImages
+        } = options;
 
-    if (behindTrigger && behindGallerySection && behindGrid) {
-        const totalImages = 20;
+        const trigger = document.getElementById(triggerId);
+        const section = document.getElementById(sectionId);
+        const grid = document.getElementById(gridId);
+
+        if (!trigger || !section || !grid) return;
 
         // Build thumbnails once
-        if (behindGrid.children.length === 0) {
+        if (grid.children.length === 0) {
             for (let i = 1; i <= totalImages; i++) {
                 const num = String(i).padStart(2, "0"); // 01, 02, ...
-                const src = `images/behind_scenes/behind${num}.JPG`;
+                const src = `images/${folder}/${baseName}${num}.JPG`;
 
                 const wrapper = document.createElement("div");
                 wrapper.className =
@@ -265,29 +273,57 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="w-full h-40 md:h-52">
                         <img
                             src="${src}"
-                            alt="Behind the scenes ${i}"
+                            alt="${folder} ${i}"
                             class="w-full h-full object-cover"
                         >
                     </div>
                 `;
 
-                behindGrid.appendChild(wrapper);
+                grid.appendChild(wrapper);
             }
         }
 
         // Toggle show/hide on click
-        behindTrigger.addEventListener("click", () => {
-            const isHidden = behindGallerySection.classList.contains("hidden");
+        trigger.addEventListener("click", () => {
+            const isHidden = section.classList.contains("hidden");
 
             if (isHidden) {
-                behindGallerySection.classList.remove("hidden");
-                behindGallerySection.scrollIntoView({
+                section.classList.remove("hidden");
+                section.scrollIntoView({
                     behavior: "smooth",
-                    block: "start",
+                    block: "start"
                 });
             } else {
-                behindGallerySection.classList.add("hidden");
+                section.classList.add("hidden");
             }
         });
     }
+
+    // === INIT ABOUT PAGE GALLERIES (if present) ===
+    setupSimpleGallery({
+        triggerId: "open-behind-gallery",
+        sectionId: "behind-gallery",
+        gridId: "behind-grid",
+        folder: "behind_scenes",
+        baseName: "behind",
+        totalImages: 20 // adjust if needed
+    });
+
+    setupSimpleGallery({
+        triggerId: "open-berlin-gallery",
+        sectionId: "berlin-gallery",
+        gridId: "berlin-grid",
+        folder: "berlin_locs",
+        baseName: "berlin_",
+        totalImages: 29 // adjust to how many berlin_* files you have
+    });
+
+    setupSimpleGallery({
+        triggerId: "open-cro-gallery",
+        sectionId: "cro-gallery",
+        gridId: "cro-grid",
+        folder: "cro_locs",
+        baseName: "croatia_",
+        totalImages: 28 // adjust to your croatia_* count
+    });
 });

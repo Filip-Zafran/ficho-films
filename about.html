@@ -51,18 +51,22 @@
                     <!-- SMALL PHOTOS -->
                     <div class="grid grid-cols-2 gap-3">
 
-                        <!-- LOCATIONS BERLIN CARD (static for now) -->
-                        <div class="relative overflow-hidden rounded-lg group">
-                            <img
-                                src="images/berlin_locs/berlin_26.jpg"
-                                alt="Location scouting image"
-                                class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                            >
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded">
-                                Locations Berlin
-                            </span>
-                        </div>
+                    <!-- LOCATIONS BERLIN CARD (TRIGGER) -->
+<div
+    id="open-berlin-gallery"
+    class="relative overflow-hidden rounded-lg group cursor-pointer"
+>
+    <img
+        src="images/berlin_locs/berlin_26.jpg"
+        alt="Location scouting image"
+        class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500"
+    >
+    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded">
+        Locations Berlin
+    </span>
+</div>
+
 
                         <!-- BEHIND THE SCENES TRIGGER CARD -->
                         <div
@@ -82,18 +86,22 @@
 
                     </div>
 
-                    <!-- WIDE LOCATION STRIP (CROATIA) -->
-                    <div class="relative overflow-hidden rounded-lg group">
-                        <img
-                            src="images/cro_locs/Cro-loc01.jpg"
-                            alt="Locations Croatia"
-                            class="w-full h-24 object-cover transform group-hover:scale-105 transition-transform duration-500"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
-                        <p class="absolute left-3 bottom-2 text-[0.7rem] uppercase tracking-wide">
-                            Locations Croatia
-                        </p>
-                    </div>
+                    <!-- WIDE LOCATION STRIP (CROATIA TRIGGER) -->
+<div
+    id="open-cro-gallery"
+    class="relative overflow-hidden rounded-lg group cursor-pointer"
+>
+    <img
+        src="images/cro_locs/croatia_01.jpg"
+        alt="Locations Croatia"
+        class="w-full h-24 object-cover transform group-hover:scale-105 transition-transform duration-500"
+    >
+    <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
+    <p class="absolute left-3 bottom-2 text-[0.7rem] uppercase tracking-wide">
+        Locations Croatia
+    </p>
+</div>
+
 
                 </div>
             </div>
@@ -208,6 +216,47 @@
                 <!-- Thumbnails will be added by JS -->
             </div>
         </section>
+
+                <!-- SIMPLE BEHIND THE SCENES GALLERY (initially hidden) -->
+        <section id="behind-gallery" class="mt-10 hidden">
+            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow">
+                Behind the Scenes
+            </h3>
+            <div
+                id="behind-grid"
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
+            >
+                <!-- Thumbnails will be added by JS -->
+            </div>
+        </section>
+
+        <!-- LOCATIONS BERLIN GALLERY (initially hidden) -->
+        <section id="berlin-gallery" class="mt-10 hidden">
+            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow">
+                Locations Berlin
+            </h3>
+            <div
+                id="berlin-grid"
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
+            >
+                <!-- Thumbnails will be added by JS -->
+            </div>
+        </section>
+
+        <!-- LOCATIONS CROATIA GALLERY (initially hidden) -->
+        <section id="cro-gallery" class="mt-10 hidden">
+            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow">
+                Locations Croatia
+            </h3>
+            <div
+                id="cro-grid"
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
+            >
+                <!-- Thumbnails will be added by JS -->
+            </div>
+        </section>
+
+
     </main>
 
     <custom-footer></custom-footer>
