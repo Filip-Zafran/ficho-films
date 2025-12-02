@@ -243,61 +243,83 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // === SIMPLE GALLERY HELPER (ABOUT PAGE) ===
-    function setupSimpleGallery(options) {
-        const {
-            triggerId,
-            sectionId,
-            gridId,
-            folder,
-            baseName,
-            totalImages
-        } = options;
+function setupSimpleGallery(options) {
+    const {
+        triggerId,
+        sectionId,
+        gridId,
+        folder,
+        baseName,
+        totalImages
+    } = options;
 
-        const trigger = document.getElementById(triggerId);
-        const section = document.getElementById(sectionId);
-        const grid = document.getElementById(gridId);
+    const trigger = document.getElementById(triggerId);
+    const section = document.getElementById(sectionId);
+    const grid = document.getElementById(gridId);
 
-        if (!trigger || !section || !grid) return;
+    if (!trigger || !section || !grid) return;
 
-        // Build thumbnails once
-        if (grid.children.length === 0) {
-            for (let i = 1; i <= totalImages; i++) {
-                const num = String(i).padStart(2, "0"); // 01, 02, ...
-                const src = `images/${folder}/${baseName}${num}.JPG`;
+    const exts = [".JPG", ".jpg", ".jpeg", ".png"];
 
-                const wrapper = document.createElement("div");
-                wrapper.className =
-                    "border-2 border-imdb-yellow rounded-lg overflow-hidden bg-black/40";
+    // Build thumbnails once
+    if (grid.children.length === 0) {
+        for (let i = 1; i <= totalImages; i++) {
+            const num = String(i).padStart(2, "0"); // 01, 02, ...
+            const basePath = `images/${folder}/${baseName}${num}`;
 
-                wrapper.innerHTML = `
-                    <div class="w-full h-40 md:h-52">
-                        <img
-                            src="${src}"
-                            alt="${folder} ${i}"
-                            class="w-full h-full object-cover"
-                        >
-                    </div>
-                `;
+            const wrapper = document.createElement("div");
+            wrapper.className =
+                "border-2 border-imdb-yellow rounded-lg overflow-hidden bg-black/40";
 
-                grid.appendChild(wrapper);
+            const inner = document.createElement("div");
+            inner.className = "w-full h-40 md:h-52";
+
+            const img = document.createElement("img");
+            img.alt = `${folder} ${i}`;
+            img.className = "w-full h-full object-cover";
+
+            // store base path + current extension index
+            img.dataset.basePath = basePath;
+            img.dataset.extIndex = "0";
+
+            function tryNextSrc() {
+                const idx = parseInt(img.dataset.extIndex || "0", 10);
+                if (idx >= exts.length) {
+                    // no valid extension, hide this tile
+                    wrapper.style.display = "none";
+                    return;
+                }
+                img.src = basePath + exts[idx];
+                img.dataset.extIndex = String(idx + 1);
             }
+
+            img.addEventListener("error", tryNextSrc);
+
+            // start loading with first extension
+            tryNextSrc();
+
+            inner.appendChild(img);
+            wrapper.appendChild(inner);
+            grid.appendChild(wrapper);
         }
-
-        // Toggle show/hide on click
-        trigger.addEventListener("click", () => {
-            const isHidden = section.classList.contains("hidden");
-
-            if (isHidden) {
-                section.classList.remove("hidden");
-                section.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            } else {
-                section.classList.add("hidden");
-            }
-        });
     }
+
+    // Toggle show/hide on click
+    trigger.addEventListener("click", () => {
+        const isHidden = section.classList.contains("hidden");
+
+        if (isHidden) {
+            section.classList.remove("hidden");
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        } else {
+            section.classList.add("hidden");
+        }
+    });
+}
+
 
     // === INIT ABOUT PAGE GALLERIES (if present) ===
     setupSimpleGallery({
