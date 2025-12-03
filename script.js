@@ -253,27 +253,36 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === CONTACT FORM HANDLER (Contact page only) ===
-    const contactForm = document.getElementById("contact-form");
-    const formSuccess = document.getElementById("form-success");
+// === CONTACT FORM HANDLER ===
+const contactForm = document.getElementById("contact-form");
+const formSuccess = document.getElementById("form-success");
 
-    if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-            e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        // Let Formspree handle the real sending
+        // But show confirmation after a successful response
 
-            // TODO: connect to backend / Formspree. For now just fake success.
-            if (formSuccess) {
+        fetch(contactForm.action, {
+            method: "POST",
+            body: new FormData(contactForm),
+            headers: { Accept: "application/json" }
+        })
+        .then(response => {
+            if (response.ok) {
                 formSuccess.classList.remove("hidden");
+                contactForm.reset();
+            } else {
+                alert("Something went wrong. Please try again.");
             }
-            contactForm.reset();
-
-            setTimeout(() => {
-                if (formSuccess) {
-                    formSuccess.classList.add("hidden");
-                }
-            }, 5000);
+        })
+        .catch(() => {
+            alert("Could not send the message. Please try again later.");
         });
-    }
+
+        e.preventDefault(); // prevent page reload but still send via Fetch
+    });
+}
+
 
     // === SIMPLE GALLERY HELPER (ABOUT PAGE) ===
 function setupSimpleGallery(options) {
