@@ -98,6 +98,20 @@ const PROJECTS = [
   image: "images/halima.png",
   featuredSize: false,
 },
+
+   {
+    id: "martini-moments",
+    title: "Martini Moments - TVC",
+    year: null,
+    role: "director",
+    roleLabel: "2nd Assistant Director",
+    type: "Commercial",
+    client: "Blue Sky Films",
+    link: "https://www.blueskyadriatic.com/film/martini-moments/",
+    image: "/images/project_pics/martini.jpg",
+    featured: false,
+  },
+
   // === LOCATIONS ===
   {
     id: "sanjam",
@@ -120,7 +134,71 @@ const PROJECTS = [
     type: "Production Company Collaboration",
     client: "Film Scouting Croatia association",
     link: "http://scoutingcroatia.com/",
-    image: "images/project_pics/scouting_croatia.png",
+    image: "images/project_pics/scouting_croatia.jpg",
+    featured: false,
+  },
+
+      {
+    id: "vindija",
+    title: "Vindija - TVC",
+    year: null,
+    role: "location",
+    roleLabel: "Location Manager",
+    type: "Production Company Collaboration",
+    client: "Luminus Studio",
+    link: "https://www.screenglobalproduction.com/country/croatia/profile/luminus-studio",
+    image: "images/project_pics/vindija.jpg",
+    featured: false,
+  },
+
+       {
+    id: "nlc",
+    title: "Odjednom Ti - Series Pilot",
+    year: null,
+    role: "location",
+    roleLabel: "Location Manager",
+    type: "Production Company Collaboration",
+    client: "NLC Media & Plan 9",
+    link: "https://www.plan9.hr/",
+    image: "images/project_pics/nlc.jpg",
+    featured: false,
+  },
+
+         {
+    id: "sky-scout",
+    title: "Blue Sky Films Croatia ",
+    year: null,
+    role: "location",
+    roleLabel: "Location Scout",
+    type: "Production Company Collaboration",
+    client: "Permanent employment (2003 - 2013)",
+    link: "https://www.blueskyadriatic.com/",
+    image: "images/project_pics/bluesky.png",
+    featured: false,
+  },
+           {
+    id: "ratkajevi",
+    title: "Ponos Ratkajevih - TV series",
+    year: null,
+    role: "location",
+    roleLabel: "Location Manager",
+    type: "Production Company Collaboration",
+    client: "AVA Production Group",
+    link: "https://www.youtube.com/@avaprodukcija",
+    image: "images/project_pics/ratkajevi.png",
+    featured: false,
+  },
+
+  {
+    id: "lotto-649-farm",
+    title: "Lotto 649 – Farm",
+    year: null,
+    role: "location",
+    roleLabel: "Locations Manager",
+    type: "Commercial",
+    client: "Blue Sky Films",
+    link: "https://www.blueskyadriatic.com/film/lotto-649-farm/",
+    image: "images/project_pics/lotto.png",
     featured: false,
   },
 
@@ -153,30 +231,8 @@ const PROJECTS = [
   },
 
   // === PRODUCTION COORDINATOR – COMMERCIALS ===
-  {
-    id: "lotto-649-farm",
-    title: "Lotto 649 – Farm",
-    year: null,
-    role: "coordination",
-    roleLabel: "Production Coordinator",
-    type: "Commercial",
-    client: "Blue Sky Films",
-    link: "https://www.blueskyadriatic.com/film/lotto-649-farm/",
-    image: "images/project_pics/lotto.png",
-    featured: false,
-  },
-  {
-    id: "martini-moments",
-    title: "Martini Moments",
-    year: null,
-    role: "coordination",
-    roleLabel: "Production Coordinator",
-    type: "Commercial",
-    client: "Blue Sky Films",
-    link: "https://www.blueskyadriatic.com/film/martini-moments/",
-    image: "/images/project_pics/martini.jpg",
-    featured: false,
-  },
+
+ 
 
     {
     id: "sole-ore",
@@ -337,9 +393,9 @@ const PROJECTS = [
     role: "director",
     roleLabel: "Casting Manager",
     type: "Casting",
-    client: "Casting Croatia",
+    client: "Permanently employed (2011 - 2015)",
     link: "https://www.castingcroatia.com",
-    image: "/images/project_pics/CC-logo.png",
+    image: "/images/project_pics/cc-logo.jpg",
     featured: false,
   },
 
@@ -440,7 +496,7 @@ const PROJECTS = [
     roleLabel: "Logistics Manager  (2007-2010)",
     type: "Events",
     client: "ZagIMUN Organization",
-    link: "https://poly-speed-dating.onrender.com/polyfest.html",
+    link: "zagimun.org",
     image: "images/project_pics/zagimun.jpg",
     featured: false,
       },
@@ -456,7 +512,45 @@ const PROJECTS = [
     link: "#",
     image: "images/project_pics/stronger-bonds.png",
     featured: false,
-      }
+      },
 
+         {
+ id: "meuz",
+    title: "MEUZ Conference",
+    year: null,
+    role: "event",
+    roleLabel: "Logistics Manager & Chairperson",
+    type: "Events",
+    client: "Hermes NGO",
+    link: "https://hermes.hr/meuz/",
+    image: "images/project_pics/meuz.png",
+    featured: false,
+      },
+      
+         {
+ id: "sofimun",
+    title: "SofiMUN Conference",
+    year: null,
+    role: "event",
+    roleLabel: "Security Council Chairperson",
+    type: "Events",
+    client: "SOFIMUN Foundation",
+    link: "https://unglobalcompact.org/what-is-gc/participants/12202-SOFIMUN-Foundation",
+    image: "images/project_pics/sofimun.jpg",
+    featured: false,
+      },
+
+         {
+ id: "scappy",
+    title: "ScappyLand - Candy Party",
+    year: null,
+    role: "event",
+    roleLabel: "Promotion Visual Manager",
+    type: "Events",
+    client: "Scappy",
+    link: "https://www.index.hr/lajk/poster/71905/candy-party-powered-by-scappy-land-14032009-15",
+    image: "images/project_pics/scappy.jpg",
+    featured: false,
+      },
 
 ];
