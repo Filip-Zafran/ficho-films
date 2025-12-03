@@ -242,7 +242,7 @@ const PROJECTS = [
     roleLabel: "Production Coordinator",
     type: "Commercial",
     client: "Blue Sky Films",
-    link: "images/project_pics/sole-ore.mov",
+    link: "videos/sole-ore.mov",
     image: "images/project_pics/sole-ore.jpg",
     featured: false,
   },
@@ -333,7 +333,7 @@ const PROJECTS = [
     type: "Short Film",
     client: "C47 film d.o.o.",
     link: "https://www.imdb.com/title/tt3627382/",
-    image: "http://static.photos/people/640x360/1",
+    image: "images/project_pics/taubeki.jpg",
     featured: false,
   },
   {
