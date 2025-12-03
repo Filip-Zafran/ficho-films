@@ -149,15 +149,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.classList.add("bg-imdb-yellow", "text-imdb-dark");
 
                 // Show/hide Featured section + update heading
-                if (role === "all") {
-                    if (featuredSection) featuredSection.classList.remove("hidden");
-                    if (allProjectsSection) allProjectsSection.classList.remove("hidden");
-                    if (allProjectsHeading) allProjectsHeading.textContent = "All Projects";
-                } else {
-                    if (featuredSection) featuredSection.classList.add("hidden");
-                    if (allProjectsSection) allProjectsSection.classList.remove("hidden");
-                    if (allProjectsHeading) allProjectsHeading.textContent = label;
-                }
+           const featuredHeading = document.getElementById("featured-heading");
+
+if (role === "all") {
+    featuredSection?.classList.remove("hidden");
+    featuredHeading?.classList.remove("hidden");
+
+    allProjectsSection?.classList.remove("hidden");
+    allProjectsHeading.textContent = "All Projects";
+} else {
+    featuredSection?.classList.add("hidden");     // hide featured cards
+    featuredHeading?.classList.add("hidden");     // hide the heading
+
+    allProjectsSection?.classList.remove("hidden");
+    allProjectsHeading.textContent = label;
+}
+
 
                 // Filter all cards
                 updateProjectVisibility(role);
