@@ -91,3 +91,29 @@ body {
         opacity: 1;
     }
 }
+
+.gallery-hint {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    padding: 2px 6px;
+    font-size: 0.65rem;
+    background: rgba(245, 197, 24, 0.9); /* imdb-yellow */
+    color: #121212; /* imdb-dark */
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+/* Show on hover (desktop) */
+.group:hover .gallery-hint {
+    opacity: 1;
+}
+
+/* On mobile (no hover), always show */
+@media (max-width: 768px) {
+    .gallery-hint {
+        opacity: 1;
+    }
+}

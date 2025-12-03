@@ -35,7 +35,7 @@ const PROJECTS = [
 {
   id: "un-altro-mondo",
   title: "Un altro mondo",
-  year: 2010,
+  // year: 2010,
   role: "coordination",
   roleLabel: "Kenya Production Staff",
   type: "Feature Film",
@@ -48,7 +48,7 @@ const PROJECTS = [
 {
   id: "eyjafjallajokull",
   title: "Eyjafjallajökull",
-  year: 2013,
+  // year: 2013,
   role: "director",
   roleLabel: "Third Assistant Director",
   type: "Feature Film",
@@ -77,7 +77,7 @@ const PROJECTS = [
   {
   id: "liebe",
   title: "Liebe ist nur ein Wort",
-  year: 2010,
+  // year: 2010,
   role: "director",
   roleLabel: "Unit AD",
   type: "Feature Film",
@@ -89,7 +89,7 @@ const PROJECTS = [
 {
   id: "halima",
   title: "Halima's Path",
-  year: 2012,
+  // year: 2012,
   role: "director",
   roleLabel: "2nd Assistant Director",
   type: "Feature Film",
@@ -128,7 +128,7 @@ const PROJECTS = [
   {
     id: "un-altro-mondo",
     title: "Un altro mondo",
-    year: 2010,
+    // year: 2010,
     role: "coordination",
     roleLabel: "Kenya Production Staff",
     type: "Feature Film",
@@ -270,8 +270,8 @@ const PROJECTS = [
   // === PRODUCER ===
   {
     id: "taubeki",
-    title: "Taubeki",
-    year: 2014,
+    title: "Taubeki - short film",
+    // year: 2014,
     role: "producer",
     roleLabel: "Producer",
     type: "Short Film",
@@ -346,7 +346,7 @@ const PROJECTS = [
   // === EVENT MANAGER PLACEHOLDER ===
     {
    id: "event-polyfest-2025",
-    title: "PolyFest 2025",
+    title: "PolyFest",
     year: null,
     role: "event",
     roleLabel: "Main Event Manager",
@@ -370,10 +370,10 @@ const PROJECTS = [
   },
    {
  id: "event-burnhalla-2026",
-    title: "BurnHalla 2026",
+    title: "BurnHalla",
     year: null,
     role: "event",
-    roleLabel: "Site Lead",
+    roleLabel: "Site Lead 2026",
     type: "Events",
     client: "Berlin Burner e. V.",
     link: "https://burnhalla.com/",
@@ -408,10 +408,10 @@ const PROJECTS = [
 
                        {
  id: "workshop",
-    title: "KiezBurn CrepesClub 2025",
+    title: "KiezBurn CrepesClub",
     year: null,
     role: "event",
-    roleLabel: "Camp Lead & Workshop Facilitator",
+    roleLabel: "Camp Lead & Workshop Facilitator (2025)",
     type: "Events",
     client: "Berlin Burner e. V.",
     link: "https://mmm.kiezburn.org/",
@@ -434,10 +434,10 @@ const PROJECTS = [
 
                   {
  id: "zagimun",
-    title: "ZagIMUN Conference (2007-2010)",
+    title: "ZagIMUN Conference",
     year: null,
     role: "event",
-    roleLabel: "Logistics Manager",
+    roleLabel: "Logistics Manager  (2007-2010)",
     type: "Events",
     client: "ZagIMUN Organization",
     link: "https://poly-speed-dating.onrender.com/polyfest.html",
