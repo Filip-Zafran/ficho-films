@@ -20,34 +20,38 @@ function renderProjectsFromData() {
                 ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">More</a>`
                 : "";
 
-        const media = project.teaserVideo
-            ? `
-                <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses}">
-                    <!-- Poster image (default visible) -->
-                    <img
-                        src="${project.image}"
-                        alt="${project.title}"
-                        class="featured-poster absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100"
-                    >
+      const media = project.teaserVideo
+    ? `
+        <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses}">
+            <!-- Poster image -->
+            <img
+                src="${project.image}"
+                alt="${project.title}"
+                class="featured-poster absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100"
+            >
 
-                    <!-- Video (invisible until hover) -->
-                    <video
-                        class="featured-video absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 pointer-events-none"
-                        poster="${project.image}"
-                        data-teaser-src="${project.teaserVideo}"
-                        muted
-                        preload="metadata"
-                        playsinline
-                    ></video>
-                </div>
-            `
-            : `
-                <img
-                    src="${project.image}"
-                    alt="${project.title}"
-                    class="w-full ${imageHeightClasses} object-cover rounded-t-lg"
-                >
-            `;
+            <!-- Video -->
+            <video
+                class="featured-video absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 pointer-events-none"
+                poster="${project.image}"
+                data-teaser-src="${project.teaserVideo}"
+                muted
+                preload="metadata"
+                playsinline
+            ></video>
+
+            <!-- MOBILE HINT -->
+            <span class="mobile-video-hint">Tap to play video</span>
+        </div>
+    `
+    : `
+        <img
+            src="${project.image}"
+            alt="${project.title}"
+            class="w-full ${imageHeightClasses} object-cover rounded-t-lg"
+        >
+    `;
+
 
         return `
             <div class="project-card" data-role="${project.role}">
@@ -168,45 +172,74 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // === FEATURED VIDEOS (hover poster -> teaser) ===
-    function initFeaturedVideos() {
-        const videos = document.querySelectorAll(".featured-video");
+  function initFeaturedVideos() {
+    const videos = document.querySelectorAll(".featured-video");
 
-        videos.forEach((video) => {
-            const src = video.getAttribute("data-teaser-src");
-            if (!src) return;
+    videos.forEach((video) => {
+        const src = video.getAttribute("data-teaser-src");
+        if (!src) return;
 
-            // Attach actual source & start loading
-            video.src = src;
-            video.load();
-            video.loop = true;
+        video.src = src;
+        video.load();
+        video.loop = true;
 
-            const container = video.parentElement; // the <div class="relative ...">
-            const poster = container.querySelector(".featured-poster");
-            if (!poster) return;
+        const container = video.parentElement;
+        const poster = container.querySelector(".featured-poster");
+        const hint = container.querySelector(".mobile-video-hint");
 
-            // Hover IN: fade poster out, fade video in, play (from current position)
-            container.addEventListener("mouseenter", () => {
-                poster.classList.remove("opacity-100");
+        if (!poster) return;
+
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+        // --- Hover IN (desktop) ---
+        container.addEventListener("mouseenter", () => {
+            poster.classList.remove("opacity-100");
+            poster.classList.add("opacity-0");
+
+            video.classList.remove("opacity-0");
+            video.classList.add("opacity-100");
+
+            video.play();
+
+            // Hide hint immediately on desktop hover
+            if (!isMobile && hint) {
+                hint.classList.add("hidden");
+            }
+        });
+
+        // --- Hover OUT (desktop) ---
+        container.addEventListener("mouseleave", () => {
+            video.pause();
+            video.classList.remove("opacity-100");
+            video.classList.add("opacity-0");
+
+            poster.classList.remove("opacity-0");
+            poster.classList.add("opacity-100");
+
+            // Desktop: show hint again next hover start
+            if (!isMobile && hint) {
+                hint.classList.remove("hidden");
+            }
+        });
+
+        // --- Mobile tap: hide hint when video starts ---
+        container.addEventListener("click", () => {
+            if (isMobile) {
+                video.play();
                 poster.classList.add("opacity-0");
-
-                video.classList.remove("opacity-0");
                 video.classList.add("opacity-100");
 
-                video.play();
-            });
-
-            // Hover OUT: pause video, fade it out, fade poster in
-            container.addEventListener("mouseleave", () => {
-                video.pause();
-
-                video.classList.remove("opacity-100");
-                video.classList.add("opacity-0");
-
-                poster.classList.remove("opacity-0");
-                poster.classList.add("opacity-100");
-            });
+                if (hint) hint.classList.add("hidden");
+            }
         });
-    }
+
+        // --- Mobile: show hint again if video is paused ---
+        video.addEventListener("pause", () => {
+            if (isMobile && hint) hint.classList.remove("hidden");
+        });
+    });
+}
+
 
     initFeaturedVideos();
 
