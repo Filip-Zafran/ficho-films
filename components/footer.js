@@ -16,6 +16,13 @@ class CustomFooter extends HTMLElement {
                             <a href="https://www.linkedin.com/in/filip-zafran" target="_blank" class="text-gray-400 hover:text-blue-400 transition">
                                 <i data-feather="linkedin"></i>
                             </a>
+                            <a href="https://www.crew-united.com/en/Filip-Zafran_870880.html" 
+                                target="_blank" 
+                                class="flex items-center gap-2 hover:text-imdb-yellow transition">
+                                    
+                                    <img src="images/icons/crew_united-white.png" alt="Crew United" class="w-8 h-7 opacity-80">
+                                                                    </a>
+
                         </div>
                     </div>
                     <div class="mt-8 text-center text-sm text-gray-500">

@@ -242,7 +242,7 @@ const PROJECTS = [
     roleLabel: "Production Coordinator",
     type: "Commercial",
     client: "Blue Sky Films",
-    link: "videos/sole-ore.mov",
+    link: "public/videos/sole-ore.mov",
     image: "images/project_pics/sole-ore.jpg",
     featured: false,
   },
