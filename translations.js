@@ -116,12 +116,21 @@ function updateTranslations() {
   });
 }
 
-// Switch language
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
   updateTranslations();
+
+  // Highlight active language button
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    if (btn.dataset.lang === lang) {
+      btn.classList.add("active", "text-imdb-yellow");
+    } else {
+      btn.classList.remove("active", "text-imdb-yellow");
+    }
+  });
 }
+
 
 // === PROJECT ROLE LABEL OVERRIDES (German-only) ===
 Object.assign(translations.de, {
@@ -160,4 +169,20 @@ Object.assign(translations.de, {
 });
 
 // Initialize on page load
-document.addEventListener("DOMContentLoaded", updateTranslations);
+document.addEventListener("DOMContentLoaded", () => {
+  updateTranslations();
+
+  // Delay update to allow custom-header to load
+  setTimeout(() => {
+    updateTranslations();
+
+    // Highlight active language after header appears
+    const activeLang = localStorage.getItem("lang") || "en";
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      if (btn.dataset.lang === activeLang) {
+        btn.classList.add("active", "text-imdb-yellow");
+      }
+    });
+
+  }, 50);
+});

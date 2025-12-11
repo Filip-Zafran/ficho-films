@@ -142,3 +142,24 @@ body {
 .mobile-video-hint.hidden {
     opacity: 0 !important;
 }
+
+/* Language button underline animation */
+.lang-btn {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.lang-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #f5c518;
+    transition: width 0.3s ease;
+}
+
+.lang-btn.active::after {
+    width: 100%;
+}
