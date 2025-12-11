@@ -174,6 +174,57 @@ document.addEventListener("DOMContentLoaded", function () {
         if (defaultFilter) defaultFilter.click();
     }
 
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Each gallery trigger (thumbnail)
+    const triggers = document.querySelectorAll(".gallery-trigger");
+
+    triggers.forEach(trigger => {
+        const galleryId = trigger.id.replace("open-", "").replace("-gallery", "") + "-gallery";
+        const gallery = document.getElementById(galleryId);
+        const arrow = trigger.querySelector(".gallery-arrow");
+        const closeBtn = gallery.querySelector(".gallery-close");
+
+        trigger.addEventListener("click", () => {
+            const isOpening = gallery.classList.contains("hidden");
+            gallery.classList.toggle("hidden");
+
+            // Update arrow (mobile only)
+            if (arrow) arrow.textContent = isOpening ? "▼" : "►";
+
+            // Show close button (mobile only)
+            if (closeBtn) {
+                if (isOpening) closeBtn.classList.remove("hidden");
+                else closeBtn.classList.add("hidden");
+            }
+
+            // Scroll gallery into view (mobile)
+            if (isOpening && window.innerWidth < 768) {
+                setTimeout(() => {
+                    gallery.scrollIntoView({ behavior: "smooth", block: "start" });
+                }, 150);
+            }
+        });
+
+        // Close button logic
+        if (closeBtn) {
+            closeBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); // prevent retrigger
+
+                gallery.classList.add("hidden");
+                closeBtn.classList.add("hidden");
+
+                // Update mobile arrow
+                if (arrow) arrow.textContent = "►";
+
+                // Smooth scroll back to thumbnail
+                trigger.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+        }
+    });
+});
+
+
     // === FEATURED VIDEOS (teaser hover/tap) ===
     function initFeaturedVideos() {
         const videos = document.querySelectorAll(".featured-video");

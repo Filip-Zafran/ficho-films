@@ -164,3 +164,46 @@ body {
     width: 100%;
 }
 
+.gallery-hint {
+    position: absolute;
+    right: 4px;
+    bottom: 2px;
+    font-size: 0.65rem;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.gallery-arrow {
+    font-size: 1.2rem;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.gallery-close {
+    background: rgba(0,0,0,0.6);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* Desktop hover hint */
+.gallery-hover-hint {
+    display: none;
+    font-size: 0.75rem;
+    color: #ccc;
+    margin-bottom: 6px;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+@media (min-width: 640px) {
+    .gallery-hover-hint {
+        display: block;
+    }
+
+    /* Show hint when hovering ANY gallery thumbnail */
+    .gallery-thumb:hover ~ .gallery-hover-hint,
+    .gallery-group:hover .gallery-hover-hint {
+        opacity: 1;
+    }
+}
+

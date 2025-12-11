@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Filip "Ficho" Zafran</title>
+
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -22,204 +23,219 @@
             }
         }
     </script>
+
+    <!-- HOVER HINT CSS FIX -->
+    <style>
+        /* Desktop hover hint: hidden until hover */
+        .gallery-hover-hint {
+            display: none;
+            font-size: 0.75rem;
+            color: #ccc;
+            margin-top: 6px;
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+
+        @media (min-width: 640px) {
+            .gallery-hover-hint {
+                display: block;
+            }
+
+            /* Show hint when hovering ANY thumbnail in the group */
+            .gallery-group:hover + .gallery-hover-hint {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-imdb-dark text-imdb-light font-sans antialiased">
-    <custom-header></custom-header>
+<custom-header></custom-header>
 
-    <main class="container mx-auto px-4 py-10">
-        <div class="flex flex-col lg:flex-row gap-10">
+<main class="container mx-auto px-4 py-10">
 
-            <!-- LEFT COLUMN: IMAGES -->
-            <div class="w-full lg:w-1/3">
-                <div class="bg-imdb-gray p-4 rounded-lg space-y-4">
+    <div class="flex flex-col lg:flex-row gap-10">
 
-                    <!-- MAIN PORTRAIT -->
-                    <div class="relative overflow-hidden rounded-lg group">
-                        <img
-                            src="images/about-portrait.png"
-                            alt="Filip 'Ficho' Zafran portrait"
-                            class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500"
-                        >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <p class="text-xs uppercase tracking-wide text-gray-300">
-                                Filip "Ficho" Zafran
-                            </p>
-                            <p class="text-sm font-semibold text-imdb-yellow">
-                                Filmmaker • AD • Locations
-                            </p>
-                        </div>
+        <!-- LEFT COLUMN =================================== -->
+        <div class="w-full lg:w-1/3">
+            <div class="bg-imdb-gray p-4 rounded-lg space-y-4">
+
+                <!-- MAIN PORTRAIT -->
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="images/about-portrait.png"
+                         class="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70
+                                group-hover:opacity-90 transition-opacity duration-500"></div>
+
+                    <div class="absolute bottom-4 left-4">
+                        <p class="text-xs uppercase tracking-wide text-gray-300">Filip "Ficho" Zafran</p>
+                        <p class="text-sm font-semibold text-imdb-yellow">Filmmaker • AD • Locations</p>
+                    </div>
+                </div>
+
+                <!-- === FIRST GALLERY GROUP (Berlin + Behind the Scenes) === -->
+                <div class="gallery-group grid grid-cols-2 gap-3">
+
+                    <!-- Berlin -->
+                    <div id="open-berlin-gallery"
+                         class="gallery-thumb relative overflow-hidden rounded-lg group cursor-pointer">
+                        <img src="images/berlin_locs/berlin_26.jpg"
+                             class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition"></div>
+
+                        <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded"
+                              data-i18n="locations_berlin">Locations Berlin</span>
+
+                        <!-- Mobile ▼▲ -->
+                        <span class="gallery-hint-mobile inline sm:hidden text-gray-300 text-xs">▼▲</span>
                     </div>
 
-                    <!-- SMALL PHOTOS -->
-                    <div class="grid grid-cols-2 gap-3">
+                    <!-- Behind the Scenes -->
+                    <div id="open-behind-gallery"
+                         class="gallery-thumb relative overflow-hidden rounded-lg group cursor-pointer">
+                        <img src="images/behind_scenes/behind01.JPG"
+                             class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition"></div>
 
-                        <div id="open-berlin-gallery" class="relative overflow-hidden rounded-lg group cursor-pointer">
-                            <img src="images/berlin_locs/berlin_26.jpg" class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition"></div>
-                            <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded"
-                                  data-i18n="locations_berlin">Locations Berlin</span>
+                        <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1
+                                     text-[0.65rem] uppercase rounded"
+                              data-i18n="behind_scenes">Behind the Scenes</span>
 
-                            <span class="gallery-hint" data-i18n="gallery_hint">
-                                Click to open • click to close
-                            </span>
-
-                        </div>
-
-                        <div id="open-behind-gallery" class="relative overflow-hidden rounded-lg group cursor-pointer">
-                            <img src="images/behind_scenes/behind01.JPG" class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition"></div>
-                            <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded"
-                                  data-i18n="behind_scenes">Behind the Scenes</span>
-
-                            <span class="gallery-hint" data-i18n="gallery_hint">
-                                Click to open • click to close
-                            </span>
-                        </div>
-
+                        <!-- Mobile ▼▲ -->
+                        <span class="gallery-hint-mobile inline sm:hidden text-gray-300 text-xs">▼▲</span>
                     </div>
 
-                    <!-- LOCATIONS CROATIA -->
-                    <div id="open-cro-gallery" class="relative overflow-hidden rounded-lg group cursor-pointer mt-4">
-                        <img src="images/cro_locs/croatia_01.jpg" class="w-full h-24 object-cover transform group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition"></div>
+                </div>
+
+                <!-- Hover hint BELOW thumbnails -->
+                <p class="gallery-hover-hint" data-i18n="gallery_hint">
+                    Click to open • click to close
+                </p>
+
+                <!-- === CROATIA GALLERY (alone) === -->
+                <div class="gallery-group mt-4">
+
+                    <div id="open-cro-gallery"
+                         class="gallery-thumb relative overflow-hidden rounded-lg group cursor-pointer">
+                        <img src="images/cro_locs/croatia_01.jpg"
+                             class="w-full h-24 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-70
+                                    group-hover:opacity-90 transition"></div>
+
                         <p class="absolute left-3 bottom-2 text-[0.7rem] uppercase tracking-wide"
                            data-i18n="locations_croatia">Locations Croatia</p>
 
-                            <span class="gallery-hint" data-i18n="gallery_hint">
-                                Click to open • click to close
-                            </span>
+                        <!-- Mobile ▼▲ -->
+                        <span class="gallery-hint-mobile inline sm:hidden text-gray-300 text-xs">▼▲</span>
                     </div>
 
                 </div>
-            </div>
 
-            <!-- RIGHT COLUMN -->
-            <div class="w-full lg:w-2/3 relative">
-
-                <h1 class="text-3xl font-bold text-imdb-yellow mb-4"
-                    data-i18n="about_title">About Ficho</h1>
-
-                <h2 class="text-xl font-semibold mb-6"
-                    data-i18n="about_subtitle">
-                    Filmmaker, fixer, and production problem-solver.
-                </h2>
-
-
-                <!-- KEY ROLES -->
-                    <h3 class="text-lg font-semibold mb-3" data-i18n="key_roles">Key Roles</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm" data-i18n="role_2nd_ad">2nd AD</span>
-                    <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm" data-i18n="role_casting_manager">Casting Manager</span>
-                    <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm" data-i18n="role_unit_manager">Unit Manager</span>
-                    <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm" data-i18n="role_prod_coordinator">Prod. Coordinator</span>
-                    <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm" data-i18n="role_prod_manager">Prod. Manager</span>
-                    <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm" data-i18n="role_location_manager_scout">Location Manager / Scout</span>
-                </div>
-                <br>
-
-                <!-- KEY SKILLS -->
-                <h3 class="text-lg font-semibold mb-3" data-i18n="key_skills">Key Skills</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_scouting">Scouting</span>
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_presentations">Presentations</span>
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_bidding">Bidding</span>
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_budgeting">Budgeting</span>
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_planning">Planning</span>
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_set_coordination">Set Coordination</span>
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_team_coordination">Team Lead & Coordination</span>
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_communication">Communication</span>
-                    <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm" data-i18n="skill_negotiation">Negotiation & Conflict Resolution</span>
-                </div>
-                <br>
-
-                <!-- LANGUAGES -->
-                <h3 class="text-lg font-semibold mb-3" data-i18n="languages">Languages</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow" data-i18n="lang_german">German</span>
-                    <span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow" data-i18n="lang_english">English</span>
-                    <span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow" data-i18n="lang_croatian">Croatian</span>
-                </div>
-
-
-                <br>
-
-                <!-- BIO TEXT (Not translated unless you want it) -->
-               <div class="space-y-5 text-gray-300 leading-relaxed">
-                    <p data-i18n="about_text_1">
-                        <!-- English fallback text -->
-                        I'm Filip "Ficho" Zafran — filmmaker, location specialist and production all-rounder...
-                    </p>
-
-                    <p data-i18n="about_text_2">
-                        I’ve worked on international feature films, European productions...
-                    </p>
-
-                    <p data-i18n="about_text_3">
-                        My focus lies in managing Call-Sheets, running set operations...
-                    </p>
-
-                    <p data-i18n="about_text_4">
-                        In addition, I have a background in web development...
-                    </p>
-
-                    <p data-i18n="about_text_5">
-                        If there is one word that describes me best, it's reliability.
-                    </p>
-
-                    <p data-i18n="about_text_6" class="text-sm text-gray-400">
-                        Why was I scouting the Tatras by helicopter at 22yo? Because...
-                    </p>
-                </div>
-
-                <div class="flex items-center gap-2 mt-8">
-                    <i data-feather="map-pin" class="text-imdb-yellow"></i>
-                    <span data-i18n="based_in_berlin">
-                        Based in Berlin<br><i>shooting across Europe…</i>
-                    </span>
-                </div>
-
-                <div class="flex items-center gap-2 mt-4">
-                    <i data-feather="book-open" class="text-imdb-yellow"></i>
-                    <span>
-                        <a href="https://havc.hr/file/publication/file/little-black-book-2015-web.pdf"
-                           target="_blank" class="underline">
-                            Croatian Audiovisual Center – Little Black Book of Industry Contacts
-                        </a>
-                    </span>
-                </div>
+                <!-- Hover hint BELOW -->
+                <p class="gallery-hover-hint" data-i18n="gallery_hint">
+                    Click to open • click to close
+                </p>
 
             </div>
         </div>
 
-        <!-- GALLERIES -->
-        <section id="behind-gallery" class="mt-10 hidden">
-            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow"
-                data-i18n="behind_scenes">Behind the Scenes</h3>
-            <div id="behind-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
-        </section>
+        <!-- RIGHT COLUMN =================================== -->
+        <div class="w-full lg:w-2/3 relative">
 
-        <section id="berlin-gallery" class="mt-10 hidden">
-            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow"
-                data-i18n="locations_berlin">Locations Berlin</h3>
-            <div id="berlin-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
-        </section>
+            <h1 class="text-3xl font-bold text-imdb-yellow mb-4" data-i18n="about_title">About Ficho</h1>
+            <h2 class="text-xl font-semibold mb-6" data-i18n="about_subtitle">
+                Filmmaker, fixer, and production problem-solver.
+            </h2>
 
-        <section id="cro-gallery" class="mt-10 hidden">
-            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow"
-                data-i18n="locations_croatia">Locations Croatia</h3>
-            <div id="cro-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
-        </section>
+            <!-- KEY ROLES -->
+            <h3 class="text-lg font-semibold mb-3" data-i18n="key_roles">Key Roles</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="tag" data-i18n="role_2nd_ad">2nd AD</span>
+                <span class="tag" data-i18n="role_casting_manager">Casting Manager</span>
+                <span class="tag" data-i18n="role_unit_manager">Unit Manager</span>
+                <span class="tag" data-i18n="role_prod_coordinator">Prod. Coordinator</span>
+                <span class="tag" data-i18n="role_prod_manager">Prod. Manager</span>
+                <span class="tag" data-i18n="role_location_manager_scout">Location Manager / Scout</span>
+            </div>
 
-    </main>
+            <br>
 
-    <custom-footer></custom-footer>
+            <!-- KEY SKILLS -->
+            <h3 class="text-lg font-semibold mb-3" data-i18n="key_skills">Key Skills</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="skill" data-i18n="skill_scouting">Scouting</span>
+                <span class="skill" data-i18n="skill_presentations">Presentations</span>
+                <span class="skill" data-i18n="skill_bidding">Bidding</span>
+                <span class="skill" data-i18n="skill_budgeting">Budgeting</span>
+                <span class="skill" data-i18n="skill_planning">Planning</span>
+                <span class="skill" data-i18n="skill_set_coordination">Set Coordination</span>
+                <span class="skill" data-i18n="skill_team_coordination">Team Lead & Coordination</span>
+                <span class="skill" data-i18n="skill_communication">Communication</span>
+                <span class="skill" data-i18n="skill_negotiation">Negotiation & Conflict Resolution</span>
+            </div>
 
-    <script src="components/header.js"></script>
-    <script src="components/footer.js"></script>
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
-    <script>feather.replace();</script>
+            <br>
+
+            <!-- LANGUAGES -->
+            <h3 class="text-lg font-semibold mb-3" data-i18n="languages">Languages</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="lang" data-i18n="lang_german">German</span>
+                <span class="lang" data-i18n="lang_english">English</span>
+                <span class="lang" data-i18n="lang_croatian">Croatian</span>
+            </div>
+
+            <br>
+
+            <!-- BIO TEXT -->
+            <div class="space-y-5 text-gray-300 leading-relaxed">
+                <p data-i18n="about_text_1">
+                    I'm Filip "Ficho" Zafran — filmmaker, location specialist and production all-rounder...
+                </p>
+                <p data-i18n="about_text_2">
+                    I’ve worked on international feature films, European productions...
+                </p>
+                <p data-i18n="about_text_3">
+                    My focus lies in managing Call-Sheets, running set operations...
+                </p>
+                <p data-i18n="about_text_4">
+                    In addition, I have a background in web development...
+                </p>
+                <p data-i18n="about_text_5">
+                    If there is one word that describes me best, it's reliability.
+                </p>
+                <p data-i18n="about_text_6" class="text-sm text-gray-400">
+                    Why was I scouting the Tatras by helicopter at 22yo? Because...
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- EXPANDED GALLERIES (Hidden by default) -->
+    <section id="behind-gallery" class="mt-10 hidden">
+        <h3 class="text-lg font-semibold mb-4 text-imdb-yellow" data-i18n="behind_scenes">Behind the Scenes</h3>
+        <div id="behind-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+    </section>
+
+    <section id="berlin-gallery" class="mt-10 hidden">
+        <h3 class="text-lg font-semibold mb-4 text-imdb-yellow" data-i18n="locations_berlin">Locations Berlin</h3>
+        <div id="berlin-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+    </section>
+
+    <section id="cro-gallery" class="mt-10 hidden">
+        <h3 class="text-lg font-semibold mb-4 text-imdb-yellow" data-i18n="locations_croatia">Locations Croatia</h3>
+        <div id="cro-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+    </section>
+
+</main>
+
+<custom-footer></custom-footer>
+
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script src="translations.js"></script>
+<script src="script.js"></script>
+<script>feather.replace();</script>
+
 </body>
 </html>
