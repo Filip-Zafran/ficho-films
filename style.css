@@ -207,3 +207,29 @@ body {
     }
 }
 
+/* Hover overlay (desktop only) */
+.hover-hint-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;           /* hidden by default */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(245,197,24,0.5);  /* Yellow 50% opacity */
+    color: #121212;
+    padding: 8px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;    /* prevents blocking clicks */
+}
+
+@media (min-width: 640px) { /* desktop only */
+    .gallery-thumb:hover .hover-hint-overlay {
+        display: flex;
+        opacity: 1;
+    }
+}
+
