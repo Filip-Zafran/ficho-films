@@ -46,10 +46,58 @@ const translations = {
     behind_scenes: "Behind the Scenes",
     based_in_berlin: "Based in Berlin – shooting across Europe",
 
+    about_text_1: `I'm Filip "Ficho" Zafran — filmmaker, location specialist and production all-rounder 
+    with roots in Croatia and a base in Berlin. My background spans across 
+    Assistant Directing, Location Scouting / Management, Production Coordination 
+    and application & presentation preparation for productions.`,
+
+    about_text_2: `I’ve worked on international feature films, European productions, TVCs, 
+    and branded content.`,
+
+    about_text_3: `My focus lies in managing Call-Sheets, running set operations, scouting the right 
+    locations, and keeping departments aligned under pressure. I’m happiest when 
+    things are moving fast.`,
+
+    about_text_4: `In addition, I have a background in web development and my IT knowledge often 
+    comes in handy when dealing with digital workflows, planning, and bidding. 
+    I use these skills to improve efficiency and reduce costs on productions 
+    whenever possible.`,
+
+    about_text_5: `If there is one word that describes me best, it's reliability.`,
+
+    about_text_6: `Why was I scouting the Tatras by helicopter at 22yo? 
+    Because when things get complex and difficult, people know they can count on me.`,
+
+    key_skills: "Key Skills",
+    languages: "Languages",
+
+    role_2nd_ad: "2nd AD",
+    role_casting_manager: "Casting Manager",
+    role_unit_manager: "Unit Manager",
+    role_prod_coordinator: "Prod. Coordinator",
+    role_prod_manager: "Prod. Manager",
+    role_location_manager_scout: "Location Manager / Scout",
+
+    skill_scouting: "Scouting",
+    skill_presentations: "Presentations",
+    skill_bidding: "Bidding",
+    skill_budgeting: "Budgeting",
+    skill_planning: "Planning",
+    skill_set_coordination: "Set Coordination",
+    skill_team_coordination: "Team Lead & Coordination",
+    skill_communication: "Communication",
+    skill_negotiation: "Negotiation & Conflict Resolution",
+
+    lang_german: "German",
+    lang_english: "English",
+    lang_croatian: "Croatian",
+
     // === NAVIGATION ===
     nav_projects: "Projects",
     nav_about: "About Me",
     nav_contact: "Contact",
+    key_roles: "Key Roles",
+
   },
 
   de: {
@@ -96,10 +144,66 @@ const translations = {
     behind_scenes: "Hinter den Kulissen",
     based_in_berlin: "Mit Sitz in Berlin – Drehs in ganz Europa",
 
+    // ABOUT PAGE TAGS
+    about_text_1: `Ich bin Filip „Ficho“ Zafran – Filmemacher, Location-Spezialist und vielseitiger 
+    Produktionsallrounder mit Wurzeln in Kroatien und einem Standort in Berlin. 
+    Mein beruflicher Hintergrund umfasst Regieassistenz, Location Scouting / Management, 
+    Produktionskoordination sowie Bewerbungs- und Präsentationsvorbereitung für Produktionen.`,
+
+    about_text_2: `Ich habe an internationalen Spielfilmen, europäischen Produktionen, TV-Werbungen 
+    und Branded-Content-Projekten gearbeitet.`,
+
+    about_text_3: `Mein Schwerpunkt liegt auf der Erstellung von Dispos, dem reibungslosen Ablauf 
+    am Set, der Suche nach den passenden Drehorten und der Abstimmung der einzelnen 
+    Departments unter hohem Druck. Am glücklichsten bin ich, wenn eine Produktion Tempo 
+    aufnimmt und alles in Bewegung bleibt.`,
+
+    about_text_4: `Zusätzlich habe ich einen Hintergrund in Webentwicklung, und mein IT-Wissen hilft 
+    mir regelmäßig bei digitalen Workflows, in der Planung und beim Bidding. 
+    Ich nutze diese Fähigkeiten, um Abläufe effizienter zu gestalten und Kosten zu 
+    reduzieren – wo immer es möglich ist.`,
+
+    about_text_5: `Wenn es ein Wort gibt, das mich am besten beschreibt, dann ist es Zuverlässigkeit.`,
+
+    about_text_6: `Warum ich mit 22 Jahren die Tatra-Gebirge per Helikopter gescoutet habe? 
+    Weil Menschen wissen, dass sie sich auf mich verlassen können – besonders wenn es 
+    komplex und schwierig wird.`,
+
+
+    key_roles: "Wichtige Rollen",
+    key_skills: "Wichtige Fähigkeiten",
+    languages: "Sprachen",
+
+    // Roles list
+    role_2nd_ad: "2. Regieassistenz",
+    role_casting_manager: "Casting-Manager",
+    role_unit_manager: "Aufnahmeleiter / Unit Manager",
+    role_prod_coordinator: "Produktionskoordinator",
+    role_prod_manager: "Produktionsleiter",
+    role_location_manager_scout: "Location Manager / Scout",
+
+    // Skills list
+    skill_scouting: "Location Scouting",
+    skill_presentations: "Präsentationen",
+    skill_bidding: "Kostenkalkulation / Bidding",
+    skill_budgeting: "Budgetierung",
+    skill_planning: "Planung",
+    skill_set_coordination: "Set-Koordination",
+    skill_team_coordination: "Teamleitung & Koordination",
+    skill_communication: "Kommunikation",
+    skill_negotiation: "Verhandlung & Konfliktlösung",
+
+    // Languages list
+    lang_german: "Deutsch",
+    lang_english: "Englisch",
+    lang_croatian: "Kroatisch",
+
+
     // === NAVIGATION ===
     nav_projects: "Projekte",
     nav_about: "Über mich",
     nav_contact: "Kontakt",
+
   }
 };
 
@@ -166,6 +270,8 @@ Object.assign(translations.de, {
   "Casting": "Casting",
   "Events": "Events",
   "Music Video": "Musikvideo",
+
+  
 });
 
 // Initialize on page load
