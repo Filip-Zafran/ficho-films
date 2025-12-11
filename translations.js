@@ -92,6 +92,9 @@ const translations = {
     lang_english: "English",
     lang_croatian: "Croatian",
 
+    gallery_hint: "Click to open • click to close",
+
+
     // === NAVIGATION ===
     nav_projects: "Projects",
     nav_about: "About Me",
@@ -193,6 +196,9 @@ const translations = {
     skill_team_coordination: "Teamleitung & Koordination",
     skill_communication: "Kommunikation",
     skill_negotiation: "Verhandlung & Konfliktlösung",
+
+    gallery_hint: "Zum Öffnen klicken • zum Schließen erneut klicken",
+
 
     // Languages list
     lang_german: "Deutsch",
