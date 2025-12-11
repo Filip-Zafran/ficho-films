@@ -1,4 +1,7 @@
-// Render project cards from PROJECTS (defined in projects.js)
+/* ============================================
+   RENDER PROJECTS (your original logic)
+   ============================================ */
+
 function renderProjectsFromData() {
     if (typeof PROJECTS === "undefined") return;
 
@@ -14,7 +17,7 @@ function renderProjectsFromData() {
     allContainer.innerHTML = "";
 
     // Translate "More" button
-    const moreLabel = t("More") || "More";
+    const moreLabel = typeof t === "function" ? (t("More") || "More") : "More";
 
     // === FEATURED CARD (with optional teaser video) ===
     const buildFeaturedCard = (project, imageHeightClasses = "h-48") => {
@@ -23,8 +26,8 @@ function renderProjectsFromData() {
                 ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">${moreLabel}</a>`
                 : "";
 
-        const translatedTitle = t(project.title);
-        const translatedRole = t(project.roleLabel);
+        const translatedTitle = typeof t === "function" ? t(project.title) : project.title;
+        const translatedRole = typeof t === "function" ? t(project.roleLabel) : project.roleLabel;
 
         const media = project.teaserVideo
             ? `
@@ -79,8 +82,8 @@ function renderProjectsFromData() {
                 ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">${moreLabel}</a>`
                 : "";
 
-        const translatedTitle = t(project.title);
-        const translatedRole = t(project.roleLabel);
+        const translatedTitle = typeof t === "function" ? t(project.title) : project.title;
+        const translatedRole = typeof t === "function" ? t(project.roleLabel) : project.roleLabel;
 
         return `
             <div class="project-card" data-role="${project.role}">
@@ -120,160 +123,203 @@ function renderProjectsFromData() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    renderProjectsFromData();
+/* ============================================
+   SIMPLE ABOUT PAGE GALLERY SYSTEM (fixed)
+   ============================================ */
 
-    // === ROLE FILTERS ===
-    const roleFilters = document.querySelectorAll(".role-filter");
+function setupSimpleGallery(options) {
+    const { triggerId, sectionId, gridId, folder, baseName, totalImages } = options;
 
-    if (roleFilters.length > 0) {
-        const featuredSection = document.getElementById("featured-projects");
-        const allProjectsSection = document.getElementById("all-projects-section");
-        const allProjectsHeading = document.getElementById("all-projects-heading");
-        const featuredHeading = document.getElementById("featured-heading");
+    const trigger = document.getElementById(triggerId);
+    const section = document.getElementById(sectionId);
+    const grid = document.getElementById(gridId);
 
-        const updateProjectVisibility = (role) => {
-            const projectCards = document.querySelectorAll(".project-card");
-            projectCards.forEach((card) => {
-                const roles = (card.getAttribute("data-role") || "").split(" ");
-                card.style.display = role === "all" || roles.includes(role) ? "block" : "none";
-            });
-        };
+    if (!trigger || !section || !grid) return;
 
-        roleFilters.forEach((filter) => {
-            filter.addEventListener("click", function () {
-                const role = this.getAttribute("data-role");
+    const arrow = trigger.querySelector(".gallery-arrow");
+    const header = section.querySelector(".gallery-header");
+    const closeBtn = section.querySelector(".gallery-close");
 
-                // Highlight selected filter
-                roleFilters.forEach((f) =>
-                    f.classList.remove("bg-imdb-yellow", "text-imdb-dark")
-                );
-                this.classList.add("bg-imdb-yellow", "text-imdb-dark");
+    // Load images only once
+    if (grid.children.length === 0) {
+        const exts = [".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG"];
 
-                // Heading translation
-                if (role === "all") {
-                    featuredSection?.classList.remove("hidden");
-                    featuredHeading?.classList.remove("hidden");
+        for (let i = 1; i <= totalImages; i++) {
+            const num = String(i).padStart(2, "0");
+            const basePath = `images/${folder}/${baseName}${num}`;
 
-                    allProjectsSection?.classList.remove("hidden");
-                    allProjectsHeading.textContent = t("All Projects");
-                } else {
-                    featuredSection?.classList.add("hidden");
-                    featuredHeading?.classList.add("hidden");
+            const wrap = document.createElement("div");
+            wrap.className =
+                "border-2 border-imdb-yellow rounded-lg overflow-hidden bg-black/40";
 
-                    allProjectsSection?.classList.remove("hidden");
-                    allProjectsHeading.textContent = t(this.textContent.trim());
+            const img = document.createElement("img");
+            img.className = "w-full h-40 md:h-52 object-cover";
+            img.dataset.base = basePath;
+            img.dataset.index = "0";
+
+            function loadNext() {
+                const idx = parseInt(img.dataset.index, 10);
+                if (idx >= exts.length) {
+                    wrap.style.display = "none";
+                    return;
                 }
+                img.src = img.dataset.base + exts[idx];
+                img.dataset.index = String(idx + 1);
+            }
 
-                updateProjectVisibility(role);
-            });
-        });
+            img.onerror = loadNext;
+            loadNext();
 
-        // Default = "All Projects"
-        const defaultFilter = document.querySelector('.role-filter[data-role="all"]');
-        if (defaultFilter) defaultFilter.click();
+            wrap.appendChild(img);
+            grid.appendChild(wrap);
+        }
     }
 
-document.addEventListener("DOMContentLoaded", () => {
+    // OPEN / CLOSE via thumbnail
+    trigger.addEventListener("click", () => {
+        const opening = section.classList.contains("hidden");
+        section.classList.toggle("hidden");
 
-    // Each gallery trigger (thumbnail)
-    const triggers = document.querySelectorAll(".gallery-trigger");
+        if (arrow) arrow.textContent = opening ? "▼" : "►";
 
-    triggers.forEach(trigger => {
-        const galleryId = trigger.id.replace("open-", "").replace("-gallery", "") + "-gallery";
-        const gallery = document.getElementById(galleryId);
-        const arrow = trigger.querySelector(".gallery-arrow");
-        const closeBtn = gallery.querySelector(".gallery-close");
-
-        trigger.addEventListener("click", () => {
-            const isOpening = gallery.classList.contains("hidden");
-            gallery.classList.toggle("hidden");
-
-            // Update arrow (mobile only)
-            if (arrow) arrow.textContent = isOpening ? "▼" : "►";
-
-            // Show close button (mobile only)
-            if (closeBtn) {
-                if (isOpening) closeBtn.classList.remove("hidden");
-                else closeBtn.classList.add("hidden");
-            }
-
-            // Scroll gallery into view (mobile)
-            if (isOpening && window.innerWidth < 768) {
-                setTimeout(() => {
-                    gallery.scrollIntoView({ behavior: "smooth", block: "start" });
-                }, 150);
-            }
-        });
-
-        // Close button logic
-        if (closeBtn) {
-            closeBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // prevent retrigger
-
-                gallery.classList.add("hidden");
-                closeBtn.classList.add("hidden");
-
-                // Update mobile arrow
-                if (arrow) arrow.textContent = "►";
-
-                // Smooth scroll back to thumbnail
-                trigger.scrollIntoView({ behavior: "smooth", block: "center" });
-            });
+        if (opening) {
+            setTimeout(() => {
+                section.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 150);
         }
     });
-});
 
-
-    // === FEATURED VIDEOS (teaser hover/tap) ===
-    function initFeaturedVideos() {
-        const videos = document.querySelectorAll(".featured-video");
-
-        videos.forEach((video) => {
-            const src = video.getAttribute("data-teaser-src");
-            if (!src) return;
-
-            video.src = src;
-            video.load();
-            video.loop = true;
-
-            const container = video.parentElement;
-            const poster = container.querySelector(".featured-poster");
-            const hint = container.querySelector(".mobile-video-hint");
-            const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-            container.addEventListener("mouseenter", () => {
-                poster.classList.add("opacity-0");
-                video.classList.add("opacity-100");
-                video.play();
-                if (!isMobile && hint) hint.classList.add("hidden");
-            });
-
-            container.addEventListener("mouseleave", () => {
-                video.pause();
-                video.classList.remove("opacity-100");
-                poster.classList.remove("opacity-0");
-                if (!isMobile && hint) hint.classList.remove("hidden");
-            });
-
-            container.addEventListener("click", () => {
-                if (isMobile) {
-                    video.play();
-                    poster.classList.add("opacity-0");
-                    video.classList.add("opacity-100");
-                    if (hint) hint.classList.add("hidden");
-                }
-            });
-
-            video.addEventListener("pause", () => {
-                if (isMobile && hint) hint.classList.remove("hidden");
-            });
+    // HEADER click closes gallery and scrolls back to thumbnail
+    if (header) {
+        header.addEventListener("click", () => {
+            section.classList.add("hidden");
+            if (arrow) arrow.textContent = "►";
+            trigger.scrollIntoView({ behavior: "smooth", block: "center" });
         });
     }
 
-    initFeaturedVideos();
+    // CLOSE BUTTON (▲) – optional, but we guard anyway
+    if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            section.classList.add("hidden");
+            if (arrow) arrow.textContent = "►";
+            trigger.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+    }
+}
 
-    // === PRODUCTION DROPDOWN ===
+/* ============================================
+   FEATURED VIDEOS (unchanged from your logic)
+   ============================================ */
+
+function initFeaturedVideos() {
+    const videos = document.querySelectorAll(".featured-video");
+
+    videos.forEach((video) => {
+        const src = video.getAttribute("data-teaser-src");
+        if (!src) return;
+
+        video.src = src;
+        video.load();
+        video.loop = true;
+
+        const container = video.parentElement;
+        const poster = container.querySelector(".featured-poster");
+        const hint = container.querySelector(".mobile-video-hint");
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+        container.addEventListener("mouseenter", () => {
+            if (isMobile) return;
+            poster.classList.add("opacity-0");
+            video.classList.add("opacity-100");
+            video.play();
+            if (hint) hint.classList.add("hidden");
+        });
+
+        container.addEventListener("mouseleave", () => {
+            if (isMobile) return;
+            video.pause();
+            video.classList.remove("opacity-100");
+            poster.classList.remove("opacity-0");
+            if (hint) hint.classList.remove("hidden");
+        });
+
+        container.addEventListener("click", () => {
+            if (!isMobile) return;
+            video.play();
+            poster.classList.add("opacity-0");
+            video.classList.add("opacity-100");
+            if (hint) hint.classList.add("hidden");
+        });
+
+        video.addEventListener("pause", () => {
+            if (isMobile && hint) hint.classList.remove("hidden");
+        });
+    });
+}
+
+/* ============================================
+   INIT ROLE FILTERS
+   ============================================ */
+
+function initRoleFilters() {
+    const roleFilters = document.querySelectorAll(".role-filter");
+    if (roleFilters.length === 0) return;
+
+    const featuredSection = document.getElementById("featured-projects");
+    const allProjectsSection = document.getElementById("all-projects-section");
+    const allProjectsHeading = document.getElementById("all-projects-heading");
+    const featuredHeading = document.getElementById("featured-heading");
+
+    const updateProjectVisibility = (role) => {
+        const projectCards = document.querySelectorAll(".project-card");
+        projectCards.forEach((card) => {
+            const roles = (card.getAttribute("data-role") || "").split(" ");
+            card.style.display = role === "all" || roles.includes(role) ? "block" : "none";
+        });
+    };
+
+    roleFilters.forEach((filter) => {
+        filter.addEventListener("click", function () {
+            const role = this.getAttribute("data-role");
+
+            // Highlight selected filter
+            roleFilters.forEach((f) =>
+                f.classList.remove("bg-imdb-yellow", "text-imdb-dark")
+            );
+            this.classList.add("bg-imdb-yellow", "text-imdb-dark");
+
+            if (role === "all") {
+                featuredSection?.classList.remove("hidden");
+                featuredHeading?.classList.remove("hidden");
+                allProjectsSection?.classList.remove("hidden");
+                if (allProjectsHeading && typeof t === "function") {
+                    allProjectsHeading.textContent = t("All Projects");
+                }
+            } else {
+                featuredSection?.classList.add("hidden");
+                featuredHeading?.classList.add("hidden");
+                allProjectsSection?.classList.remove("hidden");
+                if (allProjectsHeading) {
+                    allProjectsHeading.textContent = this.textContent.trim();
+                }
+            }
+
+            updateProjectVisibility(role);
+        });
+    });
+
+    // Default filter
+    const defaultFilter = document.querySelector('.role-filter[data-role="all"]');
+    if (defaultFilter) defaultFilter.click();
+}
+
+/* ============================================
+   PRODUCTION MENU
+   ============================================ */
+
+function initProductionDropdown() {
     const productionToggle = document.getElementById("production-toggle");
     const productionSubmenu = document.getElementById("production-submenu");
 
@@ -282,101 +328,61 @@ document.addEventListener("DOMContentLoaded", () => {
             productionSubmenu.classList.toggle("hidden");
         });
     }
+}
 
-    // === CONTACT FORM HANDLER ===
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+
+function initContactForm() {
     const contactForm = document.getElementById("contact-form");
     const formSuccess = document.getElementById("form-success");
 
-    if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-            fetch(contactForm.action, {
-                method: "POST",
-                body: new FormData(contactForm),
-                headers: { Accept: "application/json" }
-            })
-                .then((response) => {
-                    if (response.ok) {
-                        formSuccess.classList.remove("hidden");
-                        contactForm.reset();
-                    } else {
-                        alert("Something went wrong. Please try again.");
-                    }
-                })
-                .catch(() => {
-                    alert("Could not send the message. Please try again later.");
-                });
+    if (!contactForm) return;
 
-            e.preventDefault();
-        });
-    }
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    // === ABOUT PAGE SIMPLE GALLERY ===
-    function setupSimpleGallery(options) {
-        const {
-            triggerId,
-            sectionId,
-            gridId,
-            folder,
-            baseName,
-            totalImages
-        } = options;
-
-        const trigger = document.getElementById(triggerId);
-        const section = document.getElementById(sectionId);
-        const grid = document.getElementById(gridId);
-
-        if (!trigger || !section || !grid) return;
-
-        const exts = [".JPG", ".jpg", ".jpeg", ".png"];
-
-        if (grid.children.length === 0) {
-            for (let i = 1; i <= totalImages; i++) {
-                const num = String(i).padStart(2, "0");
-                const basePath = `images/${folder}/${baseName}${num}`;
-
-                const wrapper = document.createElement("div");
-                wrapper.className =
-                    "border-2 border-imdb-yellow rounded-lg overflow-hidden bg-black/40";
-
-                const inner = document.createElement("div");
-                inner.className = "w-full h-40 md:h-52";
-
-                const img = document.createElement("img");
-                img.alt = `${folder} ${i}`;
-                img.className = "w-full h-full object-cover";
-
-                img.dataset.basePath = basePath;
-                img.dataset.extIndex = "0";
-
-                function tryNextSrc() {
-                    const idx = parseInt(img.dataset.extIndex || "0", 10);
-                    if (idx >= exts.length) {
-                        wrapper.style.display = "none";
-                        return;
-                    }
-                    img.src = basePath + exts[idx];
-                    img.dataset.extIndex = String(idx + 1);
+        fetch(contactForm.action, {
+            method: "POST",
+            body: new FormData(contactForm),
+            headers: { Accept: "application/json" }
+        })
+            .then((response) => {
+                if (response.ok) {
+                    if (formSuccess) formSuccess.classList.remove("hidden");
+                    contactForm.reset();
+                } else {
+                    alert("Something went wrong. Please try again.");
                 }
+            })
+            .catch(() => {
+                alert("Could not send the message. Please try again later.");
+            });
+    });
+}
 
-                img.addEventListener("error", tryNextSrc);
-                tryNextSrc();
+/* ============================================
+   DOMContentLoaded – INIT EVERYTHING
+   ============================================ */
 
-                inner.appendChild(img);
-                wrapper.appendChild(inner);
-                grid.appendChild(wrapper);
-            }
-        }
+document.addEventListener("DOMContentLoaded", () => {
+    // Projects page
+    renderProjectsFromData();
+    initRoleFilters();
+    initFeaturedVideos();
+    initProductionDropdown();
+    initContactForm();
 
-        trigger.addEventListener("click", () => {
-            const hidden = section.classList.contains("hidden");
-            if (hidden) {
-                section.classList.remove("hidden");
-                section.scrollIntoView({ behavior: "smooth", block: "start" });
-            } else {
-                section.classList.add("hidden");
-            }
-        });
-    }
+    // About page galleries
+    setupSimpleGallery({
+        triggerId: "open-berlin-gallery",
+        sectionId: "berlin-gallery",
+        gridId: "berlin-grid",
+        folder: "berlin_locs",
+        baseName: "berlin_",
+        totalImages: 29
+    });
 
     setupSimpleGallery({
         triggerId: "open-behind-gallery",
@@ -385,15 +391,6 @@ document.addEventListener("DOMContentLoaded", () => {
         folder: "behind_scenes",
         baseName: "behind",
         totalImages: 20
-    });
-
-    setupSimpleGallery({
-        triggerId: "open-berlin-gallery",
-        sectionId: "berlin-gallery",
-        gridId: "berlin-grid",
-        folder: "berlin_locs",
-        baseName: "berlin_",
-        totalImages: 29
     });
 
     setupSimpleGallery({
