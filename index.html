@@ -23,176 +23,139 @@
         }
     </script>
 </head>
+
 <body class="bg-imdb-dark text-imdb-light font-sans antialiased">
     <custom-header></custom-header>
 
-    
-    <main class="container mx-auto px-4 py-8">
-        <!-- PROJECTS TAB -->
-        <div id="projects" class="tab-content active">
-            <div class="flex flex-col lg:flex-row gap-8">
+<main class="container mx-auto px-4 py-8">
+    <div id="projects" class="tab-content active">
+        <div class="flex flex-col lg:flex-row gap-8">
 
-<!-- MOBILE-ONLY INTRO -->
+<!-- MOBILE INTRO -->
 <section class="block md:hidden mb-8 px-3">
     <div class="bg-imdb-gray/40 p-4 rounded-lg border border-gray-700">
-        <h1 class="text-xl font-bold text-imdb-yellow mb-2 leading-tight">
+        <h1 class="text-xl font-bold text-imdb-yellow mb-2 leading-tight"
+            data-i18n="welcome_mobile">
             Welcome to Ficho's Film Production Portfolio Page
         </h1>
-        <p class="text-gray-300 text-sm leading-relaxed">
+
+        <p class="text-gray-300 text-sm leading-relaxed"
+           data-i18n="intro_mobile">
             As everything in the film industry, this page also looks much better on a larger screen.
         </p>
     </div>
 </section>
 
 
-                
-                <!-- Roles Sidebar -->
-                <div class="w-full lg:w-1/4">
-                    <div class="bg-imdb-gray p-6 rounded-lg sticky top-24">
-                        <h3 class="text-xl font-bold text-imdb-yellow mb-4">Roles & Credits</h3>
-                        <ul class="space-y-2">
+<!-- SIDEBAR -->
+<div class="w-full lg:w-1/4">
+    <div class="bg-imdb-gray p-6 rounded-lg sticky top-24">
+        
+        <h3 class="text-xl font-bold text-imdb-yellow mb-4" data-i18n="roles_heading">
+            Roles & Credits
+        </h3>
 
-        </ul>
+        <ul class="space-y-2"></ul>
 
- 
+        <!-- ALL PROJECTS -->
+        <li>
+            <button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition italic font-semibold"
+                    data-role="all"
+                    data-i18n="all_projects">
+                All Projects
+            </button>
+        </li>
 
-    <!-- MAIN FOLDER: ALL PROJECTS -->
-    <li>
-        <button
-            class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition italic font-semibold"
-            data-role="all"
-        >
-            All Projects
-        </button>
-    </li>
+        <!-- ASSISTANT DIRECTOR -->
+        <li>
+            <button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+                    data-role="director"
+                    data-i18n="assistant_director">
+                Assistant Director
+            </button>
+        </li>
 
-    <!-- DIRECT FILTER: ASSISTANT DIRECTOR -->
-    <li>
-        <button
-            class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
-            data-role="director"
-        >
-            Assistant Director
-        </button>
-    </li>
+        <!-- LOCATION -->
+        <li>
+            <button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+                    data-role="location"
+                    data-i18n="location_manager">
+                Location Scout / Manager
+            </button>
+        </li>
 
-    <!-- DIRECT FILTER: LOCATION SCOUT / MANAGER -->
-    <li>
-        <button
-            class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
-            data-role="location"
-        >
-            Location Scout / Manager
-        </button>
-    </li>
+        <!-- PRODUCTION DROPDOWN -->
+        <li>
+            <button id="production-toggle"
+                    type="button"
+                    class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition">
+                <span data-i18n="production">Production</span>
+                <span class="text-xs text-gray-400 flex items-center gap-1">
+                    <i data-feather="chevron-down"></i>
+                </span>
+            </button>
 
-    <!-- PRODUCTION FOLDER (DROPDOWN) -->
-    <li>
-        <!-- This button ONLY toggles the dropdown, it is NOT a filter -->
-        <button
-            id="production-toggle"
-            type="button"
-            class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
-        >
-            <span>Production</span>
-            <span class="text-xs text-gray-400 flex items-center gap-1">
-                <i data-feather="chevron-down"></i>
-            </span>
-        </button>
+            <ul id="production-submenu"
+                class="mt-1 ml-3 border-l border-gray-700 pl-3 space-y-1 hidden">
 
-        <!-- Nested production subcategories -->
-        <ul
-            id="production-submenu"
-            class="mt-1 ml-3 border-l border-gray-700 pl-3 space-y-1 hidden"
-        >
-            <li>
-                <button
-                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                    data-role="coordination"
-                >
-                    Production Coordinator
-                </button>
-            </li>
-            <li>
-                <button
-                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                    data-role="manager"
-                >
-                    Production Manager
-                </button>
-            </li>
-            <li>
-                <button
-                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                    data-role="producer"
-                >
-                    Producer
-                </button>
-            </li>
-               
-            <li>
-                <button
-                    class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                    data-role="event"
-                >
-                    Event Manager
-                </button>
-            </li>
-        </ul>
-    </li>
-</ul>
+                <li>
+                    <button class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                            data-role="coordination"
+                            data-i18n="coordinator">
+                        Production Coordinator
+                    </button>
+                </li>
 
-       <!-- DESKTOP-ONLY ART IMAGE -->
-        <div class="hidden lg:block mt-6">
-            <img 
-                src="images/film-art.png" 
-                alt="Film Art"
-                class="w-full rounded-lg opacity-90 hover:opacity-100 transition"
-            >
-        </div>
+                <li>
+                    <button class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                            data-role="manager"
+                            data-i18n="manager">
+                        Production Manager
+                    </button>
+                </li>
 
-                    </div>
-                </div>
+                <li>
+                    <button class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                            data-role="producer"
+                            data-i18n="producer">
+                        Producer
+                    </button>
+                </li>
+
+                <li>
+                    <button class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                            data-role="event"
+                            data-i18n="event_manager">
+                        Event Manager
+                    </button>
+                </li>
+
+            </ul>
+        </li>
+    </div>
+</div>
 
 
-                
-                <!-- Projects Gallery -->
-              <div class="w-full lg:w-3/4">
+<!-- PROJECTS MAIN -->
+<div class="w-full lg:w-3/4">
 
 <!-- HERO TAGLINE -->
 <section class="mb-8">
     <div class="relative overflow-visible py-3">
         <div class="inline-block select-none leading-none">
-            
-            <!-- LOCATIONS -->
-            <span
-                class="hero-word block font-black uppercase 
-                       text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem]
-                       text-imdb-yellow tracking-tight 
-                       transform transition-transform duration-300 hover:scale-110"
-            >
+
+            <span class="hero-word block font-black uppercase text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] text-imdb-yellow tracking-tight transition-transform duration-300 hover:scale-110"
+                  data-i18n="tagline_locations">
                 Locations.
             </span>
 
-            <!-- LOCKED (medium, slightly overlapping up) -->
-            <span
-                class="hero-word block font-bold uppercase 
-                       text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem]
-                       text-imdb-light tracking-[0.15em]
-                       -mt-3 md:-mt-4 relative z-10
-                       transform transition-transform duration-300 hover:scale-110"
-            >
+            <span class="hero-word block font-bold uppercase text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] text-imdb-light tracking-[0.15em] -mt-3 md:-mt-4 relative z-10 transition-transform duration-300 hover:scale-110"
+                  data-i18n="tagline_locked">
                 Locked.
             </span>
 
-            <!-- ACTION! -->
-            <span
-                class="hero-word block font-black uppercase 
-                       text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem]
-                       text-imdb-yellow tracking-widest 
-                       -mt-1 md:-mt-3
-                       transform transition-transform duration-300 hover:scale-110"
-            >
+            <span class="hero-word block font-black uppercase text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] text-imdb-yellow tracking-widest -mt-1 md:-mt-3 transition-transform duration-300 hover:scale-110"
+                  data-i18n="tagline_action">
                 Action!
             </span>
 
@@ -201,48 +164,43 @@
 </section>
 
 
-    <!-- END HERO TAGLINE -->
+<!-- FEATURED HEADING -->
+<h2 id="featured-heading"
+    class="text-3xl font-bold text-imdb-yellow mb-6"
+    data-i18n="featured_projects">
+    Featured Projects
+</h2>
 
-  <h2 id="featured-heading" class="text-3xl font-bold text-imdb-yellow mb-6">Featured Projects</h2>
-
-
-
-<!-- Featured Projects Wrapper -->
+<!-- FEATURED PROJECTS -->
 <div id="featured-projects" class="space-y-6 mb-12">
-
-    <!-- BIG FEATURED (2x) -->
-    <div id="featured-big" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Filled dynamically by script.js -->
-    </div>
-
-    <!-- SMALL FEATURED (3x) -->
-    <div id="featured-small" class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <!-- Filled dynamically -->
-    </div>
-
+    <div id="featured-big" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    <div id="featured-small" class="grid grid-cols-1 sm:grid-cols-3 gap-6"></div>
 </div>
 
+<!-- ALL PROJECTS -->
 <div id="all-projects-section">
-    <h2 id="all-projects-heading" class="text-3xl font-bold text-imdb-yellow mb-6">
+    <h2 id="all-projects-heading"
+        class="text-3xl font-bold text-imdb-yellow mb-6"
+        data-i18n="all_projects_heading">
         All Projects
     </h2>
-    <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        id="projects-container">
-        <!-- IMPORTANT: this div should be EMPTY in the HTML.
-             JS will fill it. -->
-    </div>
-</div>
-      </main>
-      
-        <custom-footer></custom-footer>
 
-    <script src="components/header.js"></script>
-    <script src="components/footer.js"></script>
-    <script src="projects.js"></script>
-    <script src="script.js"></script>
-    <script>
-        feather.replace();
-    </script>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+         id="projects-container"></div>
+</div>
+
+</div>
+</div>
+</main>
+
+<custom-footer></custom-footer>
+
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script src="projects.js"></script>
+<script src="translations.js"></script>
+<script src="script.js"></script>
+<script>feather.replace();</script>
+
 </body>
 </html>

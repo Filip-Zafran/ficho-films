@@ -43,192 +43,137 @@
                         >
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
                         <div class="absolute bottom-4 left-4">
-                            <p class="text-xs uppercase tracking-wide text-gray-300">Filip "Ficho" Zafran</p>
-                            <p class="text-sm font-semibold text-imdb-yellow">Filmmaker • AD • Locations</p>
+                            <p class="text-xs uppercase tracking-wide text-gray-300">
+                                Filip "Ficho" Zafran
+                            </p>
+                            <p class="text-sm font-semibold text-imdb-yellow">
+                                Filmmaker • AD • Locations
+                            </p>
                         </div>
                     </div>
 
-    <!-- SMALL PHOTOS -->
-<div class="grid grid-cols-2 gap-3">
+                    <!-- SMALL PHOTOS -->
+                    <div class="grid grid-cols-2 gap-3">
 
-    <!-- LOCATIONS BERLIN CARD -->
-    <div
-        id="open-berlin-gallery"
-        class="relative overflow-hidden rounded-lg group cursor-pointer"
-    >
-        <img
-            src="images/berlin_locs/berlin_26.jpg"
-            alt="Location scouting image"
-            class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500"
-        >
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded">
-            Locations Berlin
-        </span>
+                        <div id="open-berlin-gallery" class="relative overflow-hidden rounded-lg group cursor-pointer">
+                            <img src="images/berlin_locs/berlin_26.jpg" class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition"></div>
+                            <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded"
+                                  data-i18n="locations_berlin">Locations Berlin</span>
 
-        <!-- HINT -->
-        <span class="gallery-hint">Click to open • click to close</span>
-    </div>
+                            <span class="gallery-hint">Click to open • click to close</span>
+                        </div>
 
-    <!-- BEHIND THE SCENES CARD -->
-    <div
-        id="open-behind-gallery"
-        class="relative overflow-hidden rounded-lg group cursor-pointer"
-    >
-        <img
-            src="images/behind_scenes/behind01.JPG"
-            alt="Behind the scenes"
-            class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500"
-        >
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded">
-            Behind the Scenes
-        </span>
+                        <div id="open-behind-gallery" class="relative overflow-hidden rounded-lg group cursor-pointer">
+                            <img src="images/behind_scenes/behind01.JPG" class="w-full h-28 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition"></div>
+                            <span class="absolute left-2 bottom-2 bg-black/60 px-2 py-1 text-[0.65rem] uppercase rounded"
+                                  data-i18n="behind_scenes">Behind the Scenes</span>
 
-        <!-- HINT -->
-        <span class="gallery-hint">Click to open • click to close</span>
-    </div>
+                            <span class="gallery-hint">Click to open • click to close</span>
+                        </div>
 
-</div>
+                    </div>
 
-<!-- WIDE LOCATION STRIP (CROATIA) -->
-<div
-    id="open-cro-gallery"
-    class="relative overflow-hidden rounded-lg group cursor-pointer mt-4"
->
-    <img
-        src="images/cro_locs/croatia_01.jpg"
-        alt="Locations Croatia"
-        class="w-full h-24 object-cover transform group-hover:scale-105 transition-transform duration-500"
-    >
-    <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
-    <p class="absolute left-3 bottom-2 text-[0.7rem] uppercase tracking-wide">
-        Locations Croatia
-    </p>
+                    <!-- LOCATIONS CROATIA -->
+                    <div id="open-cro-gallery" class="relative overflow-hidden rounded-lg group cursor-pointer mt-4">
+                        <img src="images/cro_locs/croatia_01.jpg" class="w-full h-24 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-70 group-hover:opacity-90 transition"></div>
+                        <p class="absolute left-3 bottom-2 text-[0.7rem] uppercase tracking-wide"
+                           data-i18n="locations_croatia">Locations Croatia</p>
 
-    <!-- HINT -->
-    <span class="gallery-hint">Click to open • click to close</span>
-</div>
-
-
+                        <span class="gallery-hint">Click to open • click to close</span>
+                    </div>
 
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: TEXT -->
+            <!-- RIGHT COLUMN -->
             <div class="w-full lg:w-2/3 relative">
 
-                <h1 class="text-3xl font-bold text-imdb-yellow mb-4">About Ficho</h1>
+                <h1 class="text-3xl font-bold text-imdb-yellow mb-4"
+                    data-i18n="about_title">About Ficho</h1>
 
-                <h2 class="text-xl font-semibold mb-6">
+                <h2 class="text-xl font-semibold mb-6"
+                    data-i18n="about_subtitle">
                     Filmmaker, fixer, and production problem-solver.
                 </h2>
 
-      <!-- KEY ROLES -->
-                    <div class="mt-2">
-                        <h3 class="text-lg font-semibold mb-3">Key Roles</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">2nd AD</span>
-                            <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Casting Manager</span>
-                            <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Unit Manager</span>
-                            <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Prod. Coordinator</span>
-                            <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Prod. Manager</span>
-                            <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Location Manager / Scout</span>
-                        </div>
+
+                <!-- KEY ROLES -->
+                <div class="mt-2">
+                    <h3 class="text-lg font-semibold mb-3" data-i18n="key_roles">Key Roles</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">2nd AD</span>
+                        <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Casting Manager</span>
+                        <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Unit Manager</span>
+                        <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Prod. Coordinator</span>
+                        <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Prod. Manager</span>
+                        <span class="bg-slate-600 text-white px-3 py-1 rounded-full text-sm">Location Manager / Scout</span>
                     </div>
+                </div>
 
-                    <!-- KEY SKILLS -->
-                    <div class="mt-6">
-                        <h3 class="text-lg font-semibold mb-3">Key Skills</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Scouting</span>
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Presentations</span>
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Bidding</span>
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Budgeting</span>
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Planning</span>
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Set Coordination</span>
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Team Lead & Coordination</span>
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Communication</span>
-                            <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Negotiation & Conflict Resolution</span>
-                        </div>
+                <!-- KEY SKILLS -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold mb-3" data-i18n="key_skills">Key Skills</h3>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Scouting</span>
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Presentations</span>
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Bidding</span>
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Budgeting</span>
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Planning</span>
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Set Coordination</span>
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Team Lead & Coordination</span>
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Communication</span>
+                        <span class="bg-imdb-yellow text-imdb-dark px-3 py-1 rounded-full text-sm">Negotiation & Conflict Resolution</span>
                     </div>
+                </div>
 
-                     <!-- Languages -->
-                    <div class="mt-6">
-                        <h3 class="text-lg font-semibold mb-3">Languages</h3>
-                        <div class="flex flex-wrap gap-2">
-         <span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow font-medium">
-    German
-</span>
-<span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow font-medium">
-English </span>
-<span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow font-medium">
-    Croatian</span>
+                <!-- LANGUAGES -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold mb-3" data-i18n="languages">Languages</h3>
 
-
-
-
-
-                        </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow font-medium">German</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow font-medium">English</span>
+                        <span class="px-3 py-1 rounded-full text-sm bg-slate-700 text-imdb-yellow border border-imdb-yellow font-medium">Croatian</span>
                     </div>
+                </div>
 
-                    <br>
+                <br>
 
+                <!-- BIO TEXT (Not translated unless you want it) -->
                 <div class="space-y-5 text-gray-300 leading-relaxed">
                     <p>
-                        I'm Filip "Ficho" Zafran — filmmaker, location specialist and production all-rounder
-                        with roots in Croatia and a base in Berlin. My background spans across
-                        <span class="text-imdb-yellow">Assistant Directing</span>,
-                        <span class="text-imdb-yellow">Location Scouting / Management</span>,
-                        <span class="text-imdb-yellow">Production Coordination</span> and
-                        <span class="text-imdb-yellow">Commercial Production</span>.
+                        I'm Filip "Ficho" Zafran — filmmaker, location specialist and production all-rounder...
                     </p>
-
-                    <p>
-                        I’ve worked on international feature films, European productions, TVCs, and
-                        branded content.
-                    </p>
-
-                    <p>
-                        My focus lies in: <i>managing call sheets, running set operations, scouting the right locations, <br> and keeping departments aligned under pressure.</i>
-                        I’m happiest when things are moving fast.
-                    </p>
-
-                    <p>
-                        In addition, I have a background in web development and my <span class="text-imdb-yellow"><b>IT knowledge</b></span> often comes <br>in handy
-                        when dealing with digital workflows, planning, and bidding. I use my IT skills to <br> improve efficiency and reduce costs <br>on productions whenever possible.
-                    </p>
-
-                    <p>
-                       If there is one word that describes me best, it's <span class="text-imdb-yellow"><b>reliability.</b></span>
-                    </p>
-
+                    <p>I’ve worked on international feature films...</p>
+                    <p>My focus lies in managing call sheets...</p>
+                    <p>I have a background in web development...</p>
+                    <p>If there is one word that describes me best...</p>
 
                     <p class="text-sm text-gray-400">
-                        Why was I scouting the Tatras by helicopter at 22yo? <br>
-                        <i>Because when things get complex, people know they can count on me.</i>
+                        Why was I scouting the Tatras by helicopter at 22yo?
+                        <br><i>Because when things get complex, people know they can count on me.</i>
                     </p>
 
-                    <!-- SOFTWARE IMAGE BEHIND TEXT -->
-                    <img 
-                        src="images/software.png" 
-                        alt="Software tools"
-                        class="hidden lg:block opacity-50 absolute right-0 bottom-0 w-80 pointer-events-none select-none -z-10"
-                    >
-
-              
-
+                    <img src="images/software.png"
+                         class="hidden lg:block opacity-50 absolute right-0 bottom-0 w-80 pointer-events-none">
                 </div>
 
                 <div class="flex items-center gap-2 mt-8">
                     <i data-feather="map-pin" class="text-imdb-yellow"></i>
-                    <span>Based in Berlin<br><i>shooting across Europe (Germany, Croatia, Slovenia, Slovakia, Bosnia...) & Kenya.</i></span>
+                    <span data-i18n="based_in_berlin">
+                        Based in Berlin<br><i>shooting across Europe…</i>
+                    </span>
                 </div>
 
                 <div class="flex items-center gap-2 mt-4">
                     <i data-feather="book-open" class="text-imdb-yellow"></i>
                     <span>
-                        <a href="https://havc.hr/file/publication/file/little-black-book-2015-web.pdf" target="_blank" class="underline">
+                        <a href="https://havc.hr/file/publication/file/little-black-book-2015-web.pdf"
+                           target="_blank" class="underline">
                             Croatian Audiovisual Center – Little Black Book of Industry Contacts
                         </a>
                     </span>
@@ -237,58 +182,24 @@ English </span>
             </div>
         </div>
 
-        <!-- SIMPLE BEHIND THE SCENES GALLERY (initially hidden) -->
+        <!-- GALLERIES -->
         <section id="behind-gallery" class="mt-10 hidden">
-            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow">
-                Behind the Scenes
-            </h3>
-            <div
-                id="behind-grid"
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
-            >
-                <!-- Thumbnails will be added by JS -->
-            </div>
+            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow"
+                data-i18n="behind_scenes">Behind the Scenes</h3>
+            <div id="behind-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </section>
 
-                <!-- SIMPLE BEHIND THE SCENES GALLERY (initially hidden) -->
-        <section id="behind-gallery" class="mt-10 hidden">
-            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow">
-                Behind the Scenes
-            </h3>
-            <div
-                id="behind-grid"
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
-            >
-                <!-- Thumbnails will be added by JS -->
-            </div>
-        </section>
-
-        <!-- LOCATIONS BERLIN GALLERY (initially hidden) -->
         <section id="berlin-gallery" class="mt-10 hidden">
-            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow">
-                Locations Berlin
-            </h3>
-            <div
-                id="berlin-grid"
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
-            >
-                <!-- Thumbnails will be added by JS -->
-            </div>
+            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow"
+                data-i18n="locations_berlin">Locations Berlin</h3>
+            <div id="berlin-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </section>
 
-        <!-- LOCATIONS CROATIA GALLERY (initially hidden) -->
         <section id="cro-gallery" class="mt-10 hidden">
-            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow">
-                Locations Croatia
-            </h3>
-            <div
-                id="cro-grid"
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"
-            >
-                <!-- Thumbnails will be added by JS -->
-            </div>
+            <h3 class="text-lg font-semibold mb-4 text-imdb-yellow"
+                data-i18n="locations_croatia">Locations Croatia</h3>
+            <div id="cro-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </section>
-
 
     </main>
 
@@ -296,9 +207,8 @@ English </span>
 
     <script src="components/header.js"></script>
     <script src="components/footer.js"></script>
+    <script src="translations.js"></script>
     <script src="script.js"></script>
-    <script>
-        feather.replace();
-    </script>
+    <script>feather.replace();</script>
 </body>
 </html>

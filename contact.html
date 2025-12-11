@@ -31,38 +31,42 @@
 
     <main class="container mx-auto px-4 py-10 max-w-3xl">
 
-        <h1 class="text-3xl font-bold text-imdb-yellow mb-6">Get in Touch</h1>
+        <h1 class="text-3xl font-bold text-imdb-yellow mb-6" data-i18n="contact_get_in_touch">
+            Get in Touch
+        </h1>
 
-        <p class="text-gray-300 mb-6">
-            Please send me a short e-mail below - respond in a few hours! 
+        <p class="text-gray-300 mb-6" data-i18n="contact_intro">
+            Please send me a short e-mail below - I normally respond in a few hours!
         </p>
 
-        <!-- IMDB + LINKEDIN BUTTONS -->
+        <!-- IMDB + LINKEDIN + CREW UNITED BUTTONS -->
         <div class="flex flex-col sm:flex-row gap-4 mb-8">
+
             <a href="https://www.imdb.com/name/nm2569625/" target="_blank"
-                class="flex-1 bg-imdb-yellow text-imdb-dark font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition flex items-center justify-center gap-2">
+               class="flex-1 bg-imdb-yellow text-imdb-dark font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition flex items-center justify-center gap-2">
                 <i data-feather="film"></i>
-                <span>View my IMDb Profile</span>
+                <span data-i18n="btn_imdb">View my IMDb Profile</span>
             </a>
 
             <a href="https://www.linkedin.com/in/filip-zafran" target="_blank"
-                class="flex-1 bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
+               class="flex-1 bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
                 <i data-feather="linkedin"></i>
-                <span>Connect on LinkedIn</span>
+                <span data-i18n="btn_linkedin">Connect on LinkedIn</span>
             </a>
-    
+
             <a href="https://www.crew-united.com/en/Filip-Zafran_870880.html" target="_blank"
-                class="flex-1 bg-white text-black font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
-                
-                <img src="images/icons/crew_united-black.png" alt="Crew United" class="w-8 h-8">
-                <span>Crew United</span>
+               class="flex-1 bg-white text-black font-bold py-3 px-4 rounded-lg hover:bg-gray-200 transition flex items-center justify-center gap-2">
+                <img src="images/icons/crew_united-black.png" alt="Crew United" class="w-6 h-6">
+                <span data-i18n="btn_crew_united">Crew United</span>
             </a>
 
         </div>
 
         <!-- CONTACT FORM -->
         <section class="bg-imdb-gray p-6 rounded-lg">
-            <h2 class="text-xl font-semibold mb-4">Send a Message</h2>
+            <h2 class="text-xl font-semibold mb-4" data-i18n="send_message">
+                Send a Message
+            </h2>
 
             <form
                 id="contact-form"
@@ -71,49 +75,58 @@
                 class="space-y-5"
             >
 
+                <!-- NAME -->
                 <div>
-                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                    <label for="name" class="block text-sm font-medium mb-2" data-i18n="name_label">Name</label>
                     <input
                         type="text"
                         id="name"
                         name="name"
                         required
-                        class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
+                        class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 
+                               focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
                     >
                 </div>
 
+                <!-- EMAIL -->
                 <div>
-                    <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                    <label for="email" class="block text-sm font-medium mb-2" data-i18n="email_label">Email</label>
                     <input
                         type="email"
                         id="email"
                         name="email"
                         required
-                        class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
+                        class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 
+                               focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
                     >
                 </div>
 
+                <!-- MESSAGE -->
                 <div>
-                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                    <label for="message" class="block text-sm font-medium mb-2" data-i18n="message_label">Message</label>
                     <textarea
                         id="message"
                         name="message"
                         rows="5"
                         required
-                        class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
+                        class="w-full bg-imdb-dark border border-gray-700 rounded-lg px-4 py-2 
+                               focus:outline-none focus:ring-2 focus:ring-imdb-yellow"
                     ></textarea>
                 </div>
 
                 <button
                     type="submit"
                     class="w-full bg-imdb-yellow text-imdb-dark font-bold py-3 px-4 rounded-lg hover:bg-yellow-600 transition"
+                    data-i18n="send_message"
                 >
                     Send Message
                 </button>
             </form>
 
             <!-- SUCCESS FEEDBACK -->
-            <div id="form-success" class="hidden mt-4 p-4 bg-green-700 rounded-lg text-sm">
+            <div id="form-success"
+                 class="hidden mt-4 p-4 bg-green-700 rounded-lg text-sm"
+                 data-i18n="contact_success">
                 Thank you! Your message has been sent.
             </div>
 
@@ -124,8 +137,8 @@
 
     <script src="components/header.js"></script>
     <script src="components/footer.js"></script>
+    <script src="translations.js"></script>
 
-    <!-- Contact logic -->
     <script>
         feather.replace();
 
@@ -134,7 +147,7 @@
 
         if (contactForm) {
             contactForm.addEventListener("submit", function (e) {
-                e.preventDefault(); // prevent page reload
+                e.preventDefault();
 
                 fetch(contactForm.action, {
                     method: "POST",
@@ -149,9 +162,7 @@
                         alert("Something went wrong. Please try again.");
                     }
                 })
-                .catch(() => {
-                    alert("Could not send the message. Please try again later.");
-                });
+                .catch(() => alert("Could not send the message. Please try again later."));
             });
         }
     </script>
