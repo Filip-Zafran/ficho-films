@@ -184,7 +184,9 @@ function setupSimpleGallery(options) {
 
         if (opening) {
             setTimeout(() => {
-                section.scrollIntoView({ behavior: "smooth", block: "start" });
+                const headerEl = section.querySelector(".gallery-header");
+headerEl.scrollIntoView({ behavior: "smooth", block: "center" });
+
             }, 150);
         }
     });

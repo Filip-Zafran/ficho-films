@@ -53,7 +53,7 @@ const translations = {
     about_text_1: `I'm Filip "Ficho" Zafran — filmmaker, location specialist and production all-rounder 
     with roots in Croatia and a base in Berlin. My background spans across 
     Assistant Directing, Location Scouting / Management, Production Coordination 
-    and application & presentation preparation for productions.`,
+    for TVC's, Feature Films, Music Videos, Series, Photoshoots, and other projects.`,
 
     about_text_2: `I’ve worked on international feature films, European productions, TVCs, 
     and branded content.`,
@@ -144,15 +144,13 @@ const translations = {
     behind_scenes: "Hinter den Kulissen",
     based_in_berlin: "Mit Sitz in Berlin – Drehs in ganz Europa",
 
-    about_text_1: `Ich bin Filip „Ficho“ Zafran – Filmemacher, Location-Spezialist und vielseitiger 
-    Produktionsallrounder mit Wurzeln in Kroatien und einem Standort in Berlin. 
-    Mein beruflicher Hintergrund umfasst Regieassistenz, Location Scouting / Management, 
-    Produktionskoordination sowie Bewerbungs- und Präsentationsvorbereitung für Produktionen.`,
+    about_text_1: `Ich bin Filip „Ficho“ Zafran – Filmemacher, Location-Spezialist und vielseitiger Produktionsallrounder mit Wurzeln in Kroatien und einem Standort in Berlin.
+Mein beruflicher Hintergrund umfasst Regieassistenz, Location Scouting und -Management sowie Produktionskoordination für TV-Werbespots, Spielfilme, Musikvideos, Serien, Fotoshootings und andere Projekte.`,
 
     about_text_2: `Ich habe an internationalen Spielfilmen, europäischen Produktionen, TV-Werbungen 
     und Branded-Content-Projekten gearbeitet.`,
 
-    about_text_3: `Mein Schwerpunkt liegt auf der Erstellung von Dispos, dem reibungslosen Ablauf 
+    about_text_3: `Mein Schwerpunkt liegt auf der Erstellung von Call-Sheets, dem reibungslosen Ablauf 
     am Set, der Suche nach den passenden Drehorten und der Abstimmung der einzelnen 
     Departments unter hohem Druck. Am glücklichsten bin ich, wenn eine Produktion Tempo 
     aufnimmt und alles in Bewegung bleibt.`,

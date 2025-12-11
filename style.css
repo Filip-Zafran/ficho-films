@@ -180,10 +180,14 @@ body {
 }
 
 .gallery-close {
-    background: rgba(0,0,0,0.6);
-    padding: 4px 10px;
-    border-radius: 6px;
+    background: #f5c518;
+    color: #121212;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
 }
+
 
 /* Desktop hover hint */
 .gallery-hover-hint {
@@ -233,3 +237,8 @@ body {
     }
 }
 
+.gallery-header span[data-i18n] {
+    font-size: 1.125rem; /* same as text-lg */
+    font-weight: 700;    /* bold */
+    color: #f5c518;
+}
