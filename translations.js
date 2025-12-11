@@ -58,14 +58,14 @@ const translations = {
     locations, and keeping departments aligned under pressure. I’m happiest when 
     things are moving fast.`,
 
-    about_text_4: `In addition, I have a background in web development and my IT knowledge often 
+    about_text_4: `In addition, I have a <b>background in web development and my IT knowledge</b> often 
     comes in handy when dealing with digital workflows, planning, and bidding. 
     I use these skills to improve efficiency and reduce costs on productions 
     whenever possible.`,
 
     about_text_5: `If there is one word that describes me best, it's reliability.`,
 
-    about_text_6: `Why was I scouting the Tatras by helicopter at 22yo? 
+    about_text_6: `Why was I scouting the Tatras by helicopter at 22yo?<br>
     Because when things get complex and difficult, people know they can count on me.`,
 
     key_skills: "Key Skills",
@@ -158,14 +158,15 @@ const translations = {
     Departments unter hohem Druck. Am glücklichsten bin ich, wenn eine Produktion Tempo 
     aufnimmt und alles in Bewegung bleibt.`,
 
-    about_text_4: `Zusätzlich habe ich einen Hintergrund in Webentwicklung, und mein IT-Wissen hilft 
+    about_text_4: `Zusätzlich habe ich einen <b>Hintergrund in Webentwicklung, und mein IT-Wissen</b> hilft 
     mir regelmäßig bei digitalen Workflows, in der Planung und beim Bidding. 
     Ich nutze diese Fähigkeiten, um Abläufe effizienter zu gestalten und Kosten zu 
     reduzieren – wo immer es möglich ist.`,
 
+ 
     about_text_5: `Wenn es ein Wort gibt, das mich am besten beschreibt, dann ist es Zuverlässigkeit.`,
 
-    about_text_6: `Warum ich mit 22 Jahren die Tatra-Gebirge per Helikopter gescoutet habe? 
+    about_text_6: `Warum ich mit 22 Jahren die Tatra-Gebirge per Helikopter gescoutet habe?<br>
     Weil Menschen wissen, dass sie sich auf mich verlassen können – besonders wenn es 
     komplex und schwierig wird.`,
 
@@ -216,9 +217,10 @@ function t(key) {
 function updateTranslations() {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
-    el.textContent = t(key);
+    el.innerHTML = t(key); // allows <b>, <br>, formatting
   });
 }
+
 
 function setLanguage(lang) {
   currentLang = lang;
