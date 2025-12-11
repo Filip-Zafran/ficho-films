@@ -48,90 +48,120 @@
 
 
 <!-- SIDEBAR -->
+<!-- Roles Sidebar -->
 <div class="w-full lg:w-1/4">
     <div class="bg-imdb-gray p-6 rounded-lg sticky top-24">
-        
-        <h3 class="text-xl font-bold text-imdb-yellow mb-4" data-i18n="roles_heading">
-            Roles & Credits
-        </h3>
 
-        <ul class="space-y-2"></ul>
+        <h3 class="text-xl font-bold text-imdb-yellow mb-4" data-i18n="roles_heading">Roles & Credits</h3>
 
-        <!-- ALL PROJECTS -->
-        <li>
-            <button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition italic font-semibold"
+        <!-- OPEN UL — KEEP IT OPEN UNTIL ALL ROLE BUTTONS ARE ADDED -->
+        <ul class="space-y-2">
+
+            <!-- MAIN FOLDER: ALL PROJECTS -->
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition italic font-semibold"
                     data-role="all"
-                    data-i18n="all_projects">
-                All Projects
-            </button>
-        </li>
+                    data-i18n="all_projects"
+                >
+                    All Projects
+                </button>
+            </li>
 
-        <!-- ASSISTANT DIRECTOR -->
-        <li>
-            <button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+            <!-- ASSISTANT DIRECTOR -->
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
                     data-role="director"
-                    data-i18n="assistant_director">
-                Assistant Director
-            </button>
-        </li>
+                    data-i18n="assistant_director"
+                >
+                    Assistant Director
+                </button>
+            </li>
 
-        <!-- LOCATION -->
-        <li>
-            <button class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+            <!-- LOCATION MANAGER -->
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
                     data-role="location"
-                    data-i18n="location_manager">
-                Location Scout / Manager
-            </button>
-        </li>
+                    data-i18n="location_manager"
+                >
+                    Location Scout / Manager
+                </button>
+            </li>
 
-        <!-- PRODUCTION DROPDOWN -->
-        <li>
-            <button id="production-toggle"
+            <!-- PRODUCTION DROPDOWN -->
+            <li>
+                <button
+                    id="production-toggle"
                     type="button"
-                    class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition">
-                <span data-i18n="production">Production</span>
-                <span class="text-xs text-gray-400 flex items-center gap-1">
-                    <i data-feather="chevron-down"></i>
-                </span>
-            </button>
+                    class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+                    data-i18n="production"
+                >
+                    <span>Production</span>
+                    <span class="text-xs text-gray-400 flex items-center gap-1">
+                        <i data-feather="chevron-down"></i>
+                    </span>
+                </button>
 
-            <ul id="production-submenu"
-                class="mt-1 ml-3 border-l border-gray-700 pl-3 space-y-1 hidden">
-
-                <li>
-                    <button class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                <ul
+                    id="production-submenu"
+                    class="mt-1 ml-3 border-l border-gray-700 pl-3 space-y-1 hidden"
+                >
+                    <li>
+                        <button
+                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
                             data-role="coordination"
-                            data-i18n="coordinator">
-                        Production Coordinator
-                    </button>
-                </li>
+                            data-i18n="coordinator"
+                        >
+                            Production Coordinator
+                        </button>
+                    </li>
 
-                <li>
-                    <button class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    <li>
+                        <button
+                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
                             data-role="manager"
-                            data-i18n="manager">
-                        Production Manager
-                    </button>
-                </li>
+                            data-i18n="manager"
+                        >
+                            Production Manager
+                        </button>
+                    </li>
 
-                <li>
-                    <button class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    <li>
+                        <button
+                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
                             data-role="producer"
-                            data-i18n="producer">
-                        Producer
-                    </button>
-                </li>
+                            data-i18n="producer"
+                        >
+                            Producer
+                        </button>
+                    </li>
 
-                <li>
-                    <button class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                    <li>
+                        <button
+                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
                             data-role="event"
-                            data-i18n="event_manager">
-                        Event Manager
-                    </button>
-                </li>
+                            data-i18n="event_manager"
+                        >
+                            Event Manager
+                        </button>
+                    </li>
+                </ul>
+            </li>
 
-            </ul>
-        </li>
+        </ul>
+        <!-- CLOSE UL HERE (correct location) -->
+
+        <!-- DESKTOP-ONLY ART IMAGE (now correctly positioned) -->
+        <div class="hidden lg:block mt-6">
+            <img 
+                src="images/film-art.png" 
+                alt="Film Art"
+                class="w-full rounded-lg opacity-90 hover:opacity-100 transition"
+            >
+        </div>
+
     </div>
 </div>
 
