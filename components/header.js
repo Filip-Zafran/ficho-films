@@ -43,37 +43,29 @@ class CustomHeader extends HTMLElement {
                 }
             </style>
 
-            <header class="site-header py-3">
-                <div class="container mx-auto px-4 flex flex-wrap md:flex-nowrap items-center justify-between gap-3">
+         <header class="site-header py-3">
+    <div class="container mx-auto px-4 flex flex-wrap md:flex-nowrap items-center justify-center md:justify-between gap-3 relative">
 
-                    <!-- LOGO -->
-                    <div class="relative flex flex-col">
+        <!-- LOGO -->
+        <div class="relative flex flex-col">
+            <a href="index.html"
+               class="text-base sm:text-xl md:text-2xl font-bold text-imdb-yellow whitespace-nowrap">
+                Films, Locations & Creative Coordination
+            </a>
 
-                    <a href="index.html"
-                    class="text-base sm:text-xl md:text-2xl font-bold text-imdb-yellow whitespace-nowrap">
-                        Films, Locations & Creative Coordination
-                    </a>
+            <a href="about.html" class="md:hidden">
+                <img src="images/about-portrait.png"
+                     class="absolute left-0 -bottom-[42px] w-10 h-10 rounded-full border border-imdb-yellow shadow-md object-cover">
+            </a>
+        </div>
 
-                    <!-- MOBILE PORTRAIT (absolute positioned, overlapping, far left) -->
-                    <a href="about.html"
-                    class="md:hidden">
-                        <img src="images/about-portrait.png"
-                            alt="Ficho portrait"
-                            class="absolute left-0 -bottom-[42px] w-10 h-10 rounded-full border border-imdb-yellow shadow-md object-cover">
-                    </a>
-                </div>
+        <!-- DESKTOP NAV (centered) -->
+        <nav class="hidden md:flex items-center gap-10 absolute left-1/2 transform -translate-x-1/2 text-lg">
+            <a href="index.html" class="nav-link text-white" data-page="index" data-i18n="nav_projects">Projects</a>
+            <a href="about.html" class="nav-link text-white" data-page="about" data-i18n="nav_about">About Me</a>
+            <a href="contact.html" class="nav-link text-white" data-page="contact" data-i18n="nav_contact">Contact</a>
+        </nav>
 
-
-
-                    <!-- DESKTOP NAV -->
-                    <nav class="hidden md:flex items-center gap-8">
-                        <a href="index.html" class="nav-link text-white"
-                           data-page="index" data-i18n="nav_projects">Projects</a>
-                        <a href="about.html" class="nav-link text-white"
-                           data-page="about" data-i18n="nav_about">About Me</a>
-                        <a href="contact.html" class="nav-link text-white"
-                           data-page="contact" data-i18n="nav_contact">Contact</a>
-                    </nav>
 
                     <!-- LANGUAGE + MOBILE BUTTON -->
                     <div class="flex items-center gap-4 ml-auto">
