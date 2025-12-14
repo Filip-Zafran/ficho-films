@@ -202,6 +202,19 @@ const PROJECTS = [
     featured: false,
   },
 
+             {
+    id: "royal",
+    title: "Royal Caribbean - Dubrovnik Photoshoot",
+    year: null,
+    role: "location",
+    roleLabel: "Location Manager",
+    type: "Photoshoot",
+    client: "Blue Sky Films - Croatia",
+    link: "https://www.blueskyadriatic.com/work/",
+    image: "images/project_pics/royal.png",
+    featured: false,
+  },
+
   {
     id: "lotto-649-farm",
     title: "Lotto 649 – Farm",
@@ -562,6 +575,19 @@ const PROJECTS = [
     client: "Scappy",
     link: "https://www.index.hr/lajk/poster/71905/candy-party-powered-by-scappy-land-14032009-15",
     image: "images/project_pics/scappy.jpg",
+    featured: false,
+      },
+
+               {
+ id: "tito",
+    title: "Tito (TV Mini Series, 2010)",
+    year: null,
+    role: "other",
+    roleLabel: "Stunt Performer",
+    type: "TV Series",
+    client: "Hrvatska Radiotelevizija (HRT)",
+    link: "https://www.imdb.com/title/tt1616072/",
+    image: "images/project_pics/tito.png",
     featured: false,
       },
 
