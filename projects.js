@@ -50,7 +50,7 @@ const PROJECTS = [
   title: "Eyjafjallajökull",
   // year: 2013,
   role: "director",
-  roleLabel: "Third Assistant Director",
+  roleLabel: "3rd Assistant Director",
   type: "Feature Film",
   client: "Quad, TF1 Films Production & BlueSky Films Croatia",
   link: "https://www.imdb.com/title/tt2207072/",
@@ -109,6 +109,19 @@ const PROJECTS = [
     client: "Blue Sky Films",
     link: "https://www.blueskyadriatic.com/film/martini-moments/",
     image: "/images/project_pics/martini.jpg",
+    featured: false,
+  },
+
+    {
+    id: "taubeki",
+    title: "Taubeki - short film",
+    // year: 2014,
+    role: "director",
+    roleLabel: "1st Assistant Director",
+    type: "Short Film",
+    client: "C47 film d.o.o.",
+    link: "https://www.facebook.com/profile.php?id=100063965445021",
+    image: "images/project_pics/taubeki.png",
     featured: false,
   },
 
@@ -233,7 +246,6 @@ const PROJECTS = [
   // === PRODUCTION COORDINATOR – COMMERCIALS ===
 
  
-
     {
     id: "sole-ore",
     title: "Sole 24 Ore",
@@ -290,8 +302,8 @@ const PROJECTS = [
     id: "bakers-meaty-meals",
     title: "Bakers Meaty Meals – The Italian Dog",
     year: null,
-    role: "manager",
-    roleLabel: "Production Manager",
+    role: "director",
+    roleLabel: "2nd Assistant Director",
     type: "Commercial",
     client: "Blue Sky Films & Ridley Scott Association",
     link: "https://www.blueskyadriatic.com/film/bakers-meaty-meals-the-italian-dog/",
@@ -325,15 +337,15 @@ const PROJECTS = [
 
   // === PRODUCER ===
   {
-    id: "taubeki",
-    title: "Taubeki - short film",
+    id: "doves",
+    title: "Doves - short film",
     // year: 2014,
     role: "producer",
     roleLabel: "Producer",
     type: "Short Film",
     client: "C47 film d.o.o.",
     link: "https://www.imdb.com/title/tt3627382/",
-    image: "images/project_pics/taubeki.jpg",
+    image: "images/project_pics/doves.jpg",
     featured: false,
   },
   {
@@ -377,8 +389,8 @@ const PROJECTS = [
     id: "muscle",
     title: "New School Blood Trial - Official Music Video",
     year: null,
-    role: "producer",
-    roleLabel: "Producer",
+    role: "director",
+    roleLabel: "1st Assistant Director",
     type: "Music Video",
     client: "Muscle Tribe of Danger and Excellence",
     link: "https://www.youtube.com/watch?v=Ph5pBiWWoq0",
