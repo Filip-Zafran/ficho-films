@@ -586,7 +586,7 @@ const PROJECTS = [
     roleLabel: "Stunt Performer",
     type: "TV Series",
     client: "Hrvatska Radiotelevizija (HRT)",
-    link: "https://www.imdb.com/title/tt1616072/",
+    link: "https://youtu.be/bGx6AFvJLrI?t=921",
     image: "images/project_pics/tito.png",
     featured: false,
       },
