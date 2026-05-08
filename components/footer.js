@@ -28,6 +28,19 @@ class CustomFooter extends HTMLElement {
                     <div class="mt-8 text-center text-sm text-gray-500">
                         <p>Filip "Ficho" Zafran – Films, Locations & Creative Coordination</p>
                     </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4 text-xs text-gray-500">
+                        <a href="https://ad-union.org/en/home/" target="_blank" rel="noopener noreferrer"
+                           class="flex items-center gap-2 hover:text-imdb-yellow transition">
+                            <img src="images/ADU-Logo_80.png" alt="ADU Logo" class="w-6 h-6">
+                            <span>Member of The Assistant Directors Union (Germany)</span>
+                        </a>
+                        <span class="hidden sm:inline text-gray-700">|</span>
+                        <a href="https://hdfd.hr/" target="_blank" rel="noopener noreferrer"
+                           class="hover:text-imdb-yellow transition">
+                            Former Member of The Croatian Society of Film Workers (HDFD)
+                        </a>
+                    </div>
                 </div>
             </footer>
         `;

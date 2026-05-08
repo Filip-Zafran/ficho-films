@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filip "Ficho" Zafran - Film Production Porfolio</title>
+
     <link rel="stylesheet" href="style.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -44,157 +47,140 @@
             As everything in the film industry, this page also looks much better on a larger screen.
         </p>
     </div>
+
+    <a href="https://ad-union.org/en/home/" target="_blank" rel="noopener noreferrer"
+       class="mt-4 flex items-center gap-3 p-3 rounded-lg bg-imdb-gray/30 hover:bg-imdb-gray/50 transition">
+        <img src="images/ADU-Logo_80.png" alt="ADU Logo" class="w-10 h-10 flex-shrink-0">
+        <span class="text-xs text-gray-400 leading-tight">Member of The Assistant Directors Union (Germany)</span>
+    </a>
 </section>
 
-
 <!-- SIDEBAR -->
-<!-- Roles Sidebar -->
 <div class="w-full lg:w-1/4">
     <div class="bg-imdb-gray p-6 rounded-lg sticky top-24">
 
-        <h3 class="text-xl font-bold text-imdb-yellow mb-4" data-i18n="roles_heading">Roles & Credits</h3>
+        <h3 class="text-xl font-bold text-imdb-yellow mb-4" data-i18n="roles_heading">
+            Roles & Credits
+        </h3>
 
-        <!-- OPEN UL — KEEP IT OPEN UNTIL ALL ROLE BUTTONS ARE ADDED -->
         <ul class="space-y-2">
 
-            <!-- MAIN FOLDER: ALL PROJECTS -->
             <li>
                 <button
                     class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition italic font-semibold"
                     data-role="all"
-                    data-i18n="all_projects"
-                >
+                    data-i18n="all_projects">
                     All Projects
                 </button>
             </li>
 
-            <!-- ASSISTANT DIRECTOR -->
             <li>
                 <button
                     class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
                     data-role="director"
-                    data-i18n="assistant_director"
-                >
+                    data-i18n="assistant_director">
                     Assistant Director
                 </button>
             </li>
 
-            <!-- LOCATION MANAGER -->
             <li>
                 <button
                     class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
                     data-role="location"
-                    data-i18n="location_manager"
-                >
+                    data-i18n="location_manager">
                     Location Scout / Manager
                 </button>
             </li>
 
-            <!-- PRODUCTION DROPDOWN -->
             <li>
                 <button
                     id="production-toggle"
                     type="button"
                     class="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
-                    data-i18n="production"
-                >
+                    data-i18n="production">
                     <span>Production</span>
                     <span class="text-xs text-gray-400 flex items-center gap-1">
                         <i data-feather="chevron-down"></i>
                     </span>
                 </button>
 
-                <ul
-                    id="production-submenu"
-                    class="mt-1 ml-3 border-l border-gray-700 pl-3 space-y-1 hidden"
-                >
+                <ul id="production-submenu"
+                    class="mt-1 ml-3 border-l border-gray-700 pl-3 space-y-1 hidden">
+
                     <li>
-                        <button
-                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                            data-role="coordination"
-                            data-i18n="coordinator"
-                        >
+                        <button class="role-filter w-full text-left px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                                data-role="coordination"
+                                data-i18n="coordinator">
                             Production Coordinator
                         </button>
                     </li>
 
                     <li>
-                        <button
-                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                            data-role="manager"
-                            data-i18n="manager"
-                        >
+                        <button class="role-filter w-full text-left px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                                data-role="manager"
+                                data-i18n="manager">
                             Production Manager
                         </button>
                     </li>
 
                     <li>
-                        <button
-                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                            data-role="producer"
-                            data-i18n="producer"
-                        >
+                        <button class="role-filter w-full text-left px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                                data-role="producer"
+                                data-i18n="producer">
                             Producer
                         </button>
                     </li>
 
                     <li>
-                        <button
-                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                            data-role="event"
-                            data-i18n="event_manager"
-                        >
+                        <button class="role-filter w-full text-left px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                                data-role="event"
+                                data-i18n="event_manager">
                             Event Manager
                         </button>
                     </li>
+
                     <li>
-                        <button
-                            class="role-filter text-left w-full px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
-                            data-role="other"
-                            data-i18n="Other Projects"
-                        >
+                        <button class="role-filter w-full text-left px-3 py-1 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition text-sm"
+                                data-role="other">
                             Other Projects
                         </button>
                     </li>
                 </ul>
             </li>
-
         </ul>
-        <!-- CLOSE UL HERE (correct location) -->
 
-        <!-- DESKTOP-ONLY ART IMAGE (now correctly positioned) -->
         <div class="hidden lg:block mt-6">
-            <img 
-                src="images/film-art.png" 
-                alt="Film Art"
-                class="w-full rounded-lg opacity-90 hover:opacity-100 transition"
-            >
+            <img src="images/film-art.png"
+                 alt="Film Art"
+                 class="w-full rounded-lg opacity-90 hover:opacity-100 transition">
+
+            <a href="https://ad-union.org/en/home/" target="_blank" rel="noopener noreferrer"
+               class="mt-4 flex items-center gap-3 p-3 rounded-lg bg-imdb-gray/30 hover:bg-imdb-gray/50 transition">
+                <img src="images/ADU-Logo_80.png" alt="ADU Logo" class="w-10 h-10 flex-shrink-0">
+                <span class="text-xs text-gray-400 leading-tight">Member of The Assistant Directors Union (Germany)</span>
+            </a>
         </div>
 
     </div>
 </div>
 
-
 <!-- PROJECTS MAIN -->
 <div class="w-full lg:w-3/4">
 
-<!-- HERO TAGLINE -->
+<!-- HERO -->
 <section class="mb-8">
     <div class="relative overflow-visible py-3">
         <div class="inline-block select-none leading-none">
 
-            <span class="hero-word block font-black uppercase text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] text-imdb-yellow tracking-tight transition-transform duration-300 hover:scale-110"
-                  data-i18n="tagline_locations">
+            <span class="hero-word block font-black uppercase text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] text-imdb-yellow tracking-tight">
                 Locations.
             </span>
 
-            <span class="hero-word block font-bold uppercase text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] text-imdb-light tracking-[0.15em] -mt-3 md:-mt-4 relative z-10 transition-transform duration-300 hover:scale-110"
-                  data-i18n="tagline_locked">
+            <span class="hero-word block font-bold uppercase text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] text-imdb-light tracking-[0.15em] -mt-3 md:-mt-4 relative z-10">
                 Locked.
             </span>
 
-            <span class="hero-word block font-black uppercase text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] text-imdb-yellow tracking-widest -mt-1 md:-mt-3 transition-transform duration-300 hover:scale-110"
-                  data-i18n="tagline_action">
+            <span class="hero-word block font-black uppercase text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] text-imdb-yellow tracking-widest -mt-1 md:-mt-3">
                 Action!
             </span>
 
@@ -202,32 +188,35 @@
     </div>
 </section>
 
-
-<!-- FEATURED HEADING -->
-<h2 id="featured-heading"
-    class="text-3xl font-bold text-imdb-yellow mb-6"
-    data-i18n="featured_projects">
+<!-- FEATURED -->
+<h2 class="text-3xl font-bold text-imdb-yellow mb-6">
     Featured Projects
 </h2>
 
-<!-- FEATURED PROJECTS -->
 <div id="featured-projects" class="space-y-6 mb-12">
-    <div id="featured-big" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-    <div id="featured-small" class="grid grid-cols-1 sm:grid-cols-3 gap-6"></div>
+    <div id="featured-big"
+         class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch"></div>
+
+    <div id="featured-small"
+         class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch"></div>
 </div>
+
+<!-- RECENT PROJECTS -->
+<h2 class="text-3xl font-bold text-imdb-yellow mb-6">
+    Recent Projects
+</h2>
+
+<div id="recent-projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch mb-12"></div>
 
 <!-- ALL PROJECTS -->
-<div id="all-projects-section">
-    <h2 id="all-projects-heading"
-        class="text-3xl font-bold text-imdb-yellow mb-6"
-        data-i18n="all_projects_heading">
-        All Projects
-    </h2>
+<h2 class="text-3xl font-bold text-imdb-yellow mb-6">
+    All Projects
+</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-         id="projects-container"></div>
+<div id="projects-container"
+     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"></div>
+
 </div>
-
 </div>
 </div>
 </main>

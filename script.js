@@ -7,6 +7,7 @@ function renderProjectsFromData() {
 
     const featuredBig = document.getElementById("featured-big");
     const featuredSmall = document.getElementById("featured-small");
+    const recentContainer = document.getElementById("recent-projects");
     const allContainer = document.getElementById("projects-container");
 
     // If we're not on the Projects page, skip
@@ -85,18 +86,53 @@ function renderProjectsFromData() {
         const translatedTitle = typeof t === "function" ? t(project.title) : project.title;
         const translatedRole = typeof t === "function" ? t(project.roleLabel) : project.roleLabel;
 
+        let clientHtml = "";
+        if (project.client) {
+            if (project.clientLink) {
+                clientHtml = `<p class="text-xs text-gray-400"><a href="${project.clientLink}" target="_blank" class="hover:text-imdb-yellow transition">${project.client}</a></p>`;
+            } else {
+                clientHtml = `<p class="text-xs text-gray-400">${project.client}</p>`;
+            }
+        }
+
+        const imageOrVideo = (project.teaserVideo || project.link)
+            ? `
+        <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses} cursor-pointer group">
+            <img
+                src="${project.image}"
+                alt="${translatedTitle}"
+                class="w-full h-full object-cover"
+            >
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center">
+                ${project.teaserVideo ? `
+                <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                ` : `
+                <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+                `}
+            </div>
+        </div>
+    `
+            : `
+        <img
+            src="${project.image}"
+            alt="${translatedTitle}"
+            class="w-full ${imageHeightClasses} object-cover rounded-t-lg"
+        >
+    `;
+
         return `
-            <div class="project-card" data-role="${project.role}">
-                <img
-                    src="${project.image}"
-                    alt="${translatedTitle}"
-                    class="w-full ${imageHeightClasses} object-cover rounded-t-lg"
-                >
+            <div class="project-card" data-role="${project.role}" ${project.teaserVideo ? `data-video-src="${project.teaserVideo}"` : ""}>
+                ${imageOrVideo}
                 <div class="bg-imdb-gray p-4 rounded-b-lg">
                     <h3 class="text-xl font-bold">${translatedTitle}${yearText}</h3>
                     <p class="text-imdb-yellow">${translatedRole}</p>
+                    ${project.type ? `<p class="text-sm text-gray-300">${project.type}</p>` : ""}
                     ${project.stars ? `<p class="text-sm font-semibold text-gray-200 mb-1">${project.stars}</p>` : ""}
-                    ${project.client ? `<p class="text-xs text-gray-400">${project.client}</p>` : ""}
+                    ${clientHtml}
                     ${linkHtml}
                 </div>
             </div>
@@ -112,6 +148,15 @@ function renderProjectsFromData() {
             featuredSmall.insertAdjacentHTML("beforeend", buildFeaturedCard(project, "h-48"));
         }
     });
+
+    // === RECENT PROJECTS ===
+    if (recentContainer) {
+        const recentProjects = PROJECTS.filter((p) => p.recent);
+        recentContainer.innerHTML = "";
+        recentProjects.forEach((project) => {
+            recentContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-48"));
+        });
+    }
 
     // === ALL PROJECTS (non-featured + featured) ===
     const featuredIds = new Set(featuredProjects.map((p) => p.id));
@@ -209,6 +254,66 @@ headerEl.scrollIntoView({ behavior: "smooth", block: "center" });
             trigger.scrollIntoView({ behavior: "smooth", block: "center" });
         });
     }
+}
+
+/* ============================================
+   RECENT PROJECT VIDEO/LINK HANDLING
+   ============================================ */
+
+function initRecentProjectVideos() {
+    const recentContainer = document.getElementById('recent-projects');
+    if (!recentContainer) return;
+
+    const projectCards = recentContainer.querySelectorAll('.project-card');
+
+    projectCards.forEach((card) => {
+        const videoSrc = card.getAttribute('data-video-src');
+        const link = card.querySelector('a');
+
+        if (videoSrc) {
+            // Handle video click
+            const imageContainer = card.querySelector('div:first-child');
+            if (imageContainer) {
+                imageContainer.style.cursor = 'pointer';
+                imageContainer.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showVideoModal(videoSrc);
+                });
+            }
+        } else if (link) {
+            // Handle link click
+            const imageContainer = card.querySelector('img');
+            if (imageContainer) {
+                imageContainer.style.cursor = 'pointer';
+                imageContainer.parentElement.style.cursor = 'pointer';
+                imageContainer.parentElement.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.open(link.href, '_blank');
+                });
+            }
+        }
+    });
+}
+
+function showVideoModal(videoSrc) {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4';
+    modal.innerHTML = `
+        <div class="relative w-full max-w-4xl max-h-96">
+            <button class="absolute -top-10 right-0 text-white text-3xl hover:text-gray-300 transition" onclick="this.closest('.fixed').remove()">×</button>
+            <video class="w-full h-full object-contain rounded-lg" controls autoplay>
+                <source src="${videoSrc}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
 }
 
 /* ============================================
@@ -364,6 +469,8 @@ function initContactForm() {
     });
 }
 
+
+
 /* ============================================
    DOMContentLoaded – INIT EVERYTHING
    ============================================ */
@@ -373,6 +480,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProjectsFromData();
     initRoleFilters();
     initFeaturedVideos();
+    initRecentProjectVideos();
     initProductionDropdown();
     initContactForm();
 

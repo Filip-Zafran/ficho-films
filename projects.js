@@ -1,6 +1,33 @@
 // Central place for all projects on ficho-films
 
 const PROJECTS = [
+ // === RECENT PROJECTS ===
+{
+  id: "kia-ev2",
+  title: "Kia EV2",
+  year: 2026,
+  role: "director",
+  roleLabel: "3rd Assistant Director",
+  type: "TikTok Commercial",
+  client: "Instant Waves",
+  clientLink: "https://instantwaves.de/",
+  image: "images/Kia_EV2.png",
+  teaserVideo: "videos/Kia_EV2.mp4",
+  recent: true,
+},
+{
+  id: "dayenu",
+  title: "Dayenu",
+  year: 2026,
+  role: "director",
+  roleLabel: "Assistant Director",
+  type: "Short Film",
+  client: "Attagirl Productions (UK) & Ich Liebe Das Leben (Aus)",
+  link: "https://www.instagram.com/dayenushortfilm",
+  image: "images/dayenu.png",
+  recent: true,
+},
+
  // === HERO / BIG FEATURED PROJECTS ===
 {
   id: "season-of-the-witch",
@@ -452,7 +479,7 @@ const PROJECTS = [
    {
  id: "event-burnhalla-2026",
     title: "BurnHalla",
-    year: null,
+    year: 2026,
     role: "event",
     roleLabel: "Site Lead 2026",
     type: "Events",
@@ -460,6 +487,7 @@ const PROJECTS = [
     link: "https://burnhalla.com/",
     image: "images/project_pics/burnhalla.png",
     featured: false,
+    recent: true,
       },
      {
  id: "psd",
