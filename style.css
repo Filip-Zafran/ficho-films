@@ -21,12 +21,23 @@ body {
     to { opacity: 1; }
 }
 
-/* Project Cards */
+/* Project Cards – equal height on desktop, flexible on mobile */
 .project-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
+
+/* The text/content area (your snippet div) should be the flexible part */
+.project-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Keep the More link pinned to the bottom of the body */
+.project-card .card-body a {
+  margin-top: auto;
+}
+
 
 .project-card:hover {
     transform: translateY(-5px);
