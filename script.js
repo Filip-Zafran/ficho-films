@@ -97,11 +97,11 @@ function renderProjectsFromData() {
 
         const imageOrVideo = (project.teaserVideo || project.link)
             ? `
-        <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses} cursor-pointer group">
+        <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses} cursor-pointer group ${project.fullHeight ? 'bg-black' : ''}">
             <img
                 src="${project.image}"
                 alt="${translatedTitle}"
-                class="w-full h-full object-cover"
+                class="w-full h-full ${project.fullHeight ? 'object-contain' : 'object-cover'}"
             >
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center">
                 ${project.teaserVideo ? `
@@ -154,8 +154,7 @@ function renderProjectsFromData() {
         const recentProjects = PROJECTS.filter((p) => p.recent);
         recentContainer.innerHTML = "";
         recentProjects.forEach((project) => {
-            const imageHeight = project.fullHeight ? "h-96" : "h-48";
-            recentContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, imageHeight));
+            recentContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-48"));
         });
     }
 
