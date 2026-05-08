@@ -11,8 +11,10 @@ const PROJECTS = [
   type: "TikTok Commercial",
   client: "Instant Wavez Productions",
   clientLink: "https://instantwaves.de/",
+  link: "https://instantwaves.de/",
   image: "images/Kia_EV2.png",
   teaserVideo: "videos/Kia_EV2.mp4",
+  fullHeight: true,
   recent: true,
 },
 {

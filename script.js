@@ -154,7 +154,8 @@ function renderProjectsFromData() {
         const recentProjects = PROJECTS.filter((p) => p.recent);
         recentContainer.innerHTML = "";
         recentProjects.forEach((project) => {
-            recentContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-48"));
+            const imageHeight = project.fullHeight ? "h-96" : "h-48";
+            recentContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, imageHeight));
         });
     }
 
