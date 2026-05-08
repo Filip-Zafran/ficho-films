@@ -325,6 +325,11 @@ function initRecentProjectVideos() {
         video.addEventListener('pause', () => {
             if (isMobile && hint) hint.classList.remove('hidden');
         });
+
+        // Click to open fullscreen
+        container.addEventListener('click', () => {
+            showVideoModal(src);
+        });
     });
 
     // Handle link clicks
