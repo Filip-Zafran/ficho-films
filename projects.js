@@ -137,7 +137,7 @@ const PROJECTS = [
     type: "Commercial",
     client: "Blue Sky Films",
     link: "https://www.blueskyadriatic.com/film/martini-moments/",
-    image: "/images/project_pics/martini.jpg",
+    image: "images/project_pics/martini.jpg",
     featured: false,
   },
 
@@ -310,7 +310,7 @@ const PROJECTS = [
     type: "Commercial",
     client: "Blue Sky Films",
     link: "https://www.blueskyadriatic.com",
-    image: "/images/project_pics/kellogs.jpg",
+    image: "images/project_pics/kellogs.jpg",
     featured: false,
   },
 
@@ -337,7 +337,7 @@ const PROJECTS = [
     type: "Commercial",
     client: "Blue Sky Films",
     link: "https://www.blueskyadriatic.com/film/new-mazda-2/",
-    image: "/images/project_pics/mazda02.jpg",
+    image: "images/project_pics/mazda02.jpg",
     featured: false,
   },
   {
@@ -412,7 +412,7 @@ const PROJECTS = [
     type: "Production Company Collaboration",
     client: "Reserved Life",
     link: "https://vimeo.com/79227335",
-    image: "/images/project_pics/rabbit.png",
+    image: "images/project_pics/rabbit.png",
     featured: false,
   },
    {
@@ -424,7 +424,7 @@ const PROJECTS = [
     type: "Production Company Collaboration",
     client: "Scroll Band",
     link: "https://www.youtube.com/watch?v=7OXN6z8Wlbs",
-    image: "/images/project_pics/scroll.png",
+    image: "images/project_pics/scroll.png",
     featured: false,
   },
    {
@@ -436,7 +436,7 @@ const PROJECTS = [
     type: "Music Video",
     client: "Muscle Tribe of Danger and Excellence",
     link: "https://www.youtube.com/watch?v=Ph5pBiWWoq0",
-    image: "/images/project_pics/muscle.jpeg",
+    image: "images/project_pics/muscle.jpeg",
     featured: false,
   },
 
@@ -449,7 +449,7 @@ const PROJECTS = [
     type: "Casting",
     client: "Permanently employed (2011 - 2015)",
     link: "https://www.castingcroatia.com",
-    image: "/images/project_pics/cc-logo.jpg",
+    image: "images/project_pics/cc-logo.jpg",
     featured: false,
   },
 
@@ -500,7 +500,7 @@ const PROJECTS = [
     type: "Events",
     client: "PSD Berlin",
     link: "https://poly-speed-dating.onrender.com",
-    image: "/images/project_pics/psd.png",
+    image: "images/project_pics/psd.png",
     featured: false,
     
   },
@@ -526,7 +526,7 @@ const PROJECTS = [
     type: "Events",
     client: "Berlin Burner e. V.",
     link: "https://mmm.kiezburn.org/",
-    image: "/images/project_pics/kiezburn.jpeg",
+    image: "images/project_pics/kiezburn.jpeg",
     featured: false,
       },
 
