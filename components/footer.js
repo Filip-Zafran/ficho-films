@@ -9,19 +9,23 @@ class CustomFooter extends HTMLElement {
                         <div class="mb-4 md:mb-0">
                             <span class="text-gray-400">© ${year} ficho-films</span>
                         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 items-center">
                             <a href="https://www.imdb.com/name/nm2569625/" target="_blank" class="text-gray-400 hover:text-imdb-yellow transition">
                                 <i data-feather="film"></i>
                             </a>
                             <a href="https://www.linkedin.com/in/filip-zafran" target="_blank" class="text-gray-400 hover:text-blue-400 transition">
                                 <i data-feather="linkedin"></i>
                             </a>
-                            <a href="https://www.crew-united.com/en/Filip-Zafran_870880.html" 
-                                target="_blank" 
-                                class="flex items-center gap-2 hover:text-imdb-yellow transition">
-                                    
-                                    <img src="images/icons/crew_united-white.png" alt="Crew United" class="w-8 h-7 opacity-80">
-                                                                    </a>
+                            <a href="https://www.crew-united.com/en/Filip-Zafran_870880.html"
+                                target="_blank"
+                                class="flex items-center hover:opacity-100 transition opacity-80">
+                                    <img src="images/icons/crew_united-white.png" alt="Crew United" class="w-8 h-7">
+                            </a>
+                            <a href="https://ad-union.org/en/home/"
+                                target="_blank"
+                                class="flex items-center hover:opacity-100 transition opacity-80">
+                                    <img src="images/ADU-Logo_80.png" alt="ADU Logo" class="w-8 h-8">
+                            </a>
 
                         </div>
                     </div>
