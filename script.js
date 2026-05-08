@@ -353,22 +353,37 @@ function initRecentProjectVideos() {
 
 function showVideoModal(videoSrc) {
     const modal = document.createElement('div');
-    modal.className = 'fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4';
+    modal.className = 'fixed inset-0 bg-black flex items-center justify-center z-50 p-4';
     modal.innerHTML = `
-        <div class="relative w-full max-w-4xl max-h-96">
-            <button class="absolute -top-10 right-0 text-white text-3xl hover:text-gray-300 transition" onclick="this.closest('.fixed').remove()">×</button>
-            <video class="w-full h-full object-contain rounded-lg" controls autoplay>
+        <div class="relative w-full h-full flex flex-col items-center justify-center max-w-7xl">
+            <button class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300 transition z-10" onclick="this.closest('.fixed').remove()">×</button>
+            <video class="w-full h-full object-contain" controls autoplay>
                 <source src="${videoSrc}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
     `;
     document.body.appendChild(modal);
+
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = 'hidden';
+
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.remove();
+            document.body.style.overflow = '';
         }
     });
+
+    // Close on escape key
+    const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+            modal.remove();
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleEscape);
+        }
+    };
+    document.addEventListener('keydown', handleEscape);
 }
 
 /* ============================================
