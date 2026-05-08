@@ -95,24 +95,41 @@ function renderProjectsFromData() {
             }
         }
 
-        const imageOrVideo = (project.teaserVideo || project.link)
+        const imageOrVideo = project.teaserVideo
             ? `
-        <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses} cursor-pointer group ${project.fullHeight ? 'bg-black' : ''}">
+        <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses} ${project.fullHeight ? 'bg-black' : ''}">
+            <!-- Poster -->
             <img
                 src="${project.image}"
                 alt="${translatedTitle}"
-                class="w-full h-full ${project.fullHeight ? 'object-contain' : 'object-cover'}"
+                class="recent-poster absolute inset-0 w-full h-full ${project.fullHeight ? 'object-contain' : 'object-cover'} transition-opacity duration-300 opacity-100"
+            >
+
+            <!-- Video -->
+            <video
+                class="recent-video absolute inset-0 w-full h-full ${project.fullHeight ? 'object-contain' : 'object-cover'} transition-opacity duration-300 opacity-0 pointer-events-none"
+                poster="${project.image}"
+                data-teaser-src="${project.teaserVideo}"
+                muted
+                preload="metadata"
+                playsinline
+            ></video>
+
+            <span class="mobile-video-hint text-white text-sm">Tap to play video</span>
+        </div>
+    `
+            : project.link
+            ? `
+        <div class="relative overflow-hidden rounded-t-lg ${imageHeightClasses} cursor-pointer group">
+            <img
+                src="${project.image}"
+                alt="${translatedTitle}"
+                class="w-full h-full object-cover"
             >
             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition flex items-center justify-center">
-                ${project.teaserVideo ? `
-                <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-                ` : `
                 <svg class="w-12 h-12 text-white opacity-80 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                 </svg>
-                `}
             </div>
         </div>
     `
@@ -264,30 +281,63 @@ function initRecentProjectVideos() {
     const recentContainer = document.getElementById('recent-projects');
     if (!recentContainer) return;
 
+    // Handle videos (hover and click behavior)
+    const videos = recentContainer.querySelectorAll('.recent-video');
+    videos.forEach((video) => {
+        const src = video.getAttribute('data-teaser-src');
+        if (!src) return;
+
+        video.src = src;
+        video.load();
+        video.loop = true;
+
+        const container = video.parentElement;
+        const poster = container.querySelector('.recent-poster');
+        const hint = container.querySelector('.mobile-video-hint');
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+        // Hover behavior for desktop
+        container.addEventListener('mouseenter', () => {
+            if (isMobile) return;
+            poster.classList.add('opacity-0');
+            video.classList.add('opacity-100');
+            video.play();
+            if (hint) hint.classList.add('hidden');
+        });
+
+        container.addEventListener('mouseleave', () => {
+            if (isMobile) return;
+            video.pause();
+            video.classList.remove('opacity-100');
+            poster.classList.remove('opacity-0');
+            if (hint) hint.classList.remove('hidden');
+        });
+
+        // Click behavior for mobile
+        container.addEventListener('click', () => {
+            if (!isMobile) return;
+            video.play();
+            poster.classList.add('opacity-0');
+            video.classList.add('opacity-100');
+            if (hint) hint.classList.add('hidden');
+        });
+
+        video.addEventListener('pause', () => {
+            if (isMobile && hint) hint.classList.remove('hidden');
+        });
+    });
+
+    // Handle link clicks
     const projectCards = recentContainer.querySelectorAll('.project-card');
-
     projectCards.forEach((card) => {
-        const videoSrc = card.getAttribute('data-video-src');
         const link = card.querySelector('a');
+        const imageContainer = card.querySelector('[class*="relative"]');
 
-        if (videoSrc) {
-            // Handle video click
-            const imageContainer = card.querySelector('div:first-child');
+        if (link && !card.querySelector('.recent-video')) {
+            // Only for non-video projects with links
             if (imageContainer) {
                 imageContainer.style.cursor = 'pointer';
                 imageContainer.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    showVideoModal(videoSrc);
-                });
-            }
-        } else if (link) {
-            // Handle link click
-            const imageContainer = card.querySelector('img');
-            if (imageContainer) {
-                imageContainer.style.cursor = 'pointer';
-                imageContainer.parentElement.style.cursor = 'pointer';
-                imageContainer.parentElement.addEventListener('click', (e) => {
                     e.preventDefault();
                     window.open(link.href, '_blank');
                 });
