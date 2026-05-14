@@ -22,7 +22,7 @@ const PROJECTS = [
   title: "Dayenu",
   year: 2026,
   role: "director",
-  roleLabel: "Assistant Director",
+  roleLabel: "1st Assistant Director",
   type: "Short Film",
   client: "Attagirl Productions (UK) & Ich Liebe Das Leben (Aus)",
   link: "https://www.instagram.com/dayenushortfilm",

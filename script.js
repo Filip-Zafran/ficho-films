@@ -18,7 +18,7 @@ function renderProjectsFromData() {
     allContainer.innerHTML = "";
 
     // Translate "More" button
-    const moreLabel = typeof t === "function" ? (t("More") || "More") : "More";
+    const moreLabel = typeof t === "function" ? (t("more") || "More") : "More";
 
     // === FEATURED CARD (with optional teaser video) ===
     const buildFeaturedCard = (project, imageHeightClasses = "h-48") => {
@@ -50,7 +50,7 @@ function renderProjectsFromData() {
                 playsinline
             ></video>
 
-            <span class="mobile-video-hint">Tap to play video</span>
+            <span class="mobile-video-hint">${typeof t === "function" ? t("tap_to_play_video") : "Tap to play video"}</span>
         </div>
     `
             : `
@@ -177,8 +177,10 @@ function renderProjectsFromData() {
 
     // === ALL PROJECTS (non-featured + featured) ===
     const featuredIds = new Set(featuredProjects.map((p) => p.id));
-    const normalProjects = PROJECTS.filter((p) => !featuredIds.has(p.id));
-    const orderedProjects = [...normalProjects, ...featuredProjects];
+    const bottomProjectIds = new Set(["kia-ev2", "dayenu"]);
+    const normalProjects = PROJECTS.filter((p) => !featuredIds.has(p.id) && !bottomProjectIds.has(p.id));
+    const bottomProjects = PROJECTS.filter((p) => bottomProjectIds.has(p.id));
+    const orderedProjects = [...normalProjects, ...featuredProjects, ...bottomProjects];
 
     orderedProjects.forEach((project) => {
         allContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-48"));
@@ -530,11 +532,11 @@ function initContactForm() {
                     if (formSuccess) formSuccess.classList.remove("hidden");
                     contactForm.reset();
                 } else {
-                    alert("Something went wrong. Please try again.");
+                    alert(typeof t === "function" ? t("form_error") : "Something went wrong. Please try again.");
                 }
             })
             .catch(() => {
-                alert("Could not send the message. Please try again later.");
+                alert(typeof t === "function" ? t("form_error_network") : "Could not send the message. Please try again later.");
             });
     });
 }

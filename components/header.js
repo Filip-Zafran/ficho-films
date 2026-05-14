@@ -49,7 +49,8 @@ class CustomHeader extends HTMLElement {
         <!-- LOGO -->
         <div class="relative flex flex-col">
             <a href="index.html"
-               class="text-base sm:text-xl md:text-2xl font-bold text-imdb-yellow whitespace-nowrap">
+               class="text-base sm:text-xl md:text-2xl font-bold text-imdb-yellow whitespace-nowrap"
+               data-i18n="header_tagline">
                 Films, Locations & Creative Coordination
             </a>
 

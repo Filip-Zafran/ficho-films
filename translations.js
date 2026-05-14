@@ -20,10 +20,12 @@ const translations = {
     producer: "Producer",
     event_manager: "Event Manager",
     featured_projects: "Featured Projects",
+    recent_projects: "Recent Projects",
     all_projects_heading: "All Projects",
     tagline_locations: "Locations.",
     tagline_locked: "Locked.",
     tagline_action: "Action!",
+    header_tagline: "Films, Locations & Creative Coordination",
 
     // === CONTACT PAGE ===
     contact_get_in_touch: "Get in Touch",
@@ -37,6 +39,10 @@ const translations = {
     btn_imdb: "View my IMDb Profile",
     btn_linkedin: "Connect on LinkedIn",
     btn_crew_united: "Crew United",
+    more: "More",
+    tap_to_play_video: "Tap to play video",
+    form_error: "Something went wrong. Please try again.",
+    form_error_network: "Could not send the message. Please try again later.",
 
     // === ABOUT PAGE ===
     about_title: "About Ficho",
@@ -72,11 +78,11 @@ const translations = {
     about_text_6: `Why was I scouting the Tatras by helicopter at 22yo?<br>
     Because when things get complex and difficult, people know they can count on me.`,
 
-    role_2nd_ad: "2nd AD",
+    role_2nd_ad: "2nd Assistant Director",
     role_casting_manager: "Casting Manager",
     role_unit_manager: "Unit Manager",
-    role_prod_coordinator: "Prod. Coordinator",
-    role_prod_manager: "Prod. Manager",
+    role_prod_coordinator: "Production Coordinator",
+    role_prod_manager: "Production Manager",
     role_location_manager_scout: "Location Manager / Scout",
 
     skill_scouting: "Scouting",
@@ -99,6 +105,11 @@ const translations = {
     nav_projects: "Projects",
     nav_about: "About Me",
     nav_contact: "Contact",
+
+    // === FOOTER ===
+    footer_tagline: "Films, Locations & Creative Coordination",
+    footer_adu_member: "Member of The Assistant Directors Union (Germany)",
+    footer_hdfd_member: "Former Member of The Croatian Society of Film Workers (HDFD)",
   },
 
   de: {
@@ -112,13 +123,15 @@ const translations = {
     production: "Produktion",
     coordinator: "Produktionskoordinator",
     manager: "Produktionsleiter",
-    producer: "Producer",
+    producer: "Produzent",
     event_manager: "Eventmanager",
     featured_projects: "Ausgewählte Projekte",
+    recent_projects: "Aktuelle Projekte",
     all_projects_heading: "Alle Projekte",
     tagline_locations: "Locations.",
     tagline_locked: "Locked.",
     tagline_action: "Action!",
+    header_tagline: "Filme, Locations & Kreative Koordination",
 
     // === CONTACT PAGE ===
     contact_get_in_touch: "Kontakt aufnehmen",
@@ -132,6 +145,10 @@ const translations = {
     btn_imdb: "Mein IMDb-Profil",
     btn_linkedin: "LinkedIn",
     btn_crew_united: "Crew United",
+    more: "Mehr",
+    tap_to_play_video: "Zum Abspielen tippen",
+    form_error: "Ein Fehler ist aufgetreten. Bitte versuche es noch mal.",
+    form_error_network: "Die Nachricht konnte nicht gesendet werden. Bitte versuche es später noch einmal.",
 
     // === ABOUT PAGE ===
     about_title: "Über Ficho",
@@ -193,6 +210,11 @@ Mein beruflicher Hintergrund umfasst Regieassistenz, Location Scouting und -Mana
     nav_projects: "Projekte",
     nav_about: "Über mich",
     nav_contact: "Kontakt",
+
+    // === FOOTER ===
+    footer_tagline: "Filme, Locations & Kreative Koordination",
+    footer_adu_member: "Mitglied der Assistenten-Regisseure-Gewerkschaft (Deutschland)",
+    footer_hdfd_member: "Ehemaliges Mitglied der Kroatischen Gesellschaft der Filmarbeiter (HDFD)",
   }
 };
 
@@ -204,7 +226,8 @@ Object.assign(translations.de, {
   "Production Coordinator (Cro Crew)": "Produktionskoordinator (Kro Crew)",
   "Location Scout": "Location Scout",
   "Kenya Production Staff": "Kenianisches Produktionsteam",
-  "Third Assistant Director": "3. Regieassistenz",
+  "1st Assistant Director": "1. Regieassistenz",
+  "3rd Assistant Director": "3. Regieassistenz",
   "Assistant Location Manager": "Stellvertretender Location Manager",
   "Unit AD": "Set-Assistenzregie",
   "2nd Assistant Director": "2. Regieassistenz",
@@ -214,6 +237,7 @@ Object.assign(translations.de, {
   "Casting Manager": "Casting-Manager",
   "Main Event Manager": "Haupt-Eventmanager",
   "Weekly party series": "Wöchentliche Partyreihe",
+  "Site Lead": "Standortleitung",
   "Site Lead 2026": "Standortleitung 2026",
   "Project Lead": "Projektleiter",
   "Camp Lead & Workshop Facilitator (2025)": "Camp-Leitung & Workshop-Moderator (2025)",
@@ -228,6 +252,7 @@ Object.assign(translations.de, {
   // Project types
   "Feature Film": "Spielfilm",
   "Commercial": "Werbespot",
+  "TikTok Commercial": "TikTok-Werbespot",
   "Production Company Collaboration": "Zusammenarbeit mit Produktionsfirmen",
   "Short Film": "Kurzfilm",
   "Casting": "Casting",

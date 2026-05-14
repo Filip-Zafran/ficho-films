@@ -159,10 +159,10 @@
                         formSuccess.classList.remove("hidden");
                         contactForm.reset();
                     } else {
-                        alert("Something went wrong. Please try again.");
+                        alert(typeof t === "function" ? t("form_error") : "Something went wrong. Please try again.");
                     }
                 })
-                .catch(() => alert("Could not send the message. Please try again later."));
+                .catch(() => alert(typeof t === "function" ? t("form_error_network") : "Could not send the message. Please try again later."));
             });
         }
     </script>
