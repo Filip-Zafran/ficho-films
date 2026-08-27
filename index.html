@@ -147,6 +147,15 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <button
+                    class="role-filter text-left w-full px-3 py-2 rounded hover:bg-imdb-dark hover:text-imdb-yellow transition"
+                    data-role="ai"
+                    data-i18n="ai_videos">
+                    AI Videos
+                </button>
+            </li>
         </ul>
 
         <div class="hidden lg:block mt-6">
@@ -189,7 +198,7 @@
 </section>
 
 <!-- FEATURED -->
-<h2 class="text-3xl font-bold text-imdb-yellow mb-6" data-i18n="featured_projects">
+<h2 id="featured-heading" class="text-3xl font-bold text-imdb-yellow mb-6" data-i18n="featured_projects">
     Featured Projects
 </h2>
 
@@ -217,15 +226,26 @@
         Original AI-driven films and social promos, created from concept through final delivery.
     </p>
     <div id="ai-videos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"></div>
+    <div class="mt-6 text-center">
+        <button id="ai-videos-toggle"
+                type="button"
+                class="rounded bg-imdb-yellow px-5 py-2 font-semibold text-imdb-dark transition hover:bg-yellow-400"
+                aria-expanded="false"
+                data-i18n="show_more_ai_videos">
+            Show 2 more videos
+        </button>
+    </div>
 </section>
 
 <!-- ALL PROJECTS -->
-<h2 class="text-3xl font-bold text-imdb-yellow mb-6" data-i18n="all_projects_heading">
+<h2 id="all-projects-heading" class="text-3xl font-bold text-imdb-yellow mb-6" data-i18n="all_projects_heading">
     All Projects
 </h2>
 
-<div id="projects-container"
-     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"></div>
+<section id="all-projects-section">
+    <div id="projects-container"
+         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"></div>
+</section>
 
 </div>
 </div>

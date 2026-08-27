@@ -182,8 +182,13 @@ function renderProjectsFromData() {
     if (aiVideosContainer) {
         const aiVideos = PROJECTS.filter((p) => p.aiVideo);
         aiVideosContainer.innerHTML = "";
-        aiVideos.forEach((project) => {
-            aiVideosContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-64"));
+        aiVideos.forEach((project, index) => {
+            const card = buildAllProjectsCard(project, "h-64");
+            const hiddenClass = index >= 3 ? " ai-video-extra hidden" : "";
+            aiVideosContainer.insertAdjacentHTML(
+                "beforeend",
+                card.replace('class="project-card"', `class="project-card${hiddenClass}"`)
+            );
         });
     }
 
@@ -192,10 +197,27 @@ function renderProjectsFromData() {
     const bottomProjectIds = new Set(["kia-ev2", "dayenu"]);
     const normalProjects = PROJECTS.filter((p) => !p.aiVideo && !featuredIds.has(p.id) && !bottomProjectIds.has(p.id));
     const bottomProjects = PROJECTS.filter((p) => bottomProjectIds.has(p.id));
-    const orderedProjects = [...normalProjects, ...featuredProjects, ...bottomProjects];
+    const aiProjects = PROJECTS.filter((p) => p.aiVideo);
+    const orderedProjects = [...normalProjects, ...featuredProjects, ...bottomProjects, ...aiProjects];
 
     orderedProjects.forEach((project) => {
         allContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-48"));
+    });
+}
+
+function initAiVideosToggle() {
+    const toggle = document.getElementById("ai-videos-toggle");
+    const extraVideos = document.querySelectorAll("#ai-videos .ai-video-extra");
+    if (!toggle || extraVideos.length === 0) return;
+
+    toggle.addEventListener("click", () => {
+        const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+        extraVideos.forEach((card) => card.classList.toggle("hidden", isExpanded));
+        toggle.setAttribute("aria-expanded", String(!isExpanded));
+        toggle.setAttribute("data-i18n", isExpanded ? "show_more_ai_videos" : "show_fewer_ai_videos");
+        toggle.textContent = typeof t === "function"
+            ? t(isExpanded ? "show_more_ai_videos" : "show_fewer_ai_videos")
+            : (isExpanded ? "Show 2 more videos" : "Show fewer videos");
     });
 }
 
@@ -459,6 +481,7 @@ function initRoleFilters() {
     if (roleFilters.length === 0) return;
 
     const featuredSection = document.getElementById("featured-projects");
+    const aiVideosSection = document.getElementById("ai-videos-section");
     const allProjectsSection = document.getElementById("all-projects-section");
     const allProjectsHeading = document.getElementById("all-projects-heading");
     const featuredHeading = document.getElementById("featured-heading");
@@ -467,7 +490,7 @@ function initRoleFilters() {
         const projectCards = document.querySelectorAll(".project-card");
         projectCards.forEach((card) => {
             const roles = (card.getAttribute("data-role") || "").split(" ");
-            card.style.display = role === "all" || roles.includes(role) ? "block" : "none";
+            card.style.display = role === "all" ? "" : (roles.includes(role) ? "block" : "none");
         });
     };
 
@@ -484,6 +507,7 @@ function initRoleFilters() {
             if (role === "all") {
                 featuredSection?.classList.remove("hidden");
                 featuredHeading?.classList.remove("hidden");
+                aiVideosSection?.classList.remove("hidden");
                 allProjectsSection?.classList.remove("hidden");
                 if (allProjectsHeading && typeof t === "function") {
                     allProjectsHeading.textContent = t("All Projects");
@@ -491,6 +515,7 @@ function initRoleFilters() {
             } else {
                 featuredSection?.classList.add("hidden");
                 featuredHeading?.classList.add("hidden");
+                aiVideosSection?.classList.add("hidden");
                 allProjectsSection?.classList.remove("hidden");
                 if (allProjectsHeading) {
                     allProjectsHeading.textContent = this.textContent.trim();
@@ -562,6 +587,7 @@ function initContactForm() {
 document.addEventListener("DOMContentLoaded", () => {
     // Projects page
     renderProjectsFromData();
+    initAiVideosToggle();
     initRoleFilters();
     initFeaturedVideos();
     initRecentProjectVideos();
