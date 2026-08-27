@@ -8,7 +8,7 @@ const PROJECTS = [
   year: 2026,
   dateLabel: "August 2026",
   role: "ai producer director",
-  roleLabel: "Concept · Producer · Director · AI Creator",
+  roleLabel: "Director · Producer · AI Creator",
   type: "Short Film",
   image: "images/ai-videos/the-stag-king.jpg",
   teaserVideo: "videos/AI-vids/The_Stag_King.mp4",
