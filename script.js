@@ -8,6 +8,7 @@ function renderProjectsFromData() {
     const featuredBig = document.getElementById("featured-big");
     const featuredSmall = document.getElementById("featured-small");
     const recentContainer = document.getElementById("recent-projects");
+    const aiVideosContainer = document.getElementById("ai-videos");
     const allContainer = document.getElementById("projects-container");
 
     // If we're not on the Projects page, skip
@@ -78,6 +79,7 @@ function renderProjectsFromData() {
     // === ALL PROJECTS CARD ===
     const buildAllProjectsCard = (project, imageHeightClasses = "h-48") => {
         const yearText = project.year ? ` (${project.year})` : "";
+        const displayDate = project.dateLabel || (project.year ? String(project.year) : "");
         const linkHtml =
             project.link && project.link !== "#"
                 ? `<a href="${project.link}" target="_blank" class="inline-block mt-2 text-imdb-yellow hover:underline">${moreLabel}</a>`
@@ -145,9 +147,10 @@ function renderProjectsFromData() {
             <div class="project-card" data-role="${project.role}" ${project.teaserVideo ? `data-video-src="${project.teaserVideo}"` : ""}>
                 ${imageOrVideo}
                 <div class="bg-imdb-gray p-4 rounded-b-lg">
-                    <h3 class="text-xl font-bold">${translatedTitle}${yearText}</h3>
+                    <h3 class="text-xl font-bold">${translatedTitle}${project.dateLabel ? "" : yearText}</h3>
                     <p class="text-imdb-yellow">${translatedRole}</p>
                     ${project.type ? `<p class="text-sm text-gray-300">${project.type}</p>` : ""}
+                    ${project.dateLabel ? `<p class="text-xs uppercase tracking-wider text-gray-400 mt-1">${displayDate}</p>` : ""}
                     ${project.stars ? `<p class="text-sm font-semibold text-gray-200 mb-1">${project.stars}</p>` : ""}
                     ${clientHtml}
                     ${linkHtml}
@@ -175,10 +178,19 @@ function renderProjectsFromData() {
         });
     }
 
+    // === AI VIDEOS ===
+    if (aiVideosContainer) {
+        const aiVideos = PROJECTS.filter((p) => p.aiVideo);
+        aiVideosContainer.innerHTML = "";
+        aiVideos.forEach((project) => {
+            aiVideosContainer.insertAdjacentHTML("beforeend", buildAllProjectsCard(project, "h-64"));
+        });
+    }
+
     // === ALL PROJECTS (non-featured + featured) ===
     const featuredIds = new Set(featuredProjects.map((p) => p.id));
     const bottomProjectIds = new Set(["kia-ev2", "dayenu"]);
-    const normalProjects = PROJECTS.filter((p) => !featuredIds.has(p.id) && !bottomProjectIds.has(p.id));
+    const normalProjects = PROJECTS.filter((p) => !p.aiVideo && !featuredIds.has(p.id) && !bottomProjectIds.has(p.id));
     const bottomProjects = PROJECTS.filter((p) => bottomProjectIds.has(p.id));
     const orderedProjects = [...normalProjects, ...featuredProjects, ...bottomProjects];
 
@@ -280,11 +292,11 @@ headerEl.scrollIntoView({ behavior: "smooth", block: "center" });
    ============================================ */
 
 function initRecentProjectVideos() {
-    const recentContainer = document.getElementById('recent-projects');
-    if (!recentContainer) return;
+    const projectsPage = document.getElementById('projects');
+    if (!projectsPage) return;
 
     // Handle videos (hover and click behavior)
-    const videos = recentContainer.querySelectorAll('.recent-video');
+    const videos = projectsPage.querySelectorAll('.recent-video');
     videos.forEach((video) => {
         const src = video.getAttribute('data-teaser-src');
         if (!src) return;
@@ -335,7 +347,7 @@ function initRecentProjectVideos() {
     });
 
     // Handle link clicks
-    const projectCards = recentContainer.querySelectorAll('.project-card');
+    const projectCards = projectsPage.querySelectorAll('.project-card');
     projectCards.forEach((card) => {
         const link = card.querySelector('a');
         const imageContainer = card.querySelector('[class*="relative"]');
