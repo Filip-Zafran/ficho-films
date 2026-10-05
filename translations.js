@@ -51,6 +51,10 @@ const translations = {
     // === ABOUT PAGE ===
     about_title: "About Ficho",
     about_subtitle: "Filmmaker, fixer, and production problem-solver.",
+    current_position: "Current Position",
+    current_role: "Production Manager",
+    current_employer: "Instant Waves Media GmbH",
+    current_since: "Since September 2026",
 
     key_roles: "Key Roles",
     key_skills: "Key Skills",
@@ -161,6 +165,10 @@ const translations = {
     // === ABOUT PAGE ===
     about_title: "Über Ficho",
     about_subtitle: "Filmemacher, Fixer und Produktions-Problemlöser.",
+    current_position: "Aktuelle Position",
+    current_role: "Produktionsleiter",
+    current_employer: "Instant Waves Media GmbH",
+    current_since: "Seit September 2026",
     key_roles: "Wichtige Rollen",
     key_skills: "Wichtige Fähigkeiten",
     languages: "Sprachen",
